@@ -115,7 +115,9 @@ function TestimonialItem({
                 <div>
                     <Quote className="size-8 text-text-on-primary" />
                 </div>
-                <p className="mt-5 text-text-on-primary">"{testimonial}"</p>
+                <p className="mt-5 text-lg text-text-on-primary">
+                    "{testimonial}"
+                </p>
             </div>
         </div>
     )

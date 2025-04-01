@@ -18,7 +18,7 @@ export default function Hero() {
                         Your Digital Product <br className="hidden md:block" />
                         With The Right Guidance
                     </h1>
-                    <p className="text-center text-text-on-primary md:text-start">
+                    <p className="text-center text-lg text-text-on-primary md:text-start">
                         It has never been easier to create digital products, but
                         creating them well? That's a whole different ballgame.
                         Stay away from the noise and let me provide you with a

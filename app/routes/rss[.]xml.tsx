@@ -1,4 +1,4 @@
-import { LoaderFunction } from '@remix-run/cloudflare'
+import { LoaderFunction, LoaderFunctionArgs } from '@remix-run/cloudflare'
 import Posts from '~/actions/posts'
 import {
     SITE_BASE_URL,
@@ -9,8 +9,10 @@ import {
 import { Post } from '~/types/contentful'
 import { getCacheControlHeader } from '~/utils/server'
 
-export const loader: LoaderFunction = async () => {
-    const posts = (await Posts.latest().get()) as Post[]
+export const loader: LoaderFunction = async ({
+    context,
+}: LoaderFunctionArgs) => {
+    const posts = ((await Posts.latest(6, context).get()) || []) as Post[]
 
     return new Response(renderXML(posts), {
         headers: {

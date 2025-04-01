@@ -30,7 +30,7 @@ export default function AboutMe() {
                             </span>
                             <span>I'm Carlos</span>
                         </h2>
-                        <p className="text-center text-text-on-primary md:text-start">
+                        <p className="text-center text-lg text-text-on-primary md:text-start">
                             As a product designer, I excel at transforming
                             challenges and opportunities into user-focused,
                             strategic solutions. With a strong technical
@@ -38,7 +38,7 @@ export default function AboutMe() {
                             craft distinctive visual identities for digital
                             products that seamlessly blend form and function.
                         </p>
-                        <p className="text-center text-text-on-primary md:text-start">
+                        <p className="text-center text-lg text-text-on-primary md:text-start">
                             I’m passionate about building stunning designs
                             rooted in shared values, open communication, and a
                             deep respect for the audience, ensuring every

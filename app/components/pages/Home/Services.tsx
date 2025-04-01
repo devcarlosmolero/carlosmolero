@@ -78,7 +78,7 @@ function ServiceItem({
             </div>
             <div className="mt-8 space-y-5">
                 <h3 className="text-3xl text-text-two md:text-4xl">{title}</h3>
-                <p className="text-text-on-primary">{description}</p>
+                <p className="text-lg text-text-on-primary">{description}</p>
             </div>
         </Fragment>
     )

@@ -7,42 +7,102 @@ export default {
             typography: ({ theme }) => ({
                 dark: {
                     css: {
-                        '--tw-prose-body': theme('colors.gray[300]'),
-                        '--tw-prose-headings': theme('colors.white'),
-                        '--tw-prose-lead': theme('colors.gray[200]'),
-                        '--tw-prose-links': theme('colors.violet[300]'),
-                        '--tw-prose-bold': theme('colors.white'),
-                        '--tw-prose-counters': theme('colors.gray[400]'),
-                        '--tw-prose-bullets': theme('colors.violet[300]'),
-                        '--tw-prose-hr': theme('colors.gray[600]'),
-                        '--tw-prose-quotes': theme('colors.white'),
-                        '--tw-prose-quote-borders': theme('colors.gray[600]'),
-                        '--tw-prose-captions': theme('colors.gray[400]'),
-                        '--tw-prose-code': theme('colors.white'),
-                        '--tw-prose-pre-code': theme('colors.gray[800]'),
-                        '--tw-prose-pre-bg': theme('colors.black'),
-                        '--tw-prose-th-borders': theme('colors.gray[600]'),
-                        '--tw-prose-td-borders': theme('colors.gray[500]'),
-                        '--tw-prose-invert-body': theme('colors.white'),
-                        '--tw-prose-invert-headings': theme('colors.black'),
-                        '--tw-prose-invert-lead': theme('colors.gray[200]'),
-                        '--tw-prose-invert-links': theme('colors.violet[300]'),
-                        '--tw-prose-invert-bold': theme('colors.white'),
-                        '--tw-prose-invert-counters': theme('colors.gray[400]'),
+                        '--tw-prose-body': 'var(--dtr-text-color-one)',
+                        '--tw-prose-invert-body': 'var(--dtr-text-color-one)',
+
+                        '--tw-prose-headings': 'var(--dtr-text-color-heading)',
+                        '--tw-prose-invert-headings':
+                            'var(--dtr-text-color-heading)',
+
+                        '--tw-prose-lead': 'var(--dtr-text-color-one)',
+                        '--tw-prose-invert-lead': 'var(--dtr-text-color-one)',
+
+                        '--tw-prose-links': 'var(--dtr-link-color)',
+                        '--tw-prose-invert-links': 'var(--dtr-link-color)',
+
+                        '--tw-prose-bold': 'var(--dtr-text-color-two)',
+                        '--tw-prose-invert-bold': 'var(--dtr-text-color-two)',
+
+                        '--tw-prose-counters': 'var(--dtr-text-color-three)',
+                        '--tw-prose-invert-counters':
+                            'var(--dtr-text-color-three)',
+
+                        '--tw-prose-bullets': 'var(--dtr-text-color-three)',
                         '--tw-prose-invert-bullets':
-                            theme('colors.violet[500]'),
-                        '--tw-prose-invert-hr': theme('colors.gray[200]'),
-                        '--tw-prose-invert-quotes': theme('colors.black'),
+                            'var(--dtr-text-color-three)',
+
+                        '--tw-prose-hr': 'var(--dtr-border-color-main)',
+                        '--tw-prose-invert-hr': 'var(--dtr-border-color-main)',
+
+                        '--tw-prose-quotes': 'var(--dtr-text-color-three)',
+                        '--tw-prose-invert-quotes':
+                            'var(--dtr-text-color-three)',
+                        '--tw-prose-quote-borders':
+                            'var(--dtr-border-color-main)',
                         '--tw-prose-invert-quote-borders':
-                            theme('colors.gray[200]'),
-                        '--tw-prose-invert-captions': theme('colors.gray[400]'),
-                        '--tw-prose-invert-code': theme('colors.black'),
-                        '--tw-prose-invert-pre-code': theme('colors.white'),
-                        '--tw-prose-invert-pre-bg': 'rgb(255 255 255 / 50%)',
+                            'var(--dtr-border-color-main)',
+
+                        blockquote: {
+                            backgroundColor: 'var(--dtr-base-color-secondary)',
+                            padding: '1rem',
+                            borderRadius: 'var(--dtr-radius-rounded-small)',
+                        },
+
+                        '--tw-prose-captions': 'var(--dtr-text-color-one)',
+                        '--tw-prose-invert-captions':
+                            'var(--dtr-text-color-one)',
+
+                        '--tw-prose-code': 'var(--dtr-text-color-two)',
+                        '--tw-prose-invert-code': 'var(--dtr-text-color-two)',
+
+                        '--tw-prose-pre-code': 'var(--dtr-text-color-two)',
+                        '--tw-prose-pre-bg': 'var(--dtr-base-color-secondary)',
+                        '--tw-prose-invert-pre-code':
+                            'var(--dtr-text-color-two)',
+                        '--tw-prose-invert-pre-bg':
+                            'var(--dtr-base-color-secondary)',
+
+                        '--tw-prose-th-borders': 'var(--dtr-border-color-main)',
+                        '--tw-prose-td-borders': 'var(--dtr-border-color-main)',
                         '--tw-prose-invert-th-borders':
-                            theme('colors.gray[200]'),
+                            'var(--dtr-border-color-main)',
                         '--tw-prose-invert-td-borders':
-                            theme('colors.gray[300]'),
+                            'var(--dtr-border-color-main)',
+
+                        h1: {
+                            fontSize: 'var(--dtr-font-size-h1)',
+                            fontWeight: 'var(--dtr-font-weight-heading)',
+                            lineHeight: 'var(--dtr-line-height-heading)',
+                        },
+                        h2: {
+                            fontSize: 'var(--dtr-font-size-h2)',
+                            fontWeight: 'var(--dtr-font-weight-heading)',
+                            lineHeight: 'var(--dtr-line-height-heading)',
+                        },
+                        h3: {
+                            fontSize: 'var(--dtr-font-size-h3)',
+                            fontWeight: 'var(--dtr-font-weight-heading)',
+                            lineHeight: 'var(--dtr-line-height-heading)',
+                        },
+                        h4: {
+                            fontSize: 'var(--dtr-font-size-h4)',
+                            fontWeight: 'var(--dtr-font-weight-heading)',
+                            lineHeight: 'var(--dtr-line-height-heading)',
+                        },
+                        h5: {
+                            fontSize: 'var(--dtr-font-size-h5)',
+                            fontWeight: 'var(--dtr-font-weight-heading)',
+                            lineHeight: 'var(--dtr-line-height-heading)',
+                        },
+                        h6: {
+                            fontSize: 'var(--dtr-font-size-h6)',
+                            fontWeight: 'var(--dtr-font-weight-heading)',
+                            lineHeight: 'var(--dtr-line-height-heading)',
+                        },
+                        p: {
+                            fontSize: 'var(--dtr-font-size-base)',
+                            lineHeight: 'var(--dtr-line-height-normal)',
+                        },
                     },
                 },
             }),

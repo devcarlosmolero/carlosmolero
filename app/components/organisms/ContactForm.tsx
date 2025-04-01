@@ -21,7 +21,7 @@ export default function ContactForm() {
                 It's time
                 <br /> to talk about your project.
             </h2>
-            <p className="text-text-on-primary">
+            <p className="text-center text-lg text-text-on-primary md:text-start">
                 Let’s embark on creative journey together by shaping a visual
                 narrative of your brand in the crowded digital space.
             </p>

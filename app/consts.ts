@@ -10,22 +10,3 @@ export const SITE_PHONE_NUMBER = '+1(505)361-3359'
 export const SITE_X_URL = 'https://www.x.com/iscarlosmolero'
 export const SITE_X_HANDLE = '@iscarlosmolero'
 export const SITE_LINKEDIN_URL = 'https://www.linkedin.com/in/iscarlosmolero/'
-
-export const SITE_TOOLS = [
-    {
-        title: 'Contador de Caracteres SEO',
-        pathname: 'contador-caracteres-seo',
-    },
-    {
-        title: 'Generador de Sitemaps',
-        pathname: 'generador-sitemap-url',
-    },
-    {
-        title: 'Checklist Velocidad Web',
-        pathname: 'checklist-optimizacion-velocidad-web',
-    },
-    {
-        title: 'Agregador Marca de Agua Online',
-        pathname: 'marca-de-agua',
-    },
-]

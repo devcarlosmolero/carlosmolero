@@ -1,15 +1,17 @@
-import { LoaderFunction } from '@remix-run/cloudflare'
+import { LoaderFunction, LoaderFunctionArgs } from '@remix-run/cloudflare'
 import Posts from '~/actions/posts'
 import { SITE_BASE_URL, SITE_STATIC_PATHS } from '~/consts'
 import { Post } from '~/types/contentful'
 import { getCacheControlHeader } from '~/utils/server'
 
-export const loader: LoaderFunction = async () => {
+export const loader: LoaderFunction = async ({
+    context,
+}: LoaderFunctionArgs) => {
     const [posts] = await Promise.all([
-        Posts.all(100, 0, true).get() as Promise<Post[]>,
+        Posts.all(100, 0, context).get() as Promise<Post[]>,
     ])
 
-    const entries = [...posts].map((entry) => ({
+    const entries = [...(posts || [])].map((entry) => ({
         slug: entry.slug!,
         updatedAt: entry.updatedAt!,
     }))

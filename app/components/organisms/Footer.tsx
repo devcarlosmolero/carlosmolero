@@ -18,7 +18,7 @@ export default function Footer() {
                             <br className="hidden md:block" /> Your Product Can
                             Be A Reality
                         </h1>
-                        <p className="text-center text-text-on-primary md:text-start">
+                        <p className="text-center text-lg text-text-on-primary md:text-start">
                             Taking action in time is key, do it and get ahead of
                             your competition by taking advantage of my
                             experience and my technical knowledge.

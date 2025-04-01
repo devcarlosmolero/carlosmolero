@@ -2,6 +2,9 @@
 // by running `wrangler types`
 
 interface Env {
-	TURNSTILE_SECRET: string;
-	DISCORD_BOT_TOKEN: string;
+    TURNSTILE_SECRET: string
+    DISCORD_BOT_TOKEN: string
+    CONTENTFUL_CMA_TOKEN: string
+    CONTENTFUL_CDA_TOKEN: string
+    CONTENTFUL_SPACE_ID: string
 }

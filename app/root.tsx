@@ -80,6 +80,7 @@ export default function App() {
                         onOpen={() => setIsNavbarOpen(true)}
                         onClose={() => setIsNavbarOpen(false)}
                     />
+                    <div className="h-[62px] w-full md:h-[80px]"></div>
                     <Outlet />
                     <ScrollRestoration />
                     <Scripts />

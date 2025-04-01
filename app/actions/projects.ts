@@ -4,14 +4,16 @@ import {
     createContentfulUrl,
     getAssetUrl,
 } from './contentful'
+import { AppLoadContext } from '@remix-run/cloudflare'
 
-export async function getProjects() {
+export async function getProjects(context: AppLoadContext) {
     const response = await fetch(
         createContentfulUrl(
             createContentfulFilters({
                 contentType: 'project',
                 limit: 100,
-            })
+            }),
+            context
         )
     )
 
@@ -24,10 +26,13 @@ export async function getProjects() {
     return []
 }
 
-export async function appendImgUrlToProjects(projects: Project[]) {
+export async function appendImgUrlToProjects(
+    projects: Project[],
+    context: AppLoadContext
+) {
     const result = await Promise.all(
         projects.map(async (project) => {
-            const imgUrl = await getAssetUrl(project.img.sys.id)
+            const imgUrl = await getAssetUrl(project.img.sys.id, context)
             return {
                 ...project,
                 imgUrl,

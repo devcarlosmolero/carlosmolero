@@ -5,11 +5,15 @@ import {
     getAssetUrl,
 } from './contentful'
 import { format } from 'date-fns'
+import { AppLoadContext } from '@remix-run/cloudflare'
 
-async function appendHeaderImgUrls(posts: Post[]) {
+async function appendHeaderImgUrls(posts: Post[], context: AppLoadContext) {
     const result = await Promise.all(
         posts.map(async (post) => {
-            const headerImgUrl = await getAssetUrl(post.headerImg.sys.id)
+            const headerImgUrl = await getAssetUrl(
+                post.headerImg.sys.id,
+                context
+            )
             return {
                 ...post,
                 headerImgUrl,
@@ -20,7 +24,7 @@ async function appendHeaderImgUrls(posts: Post[]) {
     return result || []
 }
 
-function createApi(filters: ContentfulFilters) {
+function createApi(filters: ContentfulFilters, context: AppLoadContext) {
     const state = {
         filters,
         appendHeaderImgUrls: false,
@@ -38,7 +42,10 @@ function createApi(filters: ContentfulFilters) {
         },
         async get() {
             const response = await fetch(
-                createContentfulUrl(createContentfulFilters(state.filters))
+                createContentfulUrl(
+                    createContentfulFilters(state.filters),
+                    context
+                )
             )
             const { items } = (await response.json()) as any
 
@@ -53,7 +60,7 @@ function createApi(filters: ContentfulFilters) {
             })) as Post[]
 
             if (state.appendHeaderImgUrls) {
-                posts = await appendHeaderImgUrls(posts)
+                posts = await appendHeaderImgUrls(posts, context)
             }
 
             if (state.formatDates) {
@@ -78,15 +85,19 @@ function createApi(filters: ContentfulFilters) {
 }
 
 const Posts = {
-    getBySlug(slug: string) {
+    getBySlug(slug: string, context: AppLoadContext) {
         const filters = {
             contentType: 'post',
             where: `fields.slug=${slug}`,
         }
 
-        return createApi(filters)
+        return createApi(filters, context)
     },
-    getRelatedByCategory(categories: string[], slug: string) {
+    getRelatedByCategory(
+        categories: string[],
+        slug: string,
+        context: AppLoadContext
+    ) {
         const filters = {
             contentType: 'post',
             select: [
@@ -100,22 +111,21 @@ const Posts = {
             where: `fields.categories[in]=${categories.join(',')}&fields.slug[ne]=${slug}`,
         }
 
-        return createApi(filters)
+        return createApi(filters, context)
     },
-    async count() {
+    async count(context: AppLoadContext) {
         const filters = {
             contentType: 'post',
             select: ['sys'],
-            where: `fields.isSuccessCase[ne]=true`
         }
 
         const response = await fetch(
-            createContentfulUrl(createContentfulFilters(filters))
+            createContentfulUrl(createContentfulFilters(filters), context)
         )
         const { total } = (await response.json()) as any
         return total
     },
-    all(limit = 9, skip = 0, pullSuccessCases = false) {
+    all(limit = 9, skip = 0, context: AppLoadContext) {
         const filters = {
             contentType: 'post',
             limit,
@@ -129,12 +139,11 @@ const Posts = {
                 'sys',
             ],
             order: '-sys.createdAt',
-            where: `fields.isSuccessCase[ne]=${pullSuccessCases ? 'false' : 'true'}`,
         }
 
-        return createApi(filters)
+        return createApi(filters, context)
     },
-    latest(limit = 6) {
+    latest(limit = 6, context: AppLoadContext) {
         const filters = {
             contentType: 'post',
             limit,
@@ -147,10 +156,9 @@ const Posts = {
                 'sys',
             ],
             order: '-sys.createdAt',
-            where: `fields.isSuccessCase[ne]=true`
         }
 
-        return createApi(filters)
+        return createApi(filters, context)
     },
 }
 export default Posts

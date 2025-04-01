@@ -11,7 +11,7 @@ export default function TextArea({
         <textarea
             name={name}
             rows={8}
-            className="rounded-md border border-input-border bg-input-bg px-4 py-2 text-text-one"
+            className="rounded-md border border-input-border bg-input-bg px-4 py-2 text-lg text-text-one"
             placeholder={placeholder}
             required={required}
         />
