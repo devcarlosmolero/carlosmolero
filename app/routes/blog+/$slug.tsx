@@ -92,8 +92,10 @@ export default function BlogSlugPage() {
                             </div>
                             <div></div>
                         </div>
-                        <p className="text-lg">{post.seoDescription}</p>
-                        <article className="prose prose-dark w-full !max-w-none prose-img:w-full prose-img:rounded-md [&_h2:first-of-type]:mt-0">
+                        <p className="text-xl font-semibold">
+                            {post.seoDescription}
+                        </p>
+                        <article className="prose prose-dark w-full !max-w-none prose-p:text-lg prose-img:w-full prose-img:rounded-md [&_h2:first-of-type]:mt-0">
                             <Markdown
                                 remarkPlugins={[remarkGfm]}
                                 rehypePlugins={[rehypeSlug, rehypeRaw]}

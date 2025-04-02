@@ -100,7 +100,6 @@ export default {
                             lineHeight: 'var(--dtr-line-height-heading)',
                         },
                         p: {
-                            fontSize: 'var(--dtr-font-size-base)',
                             lineHeight: 'var(--dtr-line-height-normal)',
                         },
                     },

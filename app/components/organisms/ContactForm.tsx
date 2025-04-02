@@ -43,7 +43,10 @@ export default function ContactForm() {
                 siteKey="0x4AAAAAABDYC0VHvPuUFXUP"
                 lang="en"
             />
-            <Button variant="primary"> Send Message</Button>
+            <Button variant="primary" className="w-full md:w-fit">
+                {' '}
+                Send Message
+            </Button>
         </Form>
     )
 }
