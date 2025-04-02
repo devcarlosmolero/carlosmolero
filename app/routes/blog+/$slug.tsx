@@ -13,6 +13,7 @@ import Posts from '~/actions/posts'
 import { useLoaderData } from '@remix-run/react'
 import { getArticleJsonLd, getBasicMetas } from '~/utils/metas'
 import { getPostImageUrls } from '~/utils/posts'
+import Container from '~/components/templates/Container'
 
 export async function loader({ request, context }: LoaderFunctionArgs) {
     const url = new URL(request.url)
@@ -56,22 +57,24 @@ export default function BlogSlugPage() {
     console.log(post)
     return (
         <Fragment>
-            <div className="flex min-h-[300px] flex-col items-center justify-center space-y-8 bg-base-secondary px-4">
-                <div className="flex w-fit items-center gap-x-1 rounded-md border border-border-main px-2 py-1 text-sm text-text-one">
-                    Category
-                </div>
-                <h1 className="heading-gradient py-1 text-center text-5xl md:text-start md:text-6xl">
-                    {post.seoTitle}
-                </h1>
+            <div className="bg-base-secondary">
+                <Container className="flex min-h-[400px] flex-col items-center justify-center space-y-5">
+                    <div className="flex w-fit items-center gap-x-1 rounded-md border border-border-main px-2 py-1 text-text-one">
+                        {post.categories[0]}
+                    </div>
+                    <h1 className="heading-gradient py-1 text-center text-4xl md:text-start md:text-6xl">
+                        {post.seoTitle}
+                    </h1>
+                </Container>
             </div>
             <Page>
-                <div className="mt-12 flex flex-col items-center md:flex-row">
+                <div className="flex flex-col items-center md:flex-row">
                     <div className="w-full space-y-5 md:w-[70%]">
                         <FakeBackgroundImagePrimitive.Container className="aspect-h-9 aspect-w-16 rounded-md">
                             <FakeBackgroundImagePrimitive.Image
                                 className="rounded-md"
-                                alt={''}
-                                src="https://images.unsplash.com/photo-1741620979760-bccef3bb5b17?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                alt={post.seoTitle}
+                                src={post.headerImgUrl!}
                             />
                         </FakeBackgroundImagePrimitive.Container>
                         <div className="flex items-center gap-5 text-sm">
@@ -90,7 +93,7 @@ export default function BlogSlugPage() {
                             <div></div>
                         </div>
                         <p className="text-lg">{post.seoDescription}</p>
-                        <article className="prose prose-dark w-full !max-w-none prose-img:w-full prose-img:rounded-xl [&_h2:first-of-type]:mt-0">
+                        <article className="prose prose-dark w-full !max-w-none prose-img:w-full prose-img:rounded-md [&_h2:first-of-type]:mt-0">
                             <Markdown
                                 remarkPlugins={[remarkGfm]}
                                 rehypePlugins={[rehypeSlug, rehypeRaw]}
