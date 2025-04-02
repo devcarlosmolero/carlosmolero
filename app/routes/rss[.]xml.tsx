@@ -40,7 +40,7 @@ const renderXML = (entries: Post[]): string => {
           <title><![CDATA[${entry.seoTitle}]]></title>
           <description><![CDATA[${entry.seoDescription}]]></description>
           <pubDate>${entry.createdAt}</pubDate>
-          <link>${SITE_BASE_URL}/${entry.slug}</link>
+          <link>${SITE_BASE_URL}/blog/${entry.slug}</link>
         </item>`
           )
           .join('')}

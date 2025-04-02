@@ -30,7 +30,7 @@ const renderXML = (entries: { slug: string; updatedAt: string }[]) => {
   <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     ${entries.map(
         (entry) => `<url>
-      <loc>${SITE_BASE_URL}/${entry.slug}</loc>
+      <loc>${SITE_BASE_URL}/blog/${entry.slug}</loc>
       <lastmod>${entry.updatedAt}</lastmod>
     </url>`
     )}
