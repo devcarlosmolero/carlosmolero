@@ -54,7 +54,6 @@ export const meta: MetaFunction = (payload: {
 
 export default function BlogSlugPage() {
     const { post } = useLoaderData<typeof loader>()
-    console.log(post)
     return (
         <Fragment>
             <div className="bg-base-secondary">
@@ -68,7 +67,7 @@ export default function BlogSlugPage() {
                 </Container>
             </div>
             <Page>
-                <div className="flex flex-col items-center md:flex-row">
+                <div className="mt-12 flex flex-col items-center md:flex-row">
                     <div className="w-full space-y-5 md:w-[70%]">
                         <FakeBackgroundImagePrimitive.Container className="aspect-h-9 aspect-w-16 rounded-md">
                             <FakeBackgroundImagePrimitive.Image
