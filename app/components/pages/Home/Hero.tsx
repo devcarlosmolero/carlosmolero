@@ -44,7 +44,7 @@ export default function Hero() {
                 <div>
                     <ImageKitImage
                         alt="Carlos Molero"
-                        className="rounded-bl-[50%] rounded-tr-[50%] grayscale"
+                        className="rounded-bl-[50%] rounded-tr-[50%] dark:grayscale"
                         src="/carlos-molero.jpeg"
                     />
                 </div>

@@ -1,4 +1,6 @@
-import { redirect } from '@remix-run/cloudflare'
+import { LoaderFunctionArgs, redirect } from '@remix-run/cloudflare'
+import { TTheme } from '~/types/theme'
+import { themeCookie } from './cookies/theme'
 
 export function redirectWithToast(
     pathname: string,
@@ -9,6 +11,33 @@ export function redirectWithToast(
     return redirect(
         `${pathname}${alreadyHasParams ? '&' : '?'}tm=${encodeURIComponent(message)}&tt=${encodeURIComponent(type)}`
     )
+}
+
+export async function getTheme(request: LoaderFunctionArgs['request']) {
+    const cookieTheme = await getCookie('theme', request)
+    if (cookieTheme) {
+        return cookieTheme as TTheme
+    }
+
+    const prefersDark = request.headers
+        .get('Accept')
+        ?.includes('prefers-color-scheme: dark')
+    const theme = prefersDark ? 'dark' : 'light'
+    return theme as TTheme
+}
+
+export async function getCookie(
+    cookie: 'theme',
+    request: LoaderFunctionArgs['request']
+) {
+    const cookieHeader = request.headers.get('Cookie')
+
+    switch (cookie) {
+        case 'theme':
+            return await themeCookie.parse(cookieHeader)
+        default:
+            return
+    }
 }
 
 export function getCacheControlHeader(
@@ -29,36 +58,4 @@ export function getCacheControlHeader(
     }
 
     return `public, max-age=${maxAge}, s-maxage=${maxAge}`
-}
-
-export const serviceRedirects = {
-    'desarrollo-de-producto-minimo-viable-mvp':
-        'desarrollo-de-mvp-para-startups-y-emprendedores',
-    'diseno-y-desarrollo-de-paginas-web':
-        'diseno-y-desarrollo-de-paginas-web-y-tienda-online',
-    'desarrollo-de-aplicaciones-ios-y-android':
-        'creacion-de-apps-ios-y-android',
-    'software-de-gestion-para-empresas':
-        'software-a-medida-para-empresas-y-pymes',
-    'software-a-medida-para-tu-negocio': 'software-de-gestion-para-empresas',
-    'creacion-de-software-para-empresas':
-        'aplicaciones-a-medida-para-pequenas-y-medianas-empresas',
-    'software-automatizacion-procesos-pymes':
-        'software-automatizacion-procesos-empresas',
-    'aplicaciones-a-medida-para-pequenas-y-medianas-empresas':
-        'software-de-gestion-empresarial',
-    'software-a-medida-para-empresas-y-pymes':
-        'desarrollo-de-software-a-medida',
-    'creacion-de-aplicaciones-impulsadas-por-ia':
-        'desarrollo-de-aplicaciones-impulsadas-por-ia',
-    'gestion-cloud-para-empresas': 'servicios-cloud-para-empresas',
-    'desarrollo-de-mvp-para-startups-y-emprendedores':
-        'desarrollo-de-producto-minimo-viable',
-    'creacion-de-apps-ios-y-android': 'desarrollo-de-apps-ios-y-android',
-}
-
-
-export const pageRedirects = {
-    'nuestro-trabajo':'nuestros-clientes-y-casos-de-exito',
-    'caso-de-exito-plataforma-de-agregacion-de-pagos-tuenix':'caso-de-exito-integrador-de-lenders-tuenix'
 }

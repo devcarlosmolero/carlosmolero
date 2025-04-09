@@ -6,12 +6,11 @@ import {
     ScrollRestoration,
     json,
     useLoaderData,
-    useSearchParams,
 } from '@remix-run/react'
 import type { LinksFunction, LoaderFunctionArgs } from '@remix-run/cloudflare'
 import Footer from './components/organisms/Footer'
 import { useEffect, useState } from 'react'
-import { ToastContainer, toast } from 'react-toastify'
+import { toast, ToastContainer } from 'react-toastify'
 import cn from 'classnames'
 import { IMAGE_KIT_BASE_URL } from './consts'
 import Navbar from './components/organisms/Navbar'
@@ -19,11 +18,37 @@ import Navbar from './components/organisms/Navbar'
 //@ts-expect-error idk
 import stylesheet from '~/tailwind.css?url'
 import 'react-toastify/dist/ReactToastify.css'
+import { getTheme } from './utils/server'
+import { themeCookie } from './utils/cookies/theme'
 
 export async function loader({ request }: LoaderFunctionArgs) {
-    return json({
-        url: request.url,
-    })
+    const searchParams = new URL(request.url).searchParams
+    const action = searchParams.get('action')
+    const tt = searchParams.get('tt')
+    const tm = searchParams.get('tm')
+
+    let initialTheme = await getTheme(request)
+
+    if (action === 'switch_theme') {
+        initialTheme = initialTheme === 'light' ? 'dark' : 'light'
+    }
+
+    return json(
+        {
+            url: request.url,
+            initialTheme,
+            tt,
+            tm,
+        },
+        {
+            headers: {
+                'Set-Cookie':
+                    action === 'switch_theme'
+                        ? await themeCookie.serialize(initialTheme)
+                        : await themeCookie.serialize(initialTheme),
+            },
+        }
+    )
 }
 
 export const links: LinksFunction = () => [
@@ -31,27 +56,18 @@ export const links: LinksFunction = () => [
 ]
 
 export default function App() {
-    const { url } = useLoaderData<typeof loader>()
-    const [params, setParams] = useSearchParams()
+    const { url, initialTheme, tt, tm } = useLoaderData<typeof loader>()
     const [isNavbarOpen, setIsNavbarOpen] = useState(false)
 
     useEffect(() => {
-        const newParams = new URLSearchParams(params)
-
-        if (params.get('tt') === 'error') {
-            toast.error(params.get('tm'))
+        if (tt && tm) {
+            //@ts-expect-error idk
+            toast[tt](tm)
         }
-        if (params.get('tt') === 'success') {
-            toast.success(params.get('tm'))
-        }
-
-        newParams.delete('tt')
-        newParams.delete('tm')
-        setParams(newParams, { preventScrollReset: true, replace: true })
-    }, [params, setParams])
+    }, [tt, tm])
 
     return (
-        <html lang="es">
+        <html data-theme={initialTheme} lang="en">
             <head>
                 <meta charSet="utf-8" />
                 <meta

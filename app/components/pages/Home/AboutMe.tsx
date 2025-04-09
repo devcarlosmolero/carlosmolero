@@ -11,14 +11,14 @@ export default function AboutMe() {
             </h2>
             <div className="flex flex-col space-y-5">
                 <div className="flex flex-col gap-5 md:flex-row">
-                    <div className="flex w-full items-center justify-center rounded-md bg-[#141514] p-[20px] md:w-[30%] md:p-[50px]">
+                    <div className="flex w-full items-center justify-center rounded-md bg-base-secondary p-[20px] md:w-[30%] md:p-[50px]">
                         <ImageKitImage
                             alt="Carlos Molero"
-                            className="w-[150px] rounded-full grayscale"
+                            className="w-[150px] rounded-full dark:grayscale"
                             src="/carlos-molero.jpeg"
                         />
                     </div>
-                    <div className="w-full space-y-5 rounded-md bg-[#141514] p-[20px] md:w-[70%] md:p-[50px]">
+                    <div className="w-full space-y-5 rounded-md bg-base-secondary p-[20px] md:w-[70%] md:p-[50px]">
                         <h2 className="flex items-center justify-center text-center text-3xl text-text-three md:justify-start md:text-start">
                             <span>Hi</span>
                             <span>
@@ -47,7 +47,7 @@ export default function AboutMe() {
                     </div>
                 </div>
                 <div className="flex flex-col gap-5 md:flex-row">
-                    <div className="flex w-full flex-col items-center justify-start rounded-md bg-[#141514] p-[20px] md:w-[45%] md:items-start md:p-[50px]">
+                    <div className="flex w-full flex-col items-center justify-start rounded-md bg-base-secondary p-[20px] md:w-[45%] md:items-start md:p-[50px]">
                         <h2 className="text-3xl text-text-three">Experience</h2>
                         <div className="mt-12 flex flex-col gap-y-5">
                             <AboutItem
@@ -100,7 +100,7 @@ export default function AboutMe() {
                             />
                         </div>
                     </div>
-                    <div className="flex w-full flex-col items-center justify-start rounded-md bg-[#141514] p-[20px] md:w-[55%] md:items-start md:p-[50px]">
+                    <div className="flex w-full flex-col items-center justify-start rounded-md bg-base-secondary p-[20px] md:w-[55%] md:items-start md:p-[50px]">
                         <h2 className="text-3xl text-text-three">Education</h2>
                         <div className="mt-12 flex flex-col gap-y-5">
                             <AboutItem
@@ -139,7 +139,7 @@ export default function AboutMe() {
                     </div>
                 </div>
                 <div className="flex flex-col gap-5 md:flex-row">
-                    <div className="flex w-full flex-col items-center justify-start rounded-md bg-[#141514] p-[20px] md:w-[65%] md:items-start md:p-[50px]">
+                    <div className="flex w-full flex-col items-center justify-start rounded-md bg-base-secondary p-[20px] md:w-[65%] md:items-start md:p-[50px]">
                         <h2 className="text-3xl text-text-three">Skills</h2>
                         <div className="mt-12 flex w-full flex-col gap-5 md:flex-row">
                             <SkillItem
@@ -181,16 +181,16 @@ export default function AboutMe() {
                         </div>
                     </div>
                     <div className="flex flex-col space-y-5 md:w-[35%]">
-                        <div className="w-full space-y-5 rounded-md bg-[#141514] p-[20px] md:p-[50px]">
-                            <p className="text-center text-5xl text-[#FEFCE1]">
+                        <div className="w-full space-y-5 rounded-md bg-base-secondary p-[20px] md:p-[50px]">
+                            <p className="text-center text-5xl text-text-two">
                                 8
                             </p>
                             <p className="text-center text-xl text-text-three">
                                 Years of <br /> Experience
                             </p>
                         </div>
-                        <div className="w-full space-y-5 rounded-md bg-[#141514] p-[20px] md:p-[50px]">
-                            <p className="text-center text-5xl text-[#FEFCE1]">
+                        <div className="w-full space-y-5 rounded-md bg-base-secondary p-[20px] md:p-[50px]">
+                            <p className="text-center text-5xl text-text-two">
                                 65
                             </p>
                             <p className="text-center text-xl text-text-three">
@@ -282,11 +282,11 @@ function SkillItem({
 }) {
     return (
         <div className="flex flex-col items-center justify-center gap-y-5">
-            <div className="flex w-full flex-col items-center justify-center gap-y-5 rounded-lg bg-[#101111] p-5">
+            <div className="flex w-full flex-col items-center justify-center gap-y-5 rounded-lg bg-input-bg p-5">
                 <ImageKitImage className="w-[50px]" alt={alt} src={src} />
                 <p className="text-sm text-text-on-primary">{percentage}</p>
             </div>
-            <p className="text-[#FEFCE1]">{name}</p>
+            <p className="text-text-two">{name}</p>
         </div>
     )
 }

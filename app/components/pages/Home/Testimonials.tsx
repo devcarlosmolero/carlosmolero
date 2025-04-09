@@ -63,14 +63,14 @@ export default function Testimonials() {
             <div className="embla__controls flex justify-center">
                 <div className="embla__buttons flex items-center gap-2">
                     <button
-                        className="rounded-full bg-[#141514] p-2 hover:bg-base-tertiary hover:text-text-on-tertiary"
+                        className="rounded-full bg-base-secondary p-2 hover:bg-base-tertiary hover:text-text-on-tertiary"
                         onClick={onPrevButtonClick}
                         disabled={prevBtnDisabled}
                     >
                         <ChevronLeft />
                     </button>
                     <button
-                        className="rounded-full bg-[#141514] p-2 hover:bg-base-tertiary hover:text-text-on-tertiary"
+                        className="rounded-full bg-base-secondary p-2 hover:bg-base-tertiary hover:text-text-on-tertiary"
                         onClick={onNextButtonClick}
                         disabled={nextBtnDisabled}
                     >
@@ -96,7 +96,7 @@ function TestimonialItem({
     testimonial: string
 }) {
     return (
-        <div className="h-full space-y-5 rounded-md bg-[#141514] p-[20px] md:p-[50px]">
+        <div className="h-full space-y-5 rounded-md bg-base-secondary p-[20px] md:p-[50px]">
             <div className="flex">
                 <div className="w-full">
                     <h3 className="text-2xl text-text-two">{name}</h3>

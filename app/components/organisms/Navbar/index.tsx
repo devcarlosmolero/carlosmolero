@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react'
 import Button from '~/components/atoms/Button'
 import NavbarDrawer from './NavbarDrawer'
 import ImageKitImage from '~/components/atoms/ImageKitImage'
+import { ThemeToggle } from '~/components/atoms/ThemeToggle'
 
 export default function Navbar({
     onOpen,
@@ -25,11 +26,11 @@ export default function Navbar({
     }, [isOpen, onOpen, onClose])
 
     return (
-        <nav className="fixed z-20 flex w-full justify-center border border-x-0 border-t-0 border-b-border-main">
+        <nav className="fixed z-20 flex w-full justify-center border border-x-0 border-t-0 border-b-border-main bg-base-primary">
             <Container className="w-full bg-base-primary px-10 py-2 lg:px-5">
                 {/* DESKTOP NAVBAR */}
                 <div className="hidden grid-cols-12 items-center py-2 text-center lg:grid">
-                    <div className="col-span-3 flex items-center justify-start gap-x-3">
+                    <div className="col-span-2 flex items-center justify-start gap-x-3">
                         <Link
                             reloadDocument
                             className="flex items-center gap-x-3 text-2xl text-text-two"
@@ -46,32 +47,40 @@ export default function Navbar({
                             </div>
                         </Link>
                     </div>
-                    <div className="col-span-9 flex w-full items-center justify-end gap-x-10">
-                        <Link className="nav-link w-fit" to={'#services'}>
-                            Services
-                        </Link>
-                        <Link className="nav-link w-fit" to={'#about'}>
-                            About
-                        </Link>
-                        <Link className="nav-link w-fit" to={'#testimonials'}>
-                            Testimonials{' '}
-                        </Link>
-                        <Link className="nav-link w-fit" to={`#contact`}>
-                            Say Hello
-                        </Link>
-                        <Button
-                            hasIcon
-                            variant="primary"
-                            asLink
-                            to="https://wa.link/zvj2va"
-                            props={
-                                {
-                                    target: '_blank',
-                                } as React.LinkHTMLAttributes<HTMLLinkElement>
-                            }
-                        >
-                            Hire Me
-                        </Button>
+                    <div className="col-span-10 ml-14 flex items-center lg:ml-12">
+                        <div className="flex w-full items-center justify-start space-x-5">
+                            <Link className="nav-link w-fit" to={'#services'}>
+                                Services
+                            </Link>
+                            <Link className="nav-link w-fit" to={'#about'}>
+                                About
+                            </Link>
+                            <Link
+                                className="nav-link w-fit"
+                                to={'#testimonials'}
+                            >
+                                Testimonials{' '}
+                            </Link>
+                            <Link className="nav-link w-fit" to={`#contact`}>
+                                Say Hello
+                            </Link>
+                        </div>
+                        <div className="flex w-full items-center justify-end gap-3">
+                            <Button
+                                hasIcon
+                                variant="primary"
+                                asLink
+                                to="https://wa.link/zvj2va"
+                                props={
+                                    {
+                                        target: '_blank',
+                                    } as React.LinkHTMLAttributes<HTMLLinkElement>
+                                }
+                            >
+                                Hire Me
+                            </Button>
+                            <ThemeToggle />
+                        </div>
                     </div>
                 </div>
                 {/* MOBILE NAVBAR */}
@@ -93,7 +102,8 @@ export default function Navbar({
                             </div>
                         </Link>
                     </div>
-                    <div className="flex justify-end">
+                    <div className="flex items-center justify-end gap-3">
+                        <ThemeToggle />
                         <Hamburger setIsOpen={setIsOpen} isOpen={isOpen} />
                     </div>
                 </div>

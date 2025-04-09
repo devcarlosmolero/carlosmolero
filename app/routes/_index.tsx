@@ -1,5 +1,4 @@
 import 'animate.css/animate.compat.css'
-
 import { json, type MetaFunction } from '@remix-run/cloudflare'
 import Page from '~/components/templates/Page'
 import Hero from '~/components/pages/Home/Hero'

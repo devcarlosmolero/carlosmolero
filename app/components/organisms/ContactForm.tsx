@@ -15,7 +15,7 @@ export default function ContactForm() {
             action="/api/contact-form"
             method="POST"
             id="contact"
-            className="flex w-full flex-col space-y-5 rounded-md bg-[#141514] p-[20px] md:p-[50px]"
+            className="flex w-full flex-col space-y-5 rounded-md bg-base-secondary p-[20px] md:p-[50px]"
         >
             <h2 className="heading-gradient py-1 text-center text-3xl md:text-start md:text-4xl">
                 It's time
