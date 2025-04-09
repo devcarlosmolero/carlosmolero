@@ -1,4 +1,4 @@
-import { Linkedin, TwitterX } from 'react-bootstrap-icons'
+import { Github, Linkedin, TwitterX } from 'react-bootstrap-icons'
 import Button from '../atoms/Button'
 import Container from '../templates/Container'
 import { Link } from '@remix-run/react'
@@ -47,11 +47,19 @@ export default function Footer({ theme }: { theme: TTheme }) {
                             </Link>
                             <Link
                                 className="cursor-pointer text-text-three"
-                                to="https://www.linkedin.com/in/iscarlosmolero/"
+                                to="https://www.linkedin.com/in/iscarlosmolero"
                                 target="_blank"
                                 rel="noreferrer"
                             >
                                 <Linkedin className="size-5" />
+                            </Link>
+                            <Link
+                                className="cursor-pointer text-text-three"
+                                to="https://github.com/devcarlosmolero"
+                                target="_blank"
+                                rel="noreferrer"
+                            >
+                                <Github className="size-5" />
                             </Link>
                         </div>
                     </div>
