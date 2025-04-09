@@ -66,6 +66,13 @@ export default function App() {
         }
     }, [tt, tm])
 
+    useEffect(() => {
+        console.log(
+            "%cHey there! Curious about the code? Well, I'll let you in on it: it's built with React (Remix) and styled with Tailwind CSS!",
+            'font-size: 20px; color: #fefce1; background: #0e0f0f; padding: 10px; border-radius: 5px; font-weight: bold;'
+        )
+    }, [])
+
     return (
         <html data-theme={theme} lang="en">
             <head>
