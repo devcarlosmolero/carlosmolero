@@ -4,14 +4,10 @@ import { Moon, Sun } from 'lucide-react'
 export function ThemeToggle() {
     const navigate = useNavigate()
     function switchTheme() {
-        const search = window.location.search
-        navigate(
-            `${window.location.pathname}${search}${search.length > 0 ? '&' : '?'}action=switch_theme`,
-            {
-                replace: true,
-                preventScrollReset: true,
-            }
-        )
+        navigate(`${window.location.pathname}?action=switch_theme`, {
+            replace: true,
+            preventScrollReset: true,
+        })
     }
 
     return (
