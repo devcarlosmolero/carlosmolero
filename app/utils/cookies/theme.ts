@@ -1,4 +1,4 @@
-import { createCookie } from '@remix-run/node'
+import { createCookie } from '@remix-run/cloudflare'
 
 export const themeCookie = createCookie('theme', {
     path: '/',
