@@ -27,10 +27,13 @@ export async function loader({ request }: LoaderFunctionArgs) {
     const tt = searchParams.get('tt')
     const tm = searchParams.get('tm')
 
+    const headers: Record<string, string> = {}
+
     let theme = await getTheme(request)
 
     if (action === 'switch_theme') {
         theme = theme === 'light' ? 'dark' : 'light'
+        headers['Set-Cookie'] = await themeCookie.serialize(theme)
     }
 
     return json(
@@ -41,12 +44,7 @@ export async function loader({ request }: LoaderFunctionArgs) {
             tm,
         },
         {
-            headers: {
-                'Set-Cookie':
-                    action === 'switch_theme'
-                        ? await themeCookie.serialize(theme)
-                        : await themeCookie.serialize(theme),
-            },
+            headers,
         }
     )
 }

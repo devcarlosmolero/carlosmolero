@@ -5,85 +5,85 @@
 @tailwind utilities;
 
 :root {
-    --dtr-base-color-primary: #0e0f0f;
-    --dtr-base-color-secondary: #141514;
-    --dtr-base-color-tertiary: #bbbaa6;
-    --dtr-base-color-quaternary: #fefce1;
-    --dtr-text-color-one: rgba(187, 186, 166, 0.7);
-    --dtr-text-color-two: #fefce1;
-    --dtr-text-color-three: #bbbaa6;
-    --dtr-text-color-four: #141514;
-    --dtr-text-on-base-primary: var(--dtr-text-color-one);
-    --dtr-text-on-base-secondary: var(--dtr-text-color-one);
-    --dtr-text-on-base-tertiary: var(--dtr-text-color-four);
-    --dtr-text-on-base-quaternary: var(--dtr-text-color-four);
-    --dtr-text-color-heading: var(--dtr-text-color-two);
-    --dtr-text-color-heading-link: var(--dtr-text-color-two);
-    --dtr-link-color: var(--dtr-text-color-three);
-    --dtr-link-hover-color: var(--dtr-text-color-two);
-    --dtr-border-color-main: rgba(187, 186, 166, 0.2);
-    --dtr-radius-square: 0;
-    --dtr-radius-rounded: 16px;
-    --dtr-radius-rounded-medium: 8px;
-    --dtr-radius-rounded-small: 4px;
-    --dtr-radius-round: 9999px;
-    --dtr-radius-pagination: var(--dtr-radius-round);
-    --dtr-btn-font-size: var(--dtr-font-size-base);
-    --dtr-btn-line-height: 22px;
-    --dtr-btn-font-weight: 500;
-    --dtr-btn-border-width: 0;
-    --dtr-btn-radius: var(--dtr-radius-round);
-    --dtr-btn-color: var(--dtr-text-color-four);
-    --dtr-btn-hover-color: var(--dtr-text-color-four);
-    --dtr-btn-border-color: var(--dtr-border-color-main);
-    --dtr-input-bg: #101111;
-    --dtr-input-color: var(--dtr-text-color-one);
-    --dtr-input-border-color: transparent;
-    --dtr-input-border-width: 1px;
-    --dtr-input-border-radius: var(--dtr-radius-rounded-medium);
-    --dtr-input-focus-border-color: #bbbaa6;
-    --dtr-font-size-base: 16px;
-    --dtr-font-size-sm: 0.833em;
-    --dtr-font-size-h6: 1em;
-    --dtr-font-size-h5: 1.333em;
-    --dtr-font-size-h4: 1.6em;
-    --dtr-font-size-h3: 2em;
-    --dtr-font-size-h2: 2.467em;
-    --dtr-font-size-h1: 2.933em;
-    --dtr-font-weight-normal: 400;
-    --dtr-font-weight-medium: 500;
-    --dtr-font-weight-bold: 600;
-    --dtr-font-weight-extra-bold: 800;
-    --dtr-font-weight-heading: 500;
-    --dtr-line-height-normal: 1.4;
-    --dtr-line-height-heading: 1.2;
+    --cmm-base-color-primary: #0e0f0f;
+    --cmm-base-color-secondary: #141514;
+    --cmm-base-color-tertiary: #bbbaa6;
+    --cmm-base-color-quaternary: #fefce1;
+    --cmm-text-color-one: rgba(187, 186, 166, 0.7);
+    --cmm-text-color-two: #fefce1;
+    --cmm-text-color-three: #bbbaa6;
+    --cmm-text-color-four: #141514;
+    --cmm-text-on-base-primary: var(--cmm-text-color-one);
+    --cmm-text-on-base-secondary: var(--cmm-text-color-one);
+    --cmm-text-on-base-tertiary: var(--cmm-text-color-four);
+    --cmm-text-on-base-quaternary: var(--cmm-text-color-four);
+    --cmm-text-color-heading: var(--cmm-text-color-two);
+    --cmm-text-color-heading-link: var(--cmm-text-color-two);
+    --cmm-link-color: var(--cmm-text-color-three);
+    --cmm-link-hover-color: var(--cmm-text-color-two);
+    --cmm-border-color-main: rgba(187, 186, 166, 0.2);
+    --cmm-radius-square: 0;
+    --cmm-radius-rounded: 16px;
+    --cmm-radius-rounded-medium: 8px;
+    --cmm-radius-rounded-small: 4px;
+    --cmm-radius-round: 9999px;
+    --cmm-radius-pagination: var(--cmm-radius-round);
+    --cmm-btn-font-size: var(--cmm-font-size-base);
+    --cmm-btn-line-height: 22px;
+    --cmm-btn-font-weight: 500;
+    --cmm-btn-border-width: 0;
+    --cmm-btn-radius: var(--cmm-radius-round);
+    --cmm-btn-color: var(--cmm-text-color-four);
+    --cmm-btn-hover-color: var(--cmm-text-color-four);
+    --cmm-btn-border-color: var(--cmm-border-color-main);
+    --cmm-input-bg: #101111;
+    --cmm-input-color: var(--cmm-text-color-one);
+    --cmm-input-border-color: transparent;
+    --cmm-input-border-width: 1px;
+    --cmm-input-border-radius: var(--cmm-radius-rounded-medium);
+    --cmm-input-focus-border-color: #bbbaa6;
+    --cmm-font-size-base: 16px;
+    --cmm-font-size-sm: 0.833em;
+    --cmm-font-size-h6: 1em;
+    --cmm-font-size-h5: 1.333em;
+    --cmm-font-size-h4: 1.6em;
+    --cmm-font-size-h3: 2em;
+    --cmm-font-size-h2: 2.467em;
+    --cmm-font-size-h1: 2.933em;
+    --cmm-font-weight-normal: 400;
+    --cmm-font-weight-medium: 500;
+    --cmm-font-weight-bold: 600;
+    --cmm-font-weight-extra-bold: 800;
+    --cmm-font-weight-heading: 500;
+    --cmm-line-height-normal: 1.4;
+    --cmm-line-height-heading: 1.2;
 }
 
 [data-theme="light"] {
-    --dtr-base-color-primary: #faf9ef;
-    --dtr-base-color-secondary: #e9e8de;
-    --dtr-base-color-tertiary: #656151;
-    --dtr-base-color-quaternary: #b3af92;
-    --dtr-text-color-one: rgba(20, 21, 20, 0.7);
-    --dtr-text-color-two: #141514;
-    --dtr-text-color-three: #656151;
-    --dtr-text-color-four: #faf9ef;
-    --dtr-text-on-base-primary: var(--dtr-text-color-one);
-    --dtr-text-on-base-secondary: var(--dtr-text-color-one);
-    --dtr-text-on-base-tertiary: var(--dtr-text-color-four);
-    --dtr-text-on-base-quaternary: var(--dtr-text-color-two);
-    --dtr-text-color-heading: var(--dtr-text-color-two);
-    --dtr-text-color-heading-link: var(--dtr-text-color-two);
-    --dtr-link-color: var(--dtr-text-color-three);
-    --dtr-link-hover-color: var(--dtr-text-color-two);
-    --dtr-border-color-main: rgba(101, 97, 81, 0.2);
-    --dtr-btn-color: var(--dtr-text-color-four);
-    --dtr-btn-hover-color: var(--dtr-text-color-four);
-    --dtr-btn-border-color: var(--dtr-border-color-main);
-    --dtr-input-bg: #f0efe5;
-    --dtr-input-color: var(--dtr-text-color-one);
-    --dtr-input-border-color: transparent;
-    --dtr-input-focus-border-color: #656151;
+    --cmm-base-color-primary: #faf9ef;
+    --cmm-base-color-secondary: #e9e8de;
+    --cmm-base-color-tertiary: #656151;
+    --cmm-base-color-quaternary: #b3af92;
+    --cmm-text-color-one: rgba(20, 21, 20, 0.7);
+    --cmm-text-color-two: #141514;
+    --cmm-text-color-three: #656151;
+    --cmm-text-color-four: #faf9ef;
+    --cmm-text-on-base-primary: var(--cmm-text-color-one);
+    --cmm-text-on-base-secondary: var(--cmm-text-color-one);
+    --cmm-text-on-base-tertiary: var(--cmm-text-color-four);
+    --cmm-text-on-base-quaternary: var(--cmm-text-color-two);
+    --cmm-text-color-heading: var(--cmm-text-color-two);
+    --cmm-text-color-heading-link: var(--cmm-text-color-two);
+    --cmm-link-color: var(--cmm-text-color-three);
+    --cmm-link-hover-color: var(--cmm-text-color-two);
+    --cmm-border-color-main: rgba(101, 97, 81, 0.2);
+    --cmm-btn-color: var(--cmm-text-color-four);
+    --cmm-btn-hover-color: var(--cmm-text-color-four);
+    --cmm-btn-border-color: var(--cmm-border-color-main);
+    --cmm-input-bg: #f0efe5;
+    --cmm-input-color: var(--cmm-text-color-one);
+    --cmm-input-border-color: transparent;
+    --cmm-input-focus-border-color: #656151;
 }
 
 html {
@@ -127,8 +127,8 @@ textarea::placeholder {
 .heading-gradient {
     background-image: linear-gradient(
         to right,
-        var(--dtr-base-color-tertiary) 0%,
-        var(--dtr-base-color-quaternary) 100%
+        var(--cmm-base-color-tertiary) 0%,
+        var(--cmm-base-color-quaternary) 100%
     );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -136,14 +136,14 @@ textarea::placeholder {
 
 .btn {
     background-size: 200%;
-    color: var(--dtr-btn-color);
+    color: var(--cmm-btn-color);
     transition: all 0.3s ease;
-    background-color: var(--dtr-base-color-tertiary);
+    background-color: var(--cmm-base-color-tertiary);
     background-image: linear-gradient(
         to right,
-        var(--dtr-base-color-tertiary) 0%,
-        var(--dtr-base-color-quaternary) 51%,
-        var(--dtr-base-color-tertiary) 100%
+        var(--cmm-base-color-tertiary) 0%,
+        var(--cmm-base-color-quaternary) 51%,
+        var(--cmm-base-color-tertiary) 100%
     );
 
     &:hover {
@@ -152,9 +152,9 @@ textarea::placeholder {
 }
 
 .nav-link {
-    color: var(--dtr-text-color-three);
+    color: var(--cmm-text-color-three);
     &:hover {
-        color: var(--dtr-text-color-two)
+        color: var(--cmm-text-color-two)
     }
 }
 
@@ -216,31 +216,31 @@ textarea::placeholder {
 }
 
 .Toastify__progress-bar--success {
-    background: var(--dtr-base-color-tertiary) !important;
-    @apply dark:bg-[var(--dtr-base-color-tertiary)];
+    background: var(--cmm-base-color-tertiary) !important;
+    @apply dark:bg-[var(--cmm-base-color-tertiary)];
 }
 
 .Toastify__progress-bar--error {
-    background: var(--dtr-base-color-quaternary) !important;
-    @apply dark:bg-[var(--dtr-base-color-quaternary)];
+    background: var(--cmm-base-color-quaternary) !important;
+    @apply dark:bg-[var(--cmm-base-color-quaternary)];
 }
 
 .Toastify__toast--success {
-    background: var(--dtr-base-color-primary) !important;
-    border-color: var(--dtr-border-color-main) !important;
-    color: var(--dtr-base-color-tertiary) !important;
-    @apply dark:bg-[var(--dtr-base-color-primary)];
-    @apply dark:border-[var(--dtr-border-color-main)];
-    @apply dark:text-[var(--dtr-base-color-tertiary)];
+    background: var(--cmm-base-color-primary) !important;
+    border-color: var(--cmm-border-color-main) !important;
+    color: var(--cmm-base-color-tertiary) !important;
+    @apply dark:bg-[var(--cmm-base-color-primary)];
+    @apply dark:border-[var(--cmm-border-color-main)];
+    @apply dark:text-[var(--cmm-base-color-tertiary)];
 }
 
 .Toastify__toast--error {
-    background: var(--dtr-base-color-primary) !important;
-    border-color: var(--dtr-border-color-main) !important;
-    color: var(--dtr-base-color-quaternary) !important;
-    @apply dark:bg-[var(--dtr-base-color-primary)];
-    @apply dark:border-[var(--dtr-border-color-main)];
-    @apply dark:text-[var(--dtr-base-color-quaternary)];
+    background: var(--cmm-base-color-primary) !important;
+    border-color: var(--cmm-border-color-main) !important;
+    color: var(--cmm-base-color-quaternary) !important;
+    @apply dark:bg-[var(--cmm-base-color-primary)];
+    @apply dark:border-[var(--cmm-border-color-main)];
+    @apply dark:text-[var(--cmm-base-color-quaternary)];
 }
 
 pre {
