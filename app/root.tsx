@@ -27,16 +27,16 @@ export async function loader({ request }: LoaderFunctionArgs) {
     const tt = searchParams.get('tt')
     const tm = searchParams.get('tm')
 
-    let initialTheme = await getTheme(request)
+    let theme = await getTheme(request)
 
     if (action === 'switch_theme') {
-        initialTheme = initialTheme === 'light' ? 'dark' : 'light'
+        theme = theme === 'light' ? 'dark' : 'light'
     }
 
     return json(
         {
             url: request.url,
-            initialTheme,
+            theme,
             tt,
             tm,
         },
@@ -44,8 +44,8 @@ export async function loader({ request }: LoaderFunctionArgs) {
             headers: {
                 'Set-Cookie':
                     action === 'switch_theme'
-                        ? await themeCookie.serialize(initialTheme)
-                        : await themeCookie.serialize(initialTheme),
+                        ? await themeCookie.serialize(theme)
+                        : await themeCookie.serialize(theme),
             },
         }
     )
@@ -56,7 +56,7 @@ export const links: LinksFunction = () => [
 ]
 
 export default function App() {
-    const { url, initialTheme, tt, tm } = useLoaderData<typeof loader>()
+    const { url, theme, tt, tm } = useLoaderData<typeof loader>()
     const [isNavbarOpen, setIsNavbarOpen] = useState(false)
 
     useEffect(() => {
@@ -67,7 +67,7 @@ export default function App() {
     }, [tt, tm])
 
     return (
-        <html data-theme={initialTheme} lang="en">
+        <html data-theme={theme} lang="en">
             <head>
                 <meta charSet="utf-8" />
                 <meta
@@ -100,7 +100,7 @@ export default function App() {
                     <Outlet />
                     <ScrollRestoration />
                     <Scripts />
-                    <Footer />
+                    <Footer theme={theme} />
                 </main>
                 <ToastContainer
                     position="bottom-right"

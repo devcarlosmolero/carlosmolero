@@ -1,13 +1,12 @@
 import { Linkedin, TwitterX } from 'react-bootstrap-icons'
 import Button from '../atoms/Button'
 import Container from '../templates/Container'
-import { Form, Link } from '@remix-run/react'
+import { Link } from '@remix-run/react'
 import { MoveUpRight } from 'lucide-react'
-import Input from '../atoms/Input'
-import TextArea from '../atoms/TextArea'
 import ContactForm from './ContactForm'
+import { TTheme } from '~/types/theme'
 
-export default function Footer() {
+export default function Footer({ theme }: { theme: TTheme }) {
     return (
         <footer className="mt-16 border border-b-0 border-l-0 border-r-0 border-border-main">
             <Container className="px-4 py-16">
@@ -57,7 +56,7 @@ export default function Footer() {
                         </div>
                     </div>
                     <div id="contact" className="col-span-2">
-                        <ContactForm />
+                        <ContactForm theme={theme} />
                     </div>
                 </div>
             </Container>

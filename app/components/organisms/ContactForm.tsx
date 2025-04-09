@@ -4,8 +4,9 @@ import TextArea from '../atoms/TextArea'
 import Input from '../atoms/Input'
 import { Turnstile } from '@marsidev/react-turnstile'
 import { useState } from 'react'
+import { TTheme } from '~/types/theme'
 
-export default function ContactForm() {
+export default function ContactForm({ theme }: { theme: TTheme }) {
     const [token, setToken] = useState<string>()
     const location = useLocation()
 
@@ -41,6 +42,9 @@ export default function ContactForm() {
             <Turnstile
                 onSuccess={(token) => setToken(token)}
                 siteKey="0x4AAAAAABDYC0VHvPuUFXUP"
+                options={{
+                    theme,
+                }}
                 lang="en"
             />
             <Button variant="primary" className="w-full md:w-fit">
