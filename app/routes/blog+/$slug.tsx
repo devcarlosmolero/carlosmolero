@@ -61,7 +61,7 @@ export default function BlogSlugPage() {
                     <div className="flex w-fit items-center gap-x-1 rounded-md border border-border-main px-2 py-1 text-text-one">
                         {post.categories[0]}
                     </div>
-                    <h1 className="heading-gradient py-1 text-center text-4xl md:text-start md:text-6xl">
+                    <h1 className="heading-gradient py-1 text-center text-4xl md:text-6xl">
                         {post.seoTitle}
                     </h1>
                 </Container>
