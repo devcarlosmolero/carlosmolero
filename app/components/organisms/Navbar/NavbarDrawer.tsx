@@ -56,17 +56,17 @@ export default function NavbarDrawer({
                     <Link
                         onClick={onClose}
                         className="nav-link"
-                        to={'#services'}
+                        to={'/#services'}
                     >
                         Services
                     </Link>
-                    <Link onClick={onClose} className="nav-link" to={'#about'}>
+                    <Link onClick={onClose} className="nav-link" to={'/#about'}>
                         About
                     </Link>
                     <Link
                         onClick={onClose}
                         className="nav-link"
-                        to={'#testimonials'}
+                        to={'/#testimonials'}
                     >
                         Testimonials
                     </Link>

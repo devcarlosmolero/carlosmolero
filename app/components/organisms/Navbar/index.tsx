@@ -49,15 +49,15 @@ export default function Navbar({
                     </div>
                     <div className="col-span-10 ml-14 flex items-center lg:ml-12">
                         <div className="flex w-full items-center justify-start space-x-5">
-                            <Link className="nav-link w-fit" to={'#services'}>
+                            <Link className="nav-link w-fit" to={'/#services'}>
                                 Services
                             </Link>
-                            <Link className="nav-link w-fit" to={'#about'}>
+                            <Link className="nav-link w-fit" to={'/#about'}>
                                 About
                             </Link>
                             <Link
                                 className="nav-link w-fit"
-                                to={'#testimonials'}
+                                to={'/#testimonials'}
                             >
                                 Testimonials{' '}
                             </Link>

@@ -1,8 +1,8 @@
-import { Github, Linkedin, TwitterX } from 'react-bootstrap-icons'
+import { Github, Threads } from 'react-bootstrap-icons'
 import Button from '../atoms/Button'
 import Container from '../templates/Container'
 import { Link } from '@remix-run/react'
-import { MoveUpRight } from 'lucide-react'
+import { Linkedin, MoveUpRight } from 'lucide-react'
 import ContactForm from './ContactForm'
 import { TTheme } from '~/types/theme'
 
@@ -36,17 +36,17 @@ export default function Footer({ theme }: { theme: TTheme }) {
                             Book a Meeting
                             <MoveUpRight className="size-6" />
                         </Button>
-                        <div className="flex items-center gap-x-3">
+                        <div className="mt-5 flex items-center gap-x-3">
                             <Link
                                 to="https://x.com/iscarlosmolero"
-                                className="cursor-pointer text-text-three"
+                                className="cursor-pointer rounded-full border border-input-focus-border p-2 text-text-three hover:bg-base-tertiary hover:text-text-on-tertiary"
                                 target="_blank"
                                 rel="noreferrer"
                             >
-                                <TwitterX className="size-5" />
+                                <Threads className="size-5" />
                             </Link>
                             <Link
-                                className="cursor-pointer text-text-three"
+                                className="cursor-pointer rounded-full border border-input-focus-border p-2 text-text-three hover:bg-base-tertiary hover:text-text-on-tertiary"
                                 to="https://www.linkedin.com/in/iscarlosmolero"
                                 target="_blank"
                                 rel="noreferrer"
@@ -54,7 +54,7 @@ export default function Footer({ theme }: { theme: TTheme }) {
                                 <Linkedin className="size-5" />
                             </Link>
                             <Link
-                                className="cursor-pointer text-text-three"
+                                className="cursor-pointer rounded-full border border-input-focus-border p-2 text-text-three hover:bg-base-tertiary hover:text-text-on-tertiary"
                                 to="https://github.com/devcarlosmolero"
                                 target="_blank"
                                 rel="noreferrer"
