@@ -38,7 +38,7 @@ export default function Footer({ theme }: { theme: TTheme }) {
                         </Button>
                         <div className="mt-5 flex items-center gap-x-3">
                             <Link
-                                to="https://x.com/iscarlosmolero"
+                                to="https://threads.net/@iscarlosmolero"
                                 className="cursor-pointer rounded-full border border-input-focus-border p-2 text-text-three hover:bg-base-tertiary hover:text-text-on-tertiary"
                                 target="_blank"
                                 rel="noreferrer"
@@ -47,7 +47,7 @@ export default function Footer({ theme }: { theme: TTheme }) {
                             </Link>
                             <Link
                                 className="cursor-pointer rounded-full border border-input-focus-border p-2 text-text-three hover:bg-base-tertiary hover:text-text-on-tertiary"
-                                to="https://www.linkedin.com/in/iscarlosmolero"
+                                to="https://linkedin.com/in/iscarlosmolero"
                                 target="_blank"
                                 rel="noreferrer"
                             >
