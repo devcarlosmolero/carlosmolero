@@ -7,4 +7,7 @@ interface Env {
     CONTENTFUL_CMA_TOKEN: string
     CONTENTFUL_CDA_TOKEN: string
     CONTENTFUL_SPACE_ID: string
+    NOTION_SECRET: string
+    ADMIN_USERNAME: string
+    ADMIN_PASSWORD: string
 }

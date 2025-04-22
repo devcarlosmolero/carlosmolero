@@ -22,8 +22,10 @@ import { getTheme } from './utils/server'
 import { themeCookie } from './utils/cookies/theme'
 
 export async function loader({ request }: LoaderFunctionArgs) {
-    const searchParams = new URL(request.url).searchParams
+    const url = new URL(request.url)
+    const searchParams = url.searchParams
     const action = searchParams.get('action')
+    const pathname = url.pathname
     const tt = searchParams.get('tt')
     const tm = searchParams.get('tm')
 
@@ -39,9 +41,10 @@ export async function loader({ request }: LoaderFunctionArgs) {
     return json(
         {
             url: request.url,
-            theme,
+            theme: pathname.includes('admin') ? 'light' : theme,
             tt,
             tm,
+            pathname,
         },
         {
             headers,
@@ -54,7 +57,7 @@ export const links: LinksFunction = () => [
 ]
 
 export default function App() {
-    const { url, theme, tt, tm } = useLoaderData<typeof loader>()
+    const { url, theme, tt, tm, pathname } = useLoaderData<typeof loader>()
     const [isNavbarOpen, setIsNavbarOpen] = useState(false)
 
     useEffect(() => {
@@ -97,15 +100,20 @@ export default function App() {
                 )}
             >
                 <main>
-                    <Navbar
-                        onOpen={() => setIsNavbarOpen(true)}
-                        onClose={() => setIsNavbarOpen(false)}
-                    />
-                    <div className="h-[62px] w-full md:h-[80px]"></div>
+                    {!pathname.includes('admin') && (
+                        <Navbar
+                            onOpen={() => setIsNavbarOpen(true)}
+                            onClose={() => setIsNavbarOpen(false)}
+                        />
+                    )}
+                    {!pathname.includes('admin') && (
+                        <div className="h-[62px] w-full md:h-[80px]"></div>
+                    )}
+
                     <Outlet />
                     <ScrollRestoration />
                     <Scripts />
-                    <Footer theme={theme} />
+                    {!pathname.includes('admin') && <Footer theme={theme} />}
                 </main>
                 <ToastContainer
                     position="bottom-right"
