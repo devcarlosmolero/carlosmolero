@@ -106,6 +106,10 @@ function transformNotionDataForChart(notionRows: any[]) {
     return orderedData
 }
 
+export const headers = ({ loaderHeaders }: { loaderHeaders: Headers }) => {
+    return loaderHeaders
+}
+
 export async function loader({ request, context }: LoaderFunctionArgs) {
     const authResult = isAuthorized(request, context)
 
@@ -142,11 +146,11 @@ export default function AdminDataPage() {
                     <h2 className="mt-4 text-2xl font-bold text-gray-800">
                         Access Forbidden
                     </h2>
-                    <p className="mt-2 text-gray-600">
+                    <p className="text-gray-600">
                         You are not authorized to view this page.
                     </p>
                     <a href="/">
-                        <button className="mt-6 flex w-full items-center justify-center gap-2 rounded-lg bg-blue-600 px-4 py-2 font-medium text-white transition-colors hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                        <button className="mt-4 flex w-full items-center justify-center gap-2 rounded-lg bg-blue-600 px-4 py-2 font-medium text-white transition-colors hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
                             <Home className="h-5 w-5" />
                             Go home
                         </button>
