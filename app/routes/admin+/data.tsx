@@ -20,6 +20,9 @@ const isAuthorized = (
 ) => {
     const header = request.headers.get('Authorization')
 
+    console.log('adminUsername', context.cloudflare.env.ADMIN_USERNAME)
+    console.log('adminPassword', context.cloudflare.env.ADMIN_PASSWORD)
+
     if (!header || !header.startsWith('Basic ')) {
         return null
     }
@@ -33,6 +36,12 @@ const isAuthorized = (
     }
 
     const [username, password] = credentials.split(':')
+
+    console.log('adminUsername', context.cloudflare.env.ADMIN_USERNAME)
+    console.log('adminPassword', context.cloudflare.env.ADMIN_PASSWORD)
+    console.log('username', username)
+    console.log('password', password)
+
     if (!username || !password) {
         return null
     }
@@ -40,8 +49,8 @@ const isAuthorized = (
     const adminUsername = context.cloudflare.env.ADMIN_USERNAME ?? 'admin'
     const adminPassword = context.cloudflare.env.ADMIN_PASSWORD ?? 'admin'
 
-    console.log('adminUsername', adminUsername)
-    console.log('adminPassword', adminPassword)
+    console.log('adminUsername', context.cloudflare.env.ADMIN_USERNAME)
+    console.log('adminPassword', context.cloudflare.env.ADMIN_PASSWORD)
     console.log('username', username)
     console.log('password', password)
 
