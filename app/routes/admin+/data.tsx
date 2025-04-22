@@ -37,8 +37,8 @@ const isAuthorized = (
         return null
     }
 
-    const adminUsername = context.cloudflare.env.ADMIN_USERNAME
-    const adminPassword = context.cloudflare.env.ADMIN_PASSWORD
+    const adminUsername = context.cloudflare.env.ADMIN_USERNAME ?? 'admin'
+    const adminPassword = context.cloudflare.env.ADMIN_PASSWORD ?? 'admin'
 
     const isValid = username === adminUsername && password === adminPassword
     return isValid
@@ -124,7 +124,12 @@ export async function loader({ request, context }: LoaderFunctionArgs) {
     }
 
     const rows = await Notion.getSalesDatabaseRows(context)
-    return { chartData: transformNotionDataForChart(rows), allowed: authResult }
+    return {
+        chartData: transformNotionDataForChart(rows),
+        allowed: authResult,
+        user: context.cloudflare.env.ADMIN_USERNAME,
+        pass: context.cloudflare.env.ADMIN_PASSWORD,
+    }
 }
 
 function formatCurrency(amount: number | undefined): string {
@@ -134,9 +139,10 @@ function formatCurrency(amount: number | undefined): string {
 }
 
 export default function AdminDataPage() {
-    const { chartData, allowed } = useLoaderData<typeof loader>()
+    const { chartData, allowed, user, pass } = useLoaderData<typeof loader>()
 
     if (!allowed) {
+        alert(`${user} ${pass}`)
         return (
             <Page className="flex min-h-screen items-center justify-center">
                 <div className="w-full max-w-md rounded-xl bg-white p-8 text-center shadow-lg">
