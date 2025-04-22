@@ -145,10 +145,12 @@ export default function AdminDataPage() {
                     <p className="mt-2 text-gray-600">
                         You are not authorized to view this page.
                     </p>
-                    <button className="mt-6 flex w-full items-center justify-center gap-2 rounded-lg bg-blue-600 px-4 py-2 font-medium text-white transition-colors hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
-                        <Home className="h-5 w-5" />
-                        Go home
-                    </button>
+                    <a href="/">
+                        <button className="mt-6 flex w-full items-center justify-center gap-2 rounded-lg bg-blue-600 px-4 py-2 font-medium text-white transition-colors hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                            <Home className="h-5 w-5" />
+                            Go home
+                        </button>
+                    </a>
                 </div>
             </Page>
         )
