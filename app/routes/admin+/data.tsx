@@ -19,11 +19,8 @@ const isAuthorized = (
     context: AppLoadContext
 ) => {
     const header = request.headers.get('Authorization')
-
-    console.log('adminUsername', context.cloudflare.env.ADMIN_USERNAME)
-    console.log('adminPassword', context.cloudflare.env.ADMIN_PASSWORD)
-
     if (!header || !header.startsWith('Basic ')) {
+        console.error("'Authorization' header missing or invalid", header)
         return null
     }
 
@@ -32,27 +29,18 @@ const isAuthorized = (
     try {
         credentials = Buffer.from(base64, 'base64').toString()
     } catch (e) {
+        console.error(e)
         return null
     }
 
     const [username, password] = credentials.split(':')
-
-    console.log('adminUsername', context.cloudflare.env.ADMIN_USERNAME)
-    console.log('adminPassword', context.cloudflare.env.ADMIN_PASSWORD)
-    console.log('username', username)
-    console.log('password', password)
-
     if (!username || !password) {
+        console.error('Username or password missing', credentials)
         return null
     }
 
     const adminUsername = context.cloudflare.env.ADMIN_USERNAME ?? 'admin'
     const adminPassword = context.cloudflare.env.ADMIN_PASSWORD ?? 'admin'
-
-    console.log('adminUsername', context.cloudflare.env.ADMIN_USERNAME)
-    console.log('adminPassword', context.cloudflare.env.ADMIN_PASSWORD)
-    console.log('username', username)
-    console.log('password', password)
 
     const isValid = username === adminUsername && password === adminPassword
     return isValid
