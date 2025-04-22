@@ -127,8 +127,6 @@ export async function loader({ request, context }: LoaderFunctionArgs) {
     return {
         chartData: transformNotionDataForChart(rows),
         allowed: authResult,
-        user: context.cloudflare.env.ADMIN_USERNAME,
-        pass: context.cloudflare.env.ADMIN_PASSWORD,
     }
 }
 
@@ -139,10 +137,9 @@ function formatCurrency(amount: number | undefined): string {
 }
 
 export default function AdminDataPage() {
-    const { chartData, allowed, user, pass } = useLoaderData<typeof loader>()
+    const { chartData, allowed } = useLoaderData<typeof loader>()
 
     if (!allowed) {
-        console.log(`${user} ${pass}`)
         return (
             <Page className="flex min-h-screen items-center justify-center">
                 <div className="w-full max-w-md rounded-xl bg-white p-8 text-center shadow-lg">
