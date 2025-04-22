@@ -40,6 +40,8 @@ const isAuthorized = (
     const adminUsername = context.cloudflare.env.ADMIN_USERNAME ?? 'admin'
     const adminPassword = context.cloudflare.env.ADMIN_PASSWORD ?? 'admin'
 
+    console.log(adminUsername, adminPassword)
+
     const isValid = username === adminUsername && password === adminPassword
     return isValid
 }
@@ -129,7 +131,7 @@ export async function loader({ request, context }: LoaderFunctionArgs) {
 
 function formatCurrency(amount: number | undefined): string {
     return amount !== undefined
-        ? `$${amount.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`
+        ? `€${amount.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`
         : '-'
 }
 
