@@ -13,6 +13,7 @@ import {
 } from 'recharts'
 import Notion from '~/actions/notion'
 import Page from '~/components/templates/Page'
+import { Buffer } from 'node:buffer'
 
 const isAuthorized = (
     request: LoaderFunctionArgs['request'],
