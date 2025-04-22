@@ -142,7 +142,7 @@ export default function AdminDataPage() {
     const { chartData, allowed, user, pass } = useLoaderData<typeof loader>()
 
     if (!allowed) {
-        alert(`${user} ${pass}`)
+        console.log(`${user} ${pass}`)
         return (
             <Page className="flex min-h-screen items-center justify-center">
                 <div className="w-full max-w-md rounded-xl bg-white p-8 text-center shadow-lg">
