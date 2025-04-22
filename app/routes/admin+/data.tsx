@@ -37,10 +37,8 @@ const isAuthorized = (
         return null
     }
 
-    const adminUsername = context.cloudflare.env.ADMIN_USERNAME ?? 'admin'
-    const adminPassword = context.cloudflare.env.ADMIN_PASSWORD ?? 'admin'
-
-    console.log(adminUsername, adminPassword)
+    const adminUsername = context.cloudflare.env.ADMIN_USERNAME
+    const adminPassword = context.cloudflare.env.ADMIN_PASSWORD
 
     const isValid = username === adminUsername && password === adminPassword
     return isValid
