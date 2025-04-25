@@ -1,5 +1,5 @@
 import Button from '~/components/atoms/Button'
-import { ArrowRight, Mail } from 'lucide-react'
+import { Mail, MoveRight } from 'lucide-react'
 import ImageKitImage from '~/components/atoms/ImageKitImage'
 
 export default function Hero() {
@@ -28,11 +28,11 @@ export default function Hero() {
                     <div className="mt-3 flex w-full flex-col items-center gap-x-0 gap-y-3 md:flex-row md:gap-0">
                         <Button asLink to="#contacto" variant="primary" hasIcon>
                             View Portfolio
-                            <ArrowRight className="size-6" />
+                            <MoveRight className="size-6" />
                         </Button>
                         <Button
                             asLink
-                            to="mailto:'hi@carlosmolero.com'"
+                            to="mailto:hi@carlosmolero.com"
                             variant="ghost"
                             hasIcon
                         >
@@ -41,10 +41,10 @@ export default function Hero() {
                         </Button>
                     </div>
                 </div>
-                <div>
+                <div className="flex w-full items-center justify-center">
                     <ImageKitImage
                         alt="Carlos Molero"
-                        className="rounded-bl-[50%] rounded-tr-[50%] dark:grayscale"
+                        className="rounded-full dark:grayscale md:w-[80%]"
                         src="/carlos-molero.jpeg"
                     />
                 </div>

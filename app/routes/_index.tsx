@@ -6,7 +6,6 @@ import Services from '~/components/pages/Home/Services'
 import { SITE_DESCRIPTION, SITE_NAME, SITE_TITLE } from '~/consts'
 import { getBasicMetas } from '~/utils/metas'
 import { getCacheControlHeader } from '~/utils/server'
-import AboutMe from '~/components/pages/Home/AboutMe'
 import Testimonials from '~/components/pages/Home/Testimonials'
 
 export async function loader() {
@@ -35,7 +34,6 @@ export default function Home() {
         <Page>
             <Hero />
             <Services />
-            <AboutMe />
             <Testimonials />
         </Page>
     )

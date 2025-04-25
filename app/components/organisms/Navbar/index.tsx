@@ -52,18 +52,18 @@ export default function Navbar({
                             <Link className="nav-link w-fit" to={'/#services'}>
                                 Services
                             </Link>
-                            <Link className="nav-link w-fit" to={'/#about'}>
+                            {/* <Link className="nav-link w-fit" to={'/#about'}>
                                 About
-                            </Link>
+                            </Link> */}
                             <Link
                                 className="nav-link w-fit"
                                 to={'/#testimonials'}
                             >
                                 Testimonials{' '}
                             </Link>
-                            <Link className="nav-link w-fit" to={`#contact`}>
+                            {/* <Link className="nav-link w-fit" to={`#contact`}>
                                 Say Hello
-                            </Link>
+                            </Link> */}
                         </div>
                         <div className="flex w-full items-center justify-end gap-3">
                             <Button

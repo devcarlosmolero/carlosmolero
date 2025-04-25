@@ -113,7 +113,7 @@ export default function App() {
                     <Outlet />
                     <ScrollRestoration />
                     <Scripts />
-                    {!pathname.includes('admin') && <Footer theme={theme} />}
+                    {!pathname.includes('admin') && <Footer />}
                 </main>
                 <ToastContainer
                     position="bottom-right"

@@ -60,9 +60,9 @@ export default function NavbarDrawer({
                     >
                         Services
                     </Link>
-                    <Link onClick={onClose} className="nav-link" to={'/#about'}>
+                    {/* <Link onClick={onClose} className="nav-link" to={'/#about'}>
                         About
-                    </Link>
+                    </Link> */}
                     <Link
                         onClick={onClose}
                         className="nav-link"
@@ -70,13 +70,13 @@ export default function NavbarDrawer({
                     >
                         Testimonials
                     </Link>
-                    <Link
+                    {/* <Link
                         onClick={onClose}
                         className="nav-link"
                         to={`#contact`}
                     >
                         Say Hello
-                    </Link>
+                    </Link> */}
                     <Button
                         hasIcon
                         variant="primary"
