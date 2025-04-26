@@ -6,6 +6,7 @@ import {
     ScrollRestoration,
     json,
     useLoaderData,
+    useNavigate,
 } from '@remix-run/react'
 import type { LinksFunction, LoaderFunctionArgs } from '@remix-run/cloudflare'
 import Footer from './components/organisms/Footer'
@@ -18,8 +19,8 @@ import Navbar from './components/organisms/Navbar'
 //@ts-expect-error idk
 import stylesheet from '~/tailwind.css?url'
 import 'react-toastify/dist/ReactToastify.css'
-import { getTheme } from './utils/server'
-import { themeCookie } from './utils/cookies/theme'
+import Modal from './components/atoms/Modal'
+import ContactForm from './components/organisms/ContactForm'
 
 export async function loader({ request }: LoaderFunctionArgs) {
     const url = new URL(request.url)
@@ -31,17 +32,10 @@ export async function loader({ request }: LoaderFunctionArgs) {
 
     const headers: Record<string, string> = {}
 
-    let theme = await getTheme(request)
-
-    if (action === 'switch_theme') {
-        theme = theme === 'light' ? 'dark' : 'light'
-        headers['Set-Cookie'] = await themeCookie.serialize(theme)
-    }
-
     return json(
         {
             url: request.url,
-            theme: pathname.includes('admin') ? 'light' : theme,
+            action,
             tt,
             tm,
             pathname,
@@ -57,15 +51,9 @@ export const links: LinksFunction = () => [
 ]
 
 export default function App() {
-    const { url, theme, tt, tm, pathname } = useLoaderData<typeof loader>()
+    const { url, tt, tm, pathname, action } = useLoaderData<typeof loader>()
     const [isNavbarOpen, setIsNavbarOpen] = useState(false)
-
-    useEffect(() => {
-        if (tt && tm) {
-            //@ts-expect-error idk
-            toast[tt](tm)
-        }
-    }, [tt, tm])
+    const navigate = useNavigate()
 
     useEffect(() => {
         console.log(
@@ -74,8 +62,34 @@ export default function App() {
         )
     }, [])
 
+    useEffect(() => {
+        if (tt && tm) {
+            //@ts-expect-error idk
+            toast[tt](tm)
+
+            const url = new URL(window.location.href)
+            url.searchParams.delete('tt')
+            url.searchParams.delete('tm')
+            url.searchParams.delete('formStatus')
+
+            navigate(`${url.pathname}${url.search}`, {
+                replace: true,
+                preventScrollReset: true,
+            })
+        }
+    }, [tt, tm, navigate])
+
+    function handleContactFormClose() {
+        const url = new URL(window.location.href)
+        url.searchParams.delete('action')
+        navigate(`${url.pathname}${url.search}`, {
+            replace: true,
+            preventScrollReset: true,
+        })
+    }
+
     return (
-        <html data-theme={theme} lang="en">
+        <html lang="en">
             <head>
                 <meta charSet="utf-8" />
                 <meta
@@ -121,6 +135,18 @@ export default function App() {
                     stacked
                     theme="colored"
                 />
+                <Modal.Root
+                    open={action === 'open_contact_form'}
+                    onClose={handleContactFormClose}
+                >
+                    <Modal.Heading
+                        title="Let's get in touch!"
+                        description="I'll reply back in less than 24 hours, that's a promise."
+                    />
+                    <Modal.Content>
+                        <ContactForm />
+                    </Modal.Content>
+                </Modal.Root>
             </body>
         </html>
     )

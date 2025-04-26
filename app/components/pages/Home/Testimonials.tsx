@@ -96,7 +96,7 @@ function TestimonialItem({
     testimonial: string
 }) {
     return (
-        <div className="h-full space-y-5 rounded-md bg-base-secondary p-[20px] md:p-[50px]">
+        <div className="h-full space-y-5 rounded-xl bg-base-secondary p-[20px] md:p-[50px]">
             <div className="flex">
                 <div className="w-full">
                     <h3 className="text-2xl text-text-two">{name}</h3>

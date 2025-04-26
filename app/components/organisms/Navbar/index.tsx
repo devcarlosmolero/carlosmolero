@@ -1,11 +1,10 @@
-import { Link } from '@remix-run/react'
+import { Link, useLocation } from '@remix-run/react'
 import Container from '~/components/templates/Container'
 import Hamburger from '~/components/molecules/Hamburger'
 import { useEffect, useState } from 'react'
 import Button from '~/components/atoms/Button'
 import NavbarDrawer from './NavbarDrawer'
 import ImageKitImage from '~/components/atoms/ImageKitImage'
-import { ThemeToggle } from '~/components/atoms/ThemeToggle'
 
 export default function Navbar({
     onOpen,
@@ -15,6 +14,7 @@ export default function Navbar({
     onClose: () => void
 }) {
     const [isOpen, setIsOpen] = useState(false)
+    const location = useLocation()
 
     useEffect(() => {
         if (isOpen) {
@@ -61,16 +61,21 @@ export default function Navbar({
                             >
                                 Testimonials{' '}
                             </Link>
-                            {/* <Link className="nav-link w-fit" to={`#contact`}>
+                            <Link
+                                reloadDocument
+                                preventScrollReset
+                                className="nav-link w-fit"
+                                to={`${location.pathname}?action=open_contact_form`}
+                            >
                                 Say Hello
-                            </Link> */}
+                            </Link>
                         </div>
-                        <div className="flex w-full items-center justify-end gap-3">
+                        <div className="flex w-full items-center justify-end">
                             <Button
                                 hasIcon
                                 variant="primary"
                                 asLink
-                                to="https://wa.link/zvj2va"
+                                to="https://wa.link/4cmmvr"
                                 props={
                                     {
                                         target: '_blank',
@@ -79,7 +84,6 @@ export default function Navbar({
                             >
                                 Hire Me
                             </Button>
-                            <ThemeToggle />
                         </div>
                     </div>
                 </div>
@@ -103,7 +107,6 @@ export default function Navbar({
                         </Link>
                     </div>
                     <div className="flex items-center justify-end gap-3">
-                        <ThemeToggle />
                         <Hamburger setIsOpen={setIsOpen} isOpen={isOpen} />
                     </div>
                 </div>

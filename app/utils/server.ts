@@ -1,6 +1,4 @@
 import { LoaderFunctionArgs, redirect } from '@remix-run/cloudflare'
-import { TTheme } from '~/types/theme'
-import { themeCookie } from './cookies/theme'
 
 export function redirectWithToast(
     pathname: string,
@@ -13,28 +11,13 @@ export function redirectWithToast(
     )
 }
 
-export async function getTheme(request: LoaderFunctionArgs['request']) {
-    const cookieTheme = await getCookie('theme', request)
-    if (cookieTheme) {
-        return cookieTheme as TTheme
-    }
-
-    const prefersDark = request.headers
-        .get('Accept')
-        ?.includes('prefers-color-scheme: dark')
-    const theme = prefersDark ? 'dark' : 'light'
-    return theme as TTheme
-}
-
 export async function getCookie(
-    cookie: 'theme',
-    request: LoaderFunctionArgs['request']
+    cookie: string
+    // request: LoaderFunctionArgs['request']
 ) {
-    const cookieHeader = request.headers.get('Cookie')
+    // const cookieHeader = request.headers.get('Cookie')
 
     switch (cookie) {
-        case 'theme':
-            return await themeCookie.parse(cookieHeader)
         default:
             return
     }

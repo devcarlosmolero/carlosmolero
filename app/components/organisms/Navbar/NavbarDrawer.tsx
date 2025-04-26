@@ -1,6 +1,6 @@
 import { Fragment } from 'react/jsx-runtime'
 import cn from 'classnames'
-import { Link } from '@remix-run/react'
+import { Link, useLocation } from '@remix-run/react'
 import Button from '~/components/atoms/Button'
 import ImageKitImage from '~/components/atoms/ImageKitImage'
 
@@ -11,6 +11,7 @@ export default function NavbarDrawer({
     isOpen: boolean
     onClose: () => void
 }) {
+    const location = useLocation()
     return (
         <Fragment>
             <div
@@ -70,19 +71,21 @@ export default function NavbarDrawer({
                     >
                         Testimonials
                     </Link>
-                    {/* <Link
+                    <Link
                         onClick={onClose}
                         className="nav-link"
-                        to={`#contact`}
+                        reloadDocument
+                        preventScrollReset
+                        to={`${location.pathname}?action=open_contact_form`}
                     >
                         Say Hello
-                    </Link> */}
+                    </Link>
                     <Button
                         hasIcon
                         variant="primary"
                         className="mt-3 !py-2"
                         asLink
-                        to="https://wa.link/zvj2va"
+                        to="https://wa.link/4cmmvr"
                         props={
                             {
                                 target: '_blank',

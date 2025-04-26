@@ -12,7 +12,7 @@ export default function Input({
     return (
         <input
             name={name}
-            className="h-[52px] rounded-md border border-input-border bg-input-bg px-4 py-2 text-lg text-text-one"
+            className="h-[58px] rounded-md border border-input-border bg-input-bg px-4 py-2 text-text-one"
             type={type}
             placeholder={placeholder}
             required={required}

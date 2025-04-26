@@ -44,7 +44,7 @@ export default function Hero() {
                 <div className="flex w-full items-center justify-center">
                     <ImageKitImage
                         alt="Carlos Molero"
-                        className="rounded-full dark:grayscale md:w-[80%]"
+                        className="w-[80%] rounded-full grayscale"
                         src="/carlos-molero.jpeg"
                     />
                 </div>

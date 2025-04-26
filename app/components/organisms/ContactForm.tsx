@@ -4,9 +4,8 @@ import TextArea from '../atoms/TextArea'
 import Input from '../atoms/Input'
 import { Turnstile } from '@marsidev/react-turnstile'
 import { useState } from 'react'
-import { TTheme } from '~/types/theme'
 
-export default function ContactForm({ theme }: { theme: TTheme }) {
+export default function ContactForm() {
     const [token, setToken] = useState<string>()
     const location = useLocation()
 
@@ -16,16 +15,8 @@ export default function ContactForm({ theme }: { theme: TTheme }) {
             action="/api/contact-form"
             method="POST"
             id="contact"
-            className="flex w-full flex-col space-y-5 rounded-md bg-base-secondary p-[20px] md:p-[50px]"
+            className="flex w-full flex-col space-y-3 rounded-md bg-base-secondary"
         >
-            <h2 className="heading-gradient py-1 text-center text-3xl md:text-start md:text-4xl">
-                It's time
-                <br /> to talk about your project.
-            </h2>
-            <p className="text-center text-lg text-text-on-primary md:text-start">
-                Let’s embark on creative journey together by shaping a visual
-                narrative of your brand in the crowded digital space.
-            </p>
             <Input
                 name="email"
                 type="email"
@@ -40,14 +31,15 @@ export default function ContactForm({ theme }: { theme: TTheme }) {
                 required
             />
             <Turnstile
+                className="hidden"
                 onSuccess={(token) => setToken(token)}
                 siteKey="0x4AAAAAABDYC0VHvPuUFXUP"
                 options={{
-                    theme,
+                    theme: 'dark',
                 }}
                 lang="en"
             />
-            <Button variant="primary" className="w-full md:w-fit">
+            <Button variant="primary" className="!mt-5 w-full md:w-fit">
                 {' '}
                 Send Message
             </Button>
