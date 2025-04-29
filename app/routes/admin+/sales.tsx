@@ -132,11 +132,16 @@ export async function loader({ request, context }: LoaderFunctionArgs) {
     const rows = await Notion.getSalesDatabaseRows(context)
     return {
         chartData: transformNotionDataForChart(rows),
+        allowed: authResult,
     }
 }
 
 export default function AdminDataPage() {
-    const { chartData } = useLoaderData<typeof loader>()
+    const { chartData, allowed } = useLoaderData<typeof loader>()
+
+    if (!allowed) {
+        return <></>
+    }
 
     const total2024 = chartData.reduce(
         (sum, item) => sum + (item.amount2024 || 0),
