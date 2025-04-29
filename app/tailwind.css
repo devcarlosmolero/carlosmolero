@@ -162,20 +162,20 @@ textarea::placeholder {
     }
 }
 
-.prose table {
+.prose table, table {
     display: block;
     overflow-x: auto;
     white-space: nowrap;
 }
 
 @screen sm {
-    .prose table {
+    .prose table, table {
         display: inline-table;
         white-space: wrap;
     }
 }
 
-.prose table th {
+.prose table th, table th {
     text-align: inherit;
 }
 
