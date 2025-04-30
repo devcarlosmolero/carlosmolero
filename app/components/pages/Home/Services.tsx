@@ -1,7 +1,8 @@
 import { MoveUpRight } from 'lucide-react'
 import { Fragment } from 'react/jsx-runtime'
+import Card from '~/components/templates/Card'
 
-export default function Services() {
+export default function HomeServices() {
     return (
         <section
             id="services"
@@ -12,46 +13,46 @@ export default function Services() {
             </h2>
             <div className="flex flex-col space-y-5">
                 <div className="flex flex-col gap-5 md:flex-row">
-                    <div className="w-full rounded-xl bg-base-secondary p-5 md:w-[65%]">
+                    <Card className="md:w-[65%]">
                         <ServiceItem
                             index={1}
                             title="UX/UI Design"
                             description="Gain a vivid understanding of your product through intuitive, interactive prototypes and design sketches that prioritize a seamless user experience."
                         />
-                    </div>
-                    <div className="w-full rounded-xl bg-base-secondary p-5 md:w-[35%]">
+                    </Card>
+                    <Card className="md:w-[35%]">
                         <ServiceItem
                             index={2}
                             title="Branding"
                             description="We’ll collaborate to define a distinctive color palette, visual assets, and tone that set your brand apart and make it unforgettable."
                         />
-                    </div>
+                    </Card>
                 </div>
                 <div className="flex flex-col gap-5 md:flex-row">
-                    <div className="w-full rounded-xl bg-base-secondary p-5 md:w-[35%]">
+                    <Card className="md:w-[35%]">
                         <ServiceItem
                             index={3}
                             title="Product Development"
                             description="I’ll bring your product to life using a versatile toolkit—NoCode, LowCode, AI, and, leveraging my technical expertise, traditional programming languages."
                         />
-                    </div>
-                    <div className="w-full rounded-xl bg-base-secondary p-5 md:w-[65%]">
+                    </Card>
+                    <Card className="md:w-[65%]">
                         <ServiceItem
                             index={4}
                             title="UX Engineering"
                             description="As a front-end development expert and UX/UI designer, I’ll audit your app to enhance its user experience, driving better engagement and higher conversions."
                         />
-                    </div>
+                    </Card>
                 </div>
 
                 <div className="flex flex-col gap-5 md:flex-row">
-                    <div className="w-full rounded-xl bg-base-secondary p-5">
+                    <Card>
                         <ServiceItem
                             index={5}
                             title="Business Strategy"
                             description="I’ll craft a detailed plan with clear steps and milestones to drive your business success, aligning your goals with actionable strategies for growth and sustainability."
                         />
-                    </div>
+                    </Card>
                 </div>
             </div>
         </section>

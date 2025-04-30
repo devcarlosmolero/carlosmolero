@@ -13,7 +13,7 @@ export default function AdminSalesAnnualSummaryCards({
                 <h3 className="text-sm font-medium text-blue-300">
                     2024 Total
                 </h3>
-                <p className="mt-1 text-2xl font-bold text-blue-200">
+                <p className="mt-1 text-xl font-bold text-blue-200 md:text-2xl">
                     {Formatters.formatCurrency(total2024)}
                 </p>
             </div>
@@ -21,10 +21,10 @@ export default function AdminSalesAnnualSummaryCards({
                 <h3 className="text-sm font-medium text-orange-300">
                     2025 Total
                 </h3>
-                <p className="mt-1 flex flex-col text-2xl font-bold text-orange-200 md:flex-row">
+                <p className="mt-1 flex flex-col text-xl font-bold text-orange-200 md:flex-row md:items-end md:text-2xl">
                     {Formatters.formatCurrency(total2025)}
                     <span
-                        className={`ml-2 text-sm ${total2025 >= total2024 ? 'text-green-300' : 'text-red-300'}`}
+                        className={`text-sm md:ml-2 ${total2025 >= total2024 ? 'text-green-300' : 'text-red-300'}`}
                     >
                         ({total2025 >= total2024 ? '+' : ''}
                         {(((total2025 - total2024) / total2024) * 100).toFixed(

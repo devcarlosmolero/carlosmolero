@@ -1,8 +1,9 @@
 import useEmblaCarousel from 'embla-carousel-react'
 import { ChevronLeft, ChevronRight, Quote } from 'lucide-react'
+import Card from '~/components/templates/Card'
 import { useEmblaPrevNextButtons } from '~/hooks/useEmblaPrevNextButtons'
 
-export default function Testimonials() {
+export default function HomeTestimonials() {
     const [emblaRef, emblaApi] = useEmblaCarousel({
         loop: true,
         watchDrag: false,
@@ -96,7 +97,7 @@ function TestimonialItem({
     testimonial: string
 }) {
     return (
-        <div className="h-full space-y-5 rounded-xl bg-base-secondary p-[20px] md:p-[50px]">
+        <Card className="h-full space-y-5 p-[20px] md:p-[50px]">
             <div className="flex">
                 <div className="w-full">
                     <h3 className="text-2xl text-text-two">{name}</h3>
@@ -116,9 +117,9 @@ function TestimonialItem({
                     <Quote className="size-8 text-text-on-primary" />
                 </div>
                 <p className="mt-5 text-lg text-text-on-primary">
-                    "{testimonial}"
+                    &quot;{testimonial}&quot;
                 </p>
             </div>
-        </div>
+        </Card>
     )
 }

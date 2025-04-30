@@ -1,6 +1,6 @@
-import { LoaderFunctionArgs, redirect } from '@remix-run/cloudflare'
+import { redirect } from '@remix-run/cloudflare'
 
-export function redirectWithToast(
+function redirectWithToast(
     pathname: string,
     message: string,
     type: 'success' | 'error',
@@ -11,7 +11,7 @@ export function redirectWithToast(
     )
 }
 
-export async function getCookie(
+async function getCookie(
     cookie: string
     // request: LoaderFunctionArgs['request']
 ) {
@@ -23,7 +23,7 @@ export async function getCookie(
     }
 }
 
-export function getCacheControlHeader(
+function getCacheControlHeader(
     duration: 'THREE_DAYS' | 'ONE_WEEK' | 'ONE_MONTH'
 ): string {
     let maxAge: number
@@ -42,3 +42,11 @@ export function getCacheControlHeader(
 
     return `public, max-age=${maxAge}, s-maxage=${maxAge}`
 }
+
+const ServerUtils = {
+    redirectWithToast,
+    getCookie,
+    getCacheControlHeader,
+}
+
+export default ServerUtils

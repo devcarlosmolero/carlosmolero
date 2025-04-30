@@ -1,7 +1,7 @@
 import { AppLoadContext } from '@remix-run/cloudflare'
 import { ContentfulFilters } from '~/types/contentful'
 
-const CONTENTFUL_CONFIG = {
+const CONFIG = {
     CDA: {
         BASE_URL: 'https://cdn.contentful.com',
     },
@@ -10,7 +10,7 @@ const CONTENTFUL_CONFIG = {
     },
 }
 
-export function createContentfulFilters({
+function composeFilters({
     contentType,
     where,
     select,
@@ -45,35 +45,39 @@ export function createContentfulFilters({
     return filtersQueryString
 }
 
-export function createContentfulUrl(filters: string, context: AppLoadContext) {
-    const url = `${CONTENTFUL_CONFIG.CDA.BASE_URL}/spaces/${context.cloudflare.env.CONTENTFUL_SPACE_ID}/entries?access_token=${context.cloudflare.env.CONTENTFUL_CDA_TOKEN}${filters}`
+function composeUrl(filters: string, context: AppLoadContext) {
+    const url = `${CONFIG.CDA.BASE_URL}/spaces/${context.cloudflare.env.CONTENTFUL_SPACE_ID}/entries?access_token=${context.cloudflare.env.CONTENTFUL_CDA_TOKEN}${filters}`
     return url
 }
 
-export function createSingleContentfulUrl(
-    entryId: string,
-    context: AppLoadContext
-) {
-    const url = `${CONTENTFUL_CONFIG.CDA.BASE_URL}/spaces/${context.cloudflare.env.CONTENTFUL_SPACE_ID}/environments/master/entries/${entryId}?access_token=${context.cloudflare.env.CONTENTFUL_CDA_TOKEN}`
+function composeSingleUrl(entryId: string, context: AppLoadContext) {
+    const url = `${CONFIG.CDA.BASE_URL}/spaces/${context.cloudflare.env.CONTENTFUL_SPACE_ID}/environments/master/entries/${entryId}?access_token=${context.cloudflare.env.CONTENTFUL_CDA_TOKEN}`
     return url
 }
 
-export function createContentfulAssetUrl(
-    assetId: string,
-    context: AppLoadContext
-) {
-    const url = `${CONTENTFUL_CONFIG.CDA.BASE_URL}/spaces/${context.cloudflare.env.CONTENTFUL_SPACE_ID}/assets/${assetId}?access_token=${context.cloudflare.env.CONTENTFUL_CDA_TOKEN}`
+function composeAssetUrl(assetId: string, context: AppLoadContext) {
+    const url = `${CONFIG.CDA.BASE_URL}/spaces/${context.cloudflare.env.CONTENTFUL_SPACE_ID}/assets/${assetId}?access_token=${context.cloudflare.env.CONTENTFUL_CDA_TOKEN}`
     return url
 }
 
-export async function getAssetUrl(assetId: string, context: AppLoadContext) {
-    const response = await fetch(createContentfulAssetUrl(assetId, context))
+async function getAssetUrl(assetId: string, context: AppLoadContext) {
+    const response = await fetch(composeAssetUrl(assetId, context))
     const { fields } = (await response.json()) as any
     return fields.file.url as string
 }
 
-export async function getEntryById(entryId: string, context: AppLoadContext) {
-    const response = await fetch(createSingleContentfulUrl(entryId, context))
+async function getEntryById(entryId: string, context: AppLoadContext) {
+    const response = await fetch(composeSingleUrl(entryId, context))
     const { fields } = (await response.json()) as any
     return fields
 }
+
+const Contentful = {
+    composeFilters,
+    composeUrl,
+    composeSingleUrl,
+    getAssetUrl,
+    getEntryById,
+}
+
+export default Contentful

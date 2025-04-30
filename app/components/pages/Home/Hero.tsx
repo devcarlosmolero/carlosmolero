@@ -2,7 +2,7 @@ import Button from '~/components/atoms/Button'
 import { Mail, MoveRight } from 'lucide-react'
 import ImageKitImage from '~/components/atoms/ImageKitImage'
 
-export default function Hero() {
+export default function HomeHero() {
     return (
         <section id="hero">
             <div className="grid gap-x-20 gap-y-10 lg:grid-cols-2">
@@ -20,10 +20,10 @@ export default function Hero() {
                     </h1>
                     <p className="text-center text-lg text-text-on-primary md:text-start">
                         It has never been easier to create digital products, but
-                        creating them well? That's a whole different ballgame.
-                        Stay away from the noise and let me provide you with a
-                        clear vision and strategy to lead your digital project
-                        to success.
+                        creating them well? That&apos;s a whole different
+                        ballgame. Stay away from the noise and let me provide
+                        you with a clear vision and strategy to lead your
+                        digital project to success.
                     </p>
                     <div className="mt-3 flex w-full flex-col items-center gap-x-0 gap-y-3 md:flex-row md:gap-0">
                         <Button asLink to="#contacto" variant="primary" hasIcon>

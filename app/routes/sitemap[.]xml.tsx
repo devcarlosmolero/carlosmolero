@@ -2,7 +2,7 @@ import { LoaderFunction, LoaderFunctionArgs } from '@remix-run/cloudflare'
 import Posts from '~/actions/posts'
 import { SITE_BASE_URL, SITE_STATIC_PATHS } from '~/consts'
 import { Post } from '~/types/contentful'
-import { getCacheControlHeader } from '~/utils/server'
+import ServerUtils from '~/utils/server'
 
 export const loader: LoaderFunction = async ({
     context,
@@ -20,7 +20,7 @@ export const loader: LoaderFunction = async ({
         headers: {
             'Content-Type': 'application/xml; charset=utf-8',
             'x-content-type-options': 'nosniff',
-            'Cache-Control': getCacheControlHeader('ONE_WEEK'),
+            'Cache-Control': ServerUtils.getCacheControlHeader('ONE_WEEK'),
         },
     })
 }

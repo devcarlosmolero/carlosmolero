@@ -11,7 +11,7 @@ import {
 import { Post } from '~/types/contentful'
 import { FAQJsonLdItem } from '~/types/metas'
 
-export function getBasicMetas({
+function getBasic({
     title,
     description,
     image = `${IMAGE_KIT_BASE_URL}/tr:f-webp/meta.png`,
@@ -79,7 +79,7 @@ export function getBasicMetas({
     ]
 }
 
-export function getBusinessJsonLd() {
+function getBusinessJsonLd() {
     return {
         '@context': 'https://schema.org',
         '@type': 'Corporation',
@@ -99,7 +99,7 @@ export function getBusinessJsonLd() {
     }
 }
 
-export function getHowToJsonLd({
+function getHowToJsonLd({
     name,
     description,
     steps,
@@ -124,7 +124,7 @@ export function getHowToJsonLd({
     }
 }
 
-export function getArticleJsonLd(post: Post, postImageUrls: string[]) {
+function getArticleJsonLd(post: Post, postImageUrls: string[]) {
     return {
         '@context': 'https://schema.org/',
         '@type': 'article',
@@ -154,7 +154,7 @@ export function getArticleJsonLd(post: Post, postImageUrls: string[]) {
     }
 }
 
-export function getFaqsJsonLd(items: FAQJsonLdItem[]) {
+function getFaqsJsonLd(items: FAQJsonLdItem[]) {
     return {
         '@context': 'https://schema.org',
         '@type': 'FAQPage',
@@ -168,3 +168,13 @@ export function getFaqsJsonLd(items: FAQJsonLdItem[]) {
         })),
     }
 }
+
+const MetaUtils = {
+    getBasic,
+    getBusinessJsonLd,
+    getHowToJsonLd,
+    getArticleJsonLd,
+    getFaqsJsonLd,
+}
+
+export default MetaUtils

@@ -1,16 +1,12 @@
 import { ContentfulFilters, Post } from '~/types/contentful'
-import {
-    createContentfulFilters,
-    createContentfulUrl,
-    getAssetUrl,
-} from './contentful'
 import { format } from 'date-fns'
 import { AppLoadContext } from '@remix-run/cloudflare'
+import Contentful from './contentful'
 
 async function appendHeaderImgUrls(posts: Post[], context: AppLoadContext) {
     const result = await Promise.all(
         posts.map(async (post) => {
-            const headerImgUrl = await getAssetUrl(
+            const headerImgUrl = await Contentful.getAssetUrl(
                 post.headerImg.sys.id,
                 context
             )
@@ -42,8 +38,8 @@ function createApi(filters: ContentfulFilters, context: AppLoadContext) {
         },
         async get() {
             const response = await fetch(
-                createContentfulUrl(
-                    createContentfulFilters(state.filters),
+                Contentful.composeUrl(
+                    Contentful.composeFilters(state.filters),
                     context
                 )
             )
@@ -120,7 +116,7 @@ const Posts = {
         }
 
         const response = await fetch(
-            createContentfulUrl(createContentfulFilters(filters), context)
+            Contentful.composeUrl(Contentful.composeFilters(filters), context)
         )
         const { total } = (await response.json()) as any
         return total

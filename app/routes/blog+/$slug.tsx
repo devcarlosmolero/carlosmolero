@@ -11,9 +11,9 @@ import { LoaderFunctionArgs } from '@remix-run/cloudflare'
 import { Post } from '~/types/contentful'
 import Posts from '~/actions/posts'
 import { useLoaderData } from '@remix-run/react'
-import { getArticleJsonLd, getBasicMetas } from '~/utils/metas'
-import { getPostImageUrls } from '~/utils/posts'
+import PostUtils from '~/utils/posts'
 import Container from '~/components/templates/Container'
+import MetaUtils from '~/utils/metas'
 
 export async function loader({ request, context }: LoaderFunctionArgs) {
     const url = new URL(request.url)
@@ -27,7 +27,10 @@ export async function loader({ request, context }: LoaderFunctionArgs) {
     return {
         post,
         postImageUrls: post
-            ? [`https:${post.headerImgUrl}`, ...getPostImageUrls(post.content)]
+            ? [
+                  `https:${post.headerImgUrl}`,
+                  ...PostUtils.getPostImageUrls(post.content),
+              ]
             : [],
     }
 }
@@ -39,14 +42,16 @@ export const meta: MetaFunction = (payload: {
     const { post, postImageUrls } = payload.data
 
     return [
-        ...getBasicMetas({
+        ...MetaUtils.getBasic({
             title: post?.seoTitle,
             description: post?.seoDescription,
             image: `https:${post?.headerImgUrl}`,
         }),
         [
             {
-                'script:ld+json': [getArticleJsonLd(post, postImageUrls)],
+                'script:ld+json': [
+                    MetaUtils.getArticleJsonLd(post, postImageUrls),
+                ],
             },
         ],
     ]

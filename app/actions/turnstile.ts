@@ -1,9 +1,6 @@
 import { AppLoadContext } from '@remix-run/cloudflare'
 
-export async function isTurnstileTokenValid(
-    token: string,
-    context: AppLoadContext
-) {
+async function isTokenValid(token: string, context: AppLoadContext) {
     try {
         const resp = await fetch(
             `https://challenges.cloudflare.com/turnstile/v0/siteverify`,
@@ -25,3 +22,9 @@ export async function isTurnstileTokenValid(
         return false
     }
 }
+
+const Turnstile = {
+    isTokenValid,
+}
+
+export default Turnstile

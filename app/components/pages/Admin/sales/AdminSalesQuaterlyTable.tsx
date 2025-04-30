@@ -1,31 +1,30 @@
+import { Fragment } from 'react/jsx-runtime'
+import { IQuaterlyComparisonItem } from '~/types/sales'
 import Formatters from '~/utils/formatters'
 
 export default function AdminSalesQuaterlyTable({
     quarterlyComparison,
 }: {
-    quarterlyComparison: any
+    quarterlyComparison: IQuaterlyComparisonItem[]
 }) {
     return (
         <div className="overflow-x-auto rounded-md border border-border-main">
             <table className="min-w-full divide-y divide-border-main">
                 <thead className="bg-base-primary">
                     <tr>
-                        <th className="px-4 py-3 text-left text-xs font-medium uppercase tracking-wider text-text-two">
-                            Quarter
-                        </th>
-                        <th className="px-4 py-3 text-left text-xs font-medium uppercase tracking-wider text-text-two">
-                            2024
-                        </th>
-                        <th className="px-4 py-3 text-left text-xs font-medium uppercase tracking-wider text-text-two">
-                            2025
-                        </th>
-                        <th className="px-4 py-3 text-left text-xs font-medium uppercase tracking-wider text-text-two">
-                            Variation
-                        </th>
+                        {['Quarter', '2024', '2025', 'Variation'].map(
+                            (label) => (
+                                <Fragment key={label}>
+                                    <th className="px-4 py-3 text-left text-xs font-medium uppercase tracking-wider text-text-two">
+                                        {label}
+                                    </th>
+                                </Fragment>
+                            )
+                        )}
                     </tr>
                 </thead>
                 <tbody className="bg-background divide-y border-border-main">
-                    {quarterlyComparison.map((item: any, index: number) => (
+                    {quarterlyComparison.map((item, index: number) => (
                         <tr
                             key={index}
                             className={'bg-background border-border-main'}

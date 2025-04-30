@@ -1,14 +1,12 @@
+import { InputHTMLAttributes } from 'react'
+
 export default function Input({
-    type,
     placeholder,
     name,
+    type = 'text',
     required = true,
-}: {
-    type: string
-    placeholder: string
-    name: string
-    required: boolean
-}) {
+    ...props
+}: InputHTMLAttributes<HTMLInputElement>) {
     return (
         <input
             name={name}
@@ -16,6 +14,7 @@ export default function Input({
             type={type}
             placeholder={placeholder}
             required={required}
+            {...props}
         />
     )
 }

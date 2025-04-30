@@ -3,10 +3,7 @@ import { AppLoadContext } from '@remix-run/cloudflare'
 const CHANNEL_ID = '1356605330825416788'
 const ENDPOINT = `https://discord.com/api/v10/channels/${CHANNEL_ID}/messages`
 
-export async function sendDiscordMessage(
-    message: string,
-    context: AppLoadContext
-) {
+async function sendMessage(message: string, context: AppLoadContext) {
     const headers = {
         'Content-Type': 'application/json',
         Authorization: `Bot ${context.cloudflare.env.DISCORD_BOT_TOKEN}`,
@@ -17,3 +14,9 @@ export async function sendDiscordMessage(
         body: JSON.stringify({ content: message }),
     })
 }
+
+const Discord = {
+    sendMessage,
+}
+
+export default Discord

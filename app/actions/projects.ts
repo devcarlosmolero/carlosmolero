@@ -1,15 +1,11 @@
 import { Project } from '~/types/contentful'
-import {
-    createContentfulFilters,
-    createContentfulUrl,
-    getAssetUrl,
-} from './contentful'
 import { AppLoadContext } from '@remix-run/cloudflare'
+import Contentful from './contentful'
 
 export async function getProjects(context: AppLoadContext) {
     const response = await fetch(
-        createContentfulUrl(
-            createContentfulFilters({
+        Contentful.composeUrl(
+            Contentful.composeFilters({
                 contentType: 'project',
                 limit: 100,
             }),
@@ -32,7 +28,10 @@ export async function appendImgUrlToProjects(
 ) {
     const result = await Promise.all(
         projects.map(async (project) => {
-            const imgUrl = await getAssetUrl(project.img.sys.id, context)
+            const imgUrl = await Contentful.getAssetUrl(
+                project.img.sys.id,
+                context
+            )
             return {
                 ...project,
                 imgUrl,

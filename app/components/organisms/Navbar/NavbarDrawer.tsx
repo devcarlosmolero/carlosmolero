@@ -61,9 +61,6 @@ export default function NavbarDrawer({
                     >
                         Services
                     </Link>
-                    {/* <Link onClick={onClose} className="nav-link" to={'/#about'}>
-                        About
-                    </Link> */}
                     <Link
                         onClick={onClose}
                         className="nav-link"
