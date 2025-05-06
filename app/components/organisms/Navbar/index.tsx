@@ -52,6 +52,9 @@ export default function Navbar({
                             <Link className="nav-link w-fit" to={'/#services'}>
                                 Services
                             </Link>
+                            <Link className="nav-link w-fit" to={'/#portfolio'}>
+                                Portfolio
+                            </Link>
                             <Link
                                 className="nav-link w-fit"
                                 to={'/#testimonials'}

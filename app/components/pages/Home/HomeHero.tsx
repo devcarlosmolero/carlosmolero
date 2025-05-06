@@ -48,7 +48,7 @@ export default function HomeHero() {
                         src="/carlos-molero.jpeg"
                     />
                 </div>
-            </div>
+            </div>{' '}
         </section>
     )
 }

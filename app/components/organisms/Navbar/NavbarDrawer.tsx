@@ -64,6 +64,13 @@ export default function NavbarDrawer({
                     <Link
                         onClick={onClose}
                         className="nav-link"
+                        to={'/#portfolio'}
+                    >
+                        Portfolio
+                    </Link>
+                    <Link
+                        onClick={onClose}
+                        className="nav-link"
                         to={'/#testimonials'}
                     >
                         Testimonials
