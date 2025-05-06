@@ -21,11 +21,14 @@ import stylesheet from '~/tailwind.css?url'
 import 'react-toastify/dist/ReactToastify.css'
 import Modal from './components/atoms/Modal'
 import ContactForm from './components/organisms/ContactForm'
+import {
+    ContactModalProvider,
+    useContactModalContext,
+} from './contexts/contactModalContext'
 
 export async function loader({ request }: LoaderFunctionArgs) {
     const url = new URL(request.url)
     const searchParams = url.searchParams
-    const action = searchParams.get('action')
     const pathname = url.pathname
     const tt = searchParams.get('tt')
     const tm = searchParams.get('tm')
@@ -35,7 +38,6 @@ export async function loader({ request }: LoaderFunctionArgs) {
     return json(
         {
             url: request.url,
-            action,
             tt,
             tm,
             pathname,
@@ -50,10 +52,12 @@ export const links: LinksFunction = () => [
     { rel: 'stylesheet', href: stylesheet },
 ]
 
-export default function App() {
-    const { url, tt, tm, pathname, action } = useLoaderData<typeof loader>()
+function AppContent() {
+    const { url, tt, tm, pathname } = useLoaderData<typeof loader>()
     const [isNavbarOpen, setIsNavbarOpen] = useState(false)
     const navigate = useNavigate()
+    const { isOpen: isContactModalOpen, closeModal: closeContactModal } =
+        useContactModalContext()
 
     useEffect(() => {
         console.log(
@@ -78,15 +82,6 @@ export default function App() {
             })
         }
     }, [tt, tm, navigate])
-
-    function handleContactFormClose() {
-        const url = new URL(window.location.href)
-        url.searchParams.delete('action')
-        navigate(`${url.pathname}${url.search}`, {
-            replace: true,
-            preventScrollReset: true,
-        })
-    }
 
     return (
         <html lang="en">
@@ -136,8 +131,8 @@ export default function App() {
                     theme="colored"
                 />
                 <Modal.Root
-                    open={action === 'open_contact_form'}
-                    onClose={handleContactFormClose}
+                    open={isContactModalOpen}
+                    onClose={closeContactModal}
                 >
                     <Modal.Heading
                         title="Let's get in touch!"
@@ -149,5 +144,13 @@ export default function App() {
                 </Modal.Root>
             </body>
         </html>
+    )
+}
+
+export default function App() {
+    return (
+        <ContactModalProvider>
+            <AppContent />
+        </ContactModalProvider>
     )
 }

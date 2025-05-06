@@ -1,4 +1,4 @@
-import { MoveLeft } from 'lucide-react'
+import { X } from 'lucide-react'
 import {
     Fragment,
     ReactNode,
@@ -26,7 +26,7 @@ function Overlay({ visible }: { visible: boolean }) {
     return (
         <div
             className={`fixed inset-0 z-20 flex h-full w-full items-center justify-center bg-base-primary transition-opacity duration-300 ${
-                visible ? 'modal-overlay-enter' : 'modal-overlay-exit'
+                visible ? 'opacity-50' : 'opacity-0'
             }`}
         ></div>
     )
@@ -68,7 +68,7 @@ function Root({
                     <Overlay visible={isVisible} />
                     <div className="fixed bottom-0 left-0 right-0 top-0 z-30 flex items-center justify-center">
                         <div
-                            className={`m-5 flex w-full max-w-lg flex-col gap-y-5 rounded-md border border-border-main bg-base-secondary p-5 ${
+                            className={`m-5 flex w-full max-w-lg flex-col gap-y-5 rounded-xl border border-border-main bg-base-secondary p-5 ${
                                 isVisible
                                     ? 'modal-content-enter'
                                     : 'modal-content-exit'
@@ -94,14 +94,14 @@ function Heading({
 
     return (
         <div className="space-y-1">
-            <h2 className="flex items-center gap-3 py-1 text-start text-2xl font-bold text-text-two">
+            <h2 className="flex items-center gap-5 py-1 text-start text-2xl font-bold text-text-two">
+                <p className="w-full">{title}</p>
                 <button
                     onClick={() => close()}
                     className="rounded-full border border-border-main p-2 text-text-three hover:opacity-70"
                 >
-                    <MoveLeft className="size-4" />
+                    <X className="size-4" />
                 </button>
-                <p className="w-full">{title}</p>
             </h2>
             <p className="text-text-one">{description}</p>
         </div>

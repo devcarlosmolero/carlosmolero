@@ -1,8 +1,9 @@
 import { Fragment } from 'react/jsx-runtime'
 import cn from 'classnames'
-import { Link, useLocation } from '@remix-run/react'
+import { Link } from '@remix-run/react'
 import Button from '~/components/atoms/Button'
 import ImageKitImage from '~/components/atoms/ImageKitImage'
+import { useContactModalContext } from '~/contexts/contactModalContext'
 
 export default function NavbarDrawer({
     isOpen,
@@ -11,7 +12,7 @@ export default function NavbarDrawer({
     isOpen: boolean
     onClose: () => void
 }) {
-    const location = useLocation()
+    const { openModal: openContactModal } = useContactModalContext()
     return (
         <Fragment>
             <div
@@ -40,7 +41,6 @@ export default function NavbarDrawer({
                     )}
                 >
                     <Link
-                        reloadDocument
                         className="mb-3 flex items-center gap-x-2 text-xl text-text-two"
                         to="/"
                     >
@@ -75,15 +75,15 @@ export default function NavbarDrawer({
                     >
                         Testimonials
                     </Link>
-                    <Link
-                        onClick={onClose}
+                    <button
+                        onClick={() => {
+                            openContactModal()
+                            onClose()
+                        }}
                         className="nav-link"
-                        reloadDocument
-                        preventScrollReset
-                        to={`${location.pathname}?action=open_contact_form`}
                     >
                         Say Hello
-                    </Link>
+                    </button>
                     <Button
                         hasIcon
                         variant="primary"

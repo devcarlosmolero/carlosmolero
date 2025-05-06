@@ -14,6 +14,8 @@ import { useLoaderData } from '@remix-run/react'
 import PostUtils from '~/utils/posts'
 import Container from '~/components/templates/Container'
 import MetaUtils from '~/utils/metas'
+import { useContactModalContext } from '~/contexts/contactModalContext'
+import { useEffect } from 'react'
 
 export async function loader({ request, context }: LoaderFunctionArgs) {
     const url = new URL(request.url)
@@ -59,6 +61,17 @@ export const meta: MetaFunction = (payload: {
 
 export default function BlogSlugPage() {
     const { post } = useLoaderData<typeof loader>()
+    const { openModal: openContactModal } = useContactModalContext()
+
+    useEffect(() => {
+        const openContactModalLinkElement =
+            document.getElementById('open-contact-modal')
+        openContactModalLinkElement?.addEventListener('click', (e) => {
+            e.preventDefault()
+            openContactModal()
+        })
+    }, [])
+
     return (
         <Fragment>
             <div className="bg-base-secondary">

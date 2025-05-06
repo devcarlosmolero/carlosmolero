@@ -1,10 +1,11 @@
-import { Link, useLocation } from '@remix-run/react'
+import { Link } from '@remix-run/react'
 import Container from '~/components/templates/Container'
 import Hamburger from '~/components/molecules/Hamburger'
 import { useEffect, useState } from 'react'
 import Button from '~/components/atoms/Button'
 import NavbarDrawer from './NavbarDrawer'
 import ImageKitImage from '~/components/atoms/ImageKitImage'
+import { useContactModalContext } from '~/contexts/contactModalContext'
 
 export default function Navbar({
     onOpen,
@@ -14,14 +15,13 @@ export default function Navbar({
     onClose: () => void
 }) {
     const [isOpen, setIsOpen] = useState(false)
-    const location = useLocation()
+    const { openModal: openContactModal } = useContactModalContext()
 
     useEffect(() => {
         if (isOpen) {
             onOpen()
             return
         }
-
         onClose()
     }, [isOpen, onOpen, onClose])
 
@@ -32,7 +32,6 @@ export default function Navbar({
                 <div className="hidden grid-cols-12 items-center py-2 text-center lg:grid">
                     <div className="col-span-2 flex items-center justify-start gap-x-3">
                         <Link
-                            reloadDocument
                             className="flex items-center gap-x-3 text-2xl text-text-two"
                             to="/"
                         >
@@ -61,14 +60,12 @@ export default function Navbar({
                             >
                                 Testimonials{' '}
                             </Link>
-                            <Link
-                                reloadDocument
-                                preventScrollReset
+                            <button
                                 className="nav-link w-fit"
-                                to={`${location.pathname}?action=open_contact_form`}
+                                onClick={openContactModal}
                             >
                                 Say Hello
-                            </Link>
+                            </button>
                         </div>
                         <div className="flex w-full items-center justify-end">
                             <Button
@@ -91,7 +88,6 @@ export default function Navbar({
                 <div className="grid grid-cols-2 items-center px-2 py-2 text-center lg:hidden">
                     <div className="flex items-center justify-start gap-x-3">
                         <Link
-                            reloadDocument
                             className="flex items-center gap-x-2 text-xl text-text-two"
                             to="/"
                         >
