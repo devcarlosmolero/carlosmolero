@@ -15,6 +15,7 @@ export default function HomePortfolio() {
                             loop
                             autoPlay
                             muted
+                            playsInline
                             src="./babel.mp4"
                             className="h-full w-full rounded-md transition-all duration-200 group-hover:scale-105"
                         />
