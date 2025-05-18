@@ -1,4 +1,5 @@
 import { MoveUpRight } from 'lucide-react'
+import ImageKitImage from '~/components/atoms/ImageKitImage'
 import Card from '~/components/templates/Card'
 
 export default function HomePortfolio() {
@@ -11,12 +12,9 @@ export default function HomePortfolio() {
                 <Card className="aspect-square group">
                     <div className="overflow-hidden rounded-md">
                         {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
-                        <video
-                            loop
-                            autoPlay
-                            muted
-                            playsInline
-                            src="./babel.mp4"
+                        <ImageKitImage
+                            src="/tr:f-webp,w-600,h-600/battlefront-2-campaign-ui-redesign.png"
+                            alt="Star Wars Battlefront II: Campaign UI Redesign"
                             className="h-full w-full rounded-md transition-all duration-200 group-hover:scale-105"
                         />
                     </div>
@@ -24,7 +22,7 @@ export default function HomePortfolio() {
                         <div className="group flex cursor-pointer">
                             <div className="w-full">
                                 <h4 className="text-3xl text-text-two">
-                                    Babel
+                                    Battlefront II: Campaign UI Redesign
                                 </h4>
                             </div>
                             <div>
@@ -32,7 +30,8 @@ export default function HomePortfolio() {
                             </div>
                         </div>
                         <p className="text-lg text-text-one">
-                            Form builder for language teachers.
+                            A quick UI redesign of the Star Wars Battlefront II
+                            campaign menu.
                         </p>
                     </div>
                 </Card>
