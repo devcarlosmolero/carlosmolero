@@ -48,7 +48,7 @@ export default function Home() {
         <Page>
             <HomePage.Hero />
             <HomePage.Services />
-            <HomePage.Portfolio />
+            {/* <HomePage.Portfolio /> */}
             <HomePage.Testimonials />
             <HomePage.Posts posts={posts as Post[]} />
         </Page>
