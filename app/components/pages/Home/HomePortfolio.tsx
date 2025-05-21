@@ -1,5 +1,5 @@
-import { BriefcaseBusiness, Code, Layers, Link } from 'lucide-react'
-import { act, Fragment, useState } from 'react'
+import { Book, BriefcaseBusiness, Code, Layers, Link } from 'lucide-react'
+import { Fragment, useState } from 'react'
 import Button from '~/components/atoms/Button'
 import { cn } from '~/lib/utils'
 
@@ -64,8 +64,9 @@ export default function HomePortfolio() {
                         />
                         <NotoriousClientCard
                             name="Beagly"
-                            description="Beag.ly is a platform that offers online surveys and rewards participants with gift cards of $5 or more upon completion. 
-                    Users can choose from various popular retailers like Amazon, Dunkin', CVS Pharmacy, Target, Whole Foods, and Walmart."
+                            description="Beag.ly is a platform that offers online surveys and rewards 
+                            participants with gift cards of $5 or more upon completion. Users can choose from various popular retailers 
+                            like Amazon, Dunkin', CVS Pharmacy, Target, Whole Foods, and Walmart."
                             logoSrc="./beagly-logo.png"
                             landingHref="https://beag.ly"
                         />
@@ -110,10 +111,27 @@ export default function HomePortfolio() {
                 )}
                 {activeTab === 'code' && (
                     <Fragment>
-                        <p>
-                            The repos are in Github but I still need to create
-                            this component ;).
-                        </p>
+                        <RepositoryCard
+                            name="text-adventure-commander"
+                            description="A simple but powerful gem that uses a Lexer in combination with a Parser to detect and execute commands in text-based video games."
+                            repoHref="https://github.com/devcarlosmolero/text-adventure-commander"
+                        />
+                        <RepositoryCard
+                            name="text-adventure-level-manager"
+                            description="Gem that allows you to manage the maze of levels and scenes of a text-based video game with a simple .yml file."
+                            repoHref="https://github.com/devcarlosmolero/text-adventure-level-manager"
+                        />
+                        <RepositoryCard
+                            name="tabular-db"
+                            description="Tabular DB allows you to use CSV files as a database and leverage existing CSV viewers to enhance the prototyping experience."
+                            repoHref="https://github.com/devcarlosmolero/tabular-db"
+                        />
+                        <RepositoryCard
+                            name="carlosmolero"
+                            description="My personal website."
+                            repoHref="https://github.com/devcarlosmolero/carlosmolero"
+                            language="TypeScript"
+                        />
                     </Fragment>
                 )}
             </div>
@@ -170,6 +188,50 @@ function NotoriousClientCard({
                     <Link className="size-4 text-text-one" />
                     Landing
                 </Button>
+            </div>
+        </div>
+    )
+}
+
+function RepositoryCard({
+    repoHref,
+    language = 'Ruby',
+    name,
+    description,
+}: {
+    repoHref: string
+    language?: string
+    name: string
+    description: string
+}) {
+    return (
+        <div className="flex flex-col items-start gap-5 rounded-md border border-[#3d444d] bg-[#0d1117] p-5">
+            <div className="flex h-full flex-col gap-3">
+                <div className="space-y-1">
+                    <a
+                        href={repoHref}
+                        target="_blank"
+                        className="flex items-center gap-2 text-lg text-[#4493f8] underline-offset-2 hover:underline"
+                        rel="noreferrer"
+                    >
+                        <Book className="size-5" /> {name}
+                    </a>
+                    <p className="text-sm text-[#9198a1]">{description}</p>
+                </div>
+            </div>
+            <div className="flex items-center gap-2 py-0">
+                {language === 'Ruby' && (
+                    <Fragment>
+                        <span className="h-[10px] w-[10px] rounded-full bg-[#701516]"></span>
+                        <p className="text-sm">{language}</p>
+                    </Fragment>
+                )}
+                {language === 'TypeScript' && (
+                    <Fragment>
+                        <span className="h-[10px] w-[10px] rounded-full bg-[#3178c6]"></span>
+                        <p className="text-sm">{language}</p>
+                    </Fragment>
+                )}
             </div>
         </div>
     )
