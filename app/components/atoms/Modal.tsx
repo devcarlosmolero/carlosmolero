@@ -68,7 +68,7 @@ function Root({
                     <Overlay visible={isVisible} />
                     <div className="fixed bottom-0 left-0 right-0 top-0 z-30 flex items-center justify-center">
                         <div
-                            className={`m-5 flex w-full max-w-lg flex-col gap-y-5 rounded-xl border border-border-main bg-base-secondary p-5 ${
+                            className={`m-4 flex w-full max-w-lg flex-col gap-y-5 rounded-xl border border-border-main bg-base-secondary p-5 ${
                                 isVisible
                                     ? 'modal-content-enter'
                                     : 'modal-content-exit'

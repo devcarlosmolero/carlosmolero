@@ -99,6 +99,15 @@ export default function HomePortfolio() {
                             logoSrc="./voicit-logo.png"
                             landingHref="https://voicit.es"
                         />
+                        <NotoriousClientCard
+                            name="Bravo Group"
+                            description="Bravo Group's advocacy focuses on helping clients succeed by building powerful audiences through strategic communication. 
+                            They specialize in influential issues such as healthcare, education, and infrastructure. They identify key individuals and create 
+                            engaging strategies to persuade audiences."
+                            logoSrc="./ignite-logo.png"
+                            landingHref="https://bravogroup.us/advocacy"
+                            backgroundColor="bg-red-600"
+                        />
                     </Fragment>
                 )}
                 {activeTab === 'concepts' && (
@@ -155,7 +164,7 @@ function NotoriousClientCard({
     description: string
 }) {
     return (
-        <div className="flex flex-col items-start gap-5 rounded-md border border-border-main p-5">
+        <div className="flex flex-col items-start gap-5 rounded-xl border border-border-main p-5">
             <div className="flex h-full flex-col gap-3">
                 <div
                     className={`h-[50px] min-w-[50px] max-w-[50px] rounded-md ${backgroundColor}`}
@@ -172,7 +181,8 @@ function NotoriousClientCard({
                     <p className="text-text-on-primary">{description}</p>
                 </div>
             </div>
-            <div className="w-full rounded-md bg-base-secondary px-4 py-3">
+            <hr className="h-[1px] w-full border-none bg-text-four" />
+            <div className="w-full rounded-md px-0 py-0">
                 <Button
                     asLink
                     to={landingHref}
@@ -182,7 +192,7 @@ function NotoriousClientCard({
                         } as React.LinkHTMLAttributes<HTMLLinkElement>
                     }
                     variant="ghost"
-                    className="!gap-2 !px-0 !py-0"
+                    className="!gap-2 !rounded-md border border-border-main !bg-[#101111] !px-4 !py-2 text-sm"
                     hasIcon
                 >
                     <Link className="size-4 text-text-one" />
@@ -205,7 +215,7 @@ function RepositoryCard({
     description: string
 }) {
     return (
-        <div className="flex flex-col items-start gap-5 rounded-md border border-[#3d444d] bg-[#0d1117] p-5">
+        <div className="flex flex-col items-start gap-5 rounded-xl border border-[#3d444d] bg-[#0d1117] p-5">
             <div className="flex h-full flex-col gap-3">
                 <div className="space-y-1">
                     <a
