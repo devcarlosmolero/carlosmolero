@@ -20,7 +20,7 @@ export default function HomePortfolio({
     conceptsData: any[]
     repositoriesData: any[]
 }) {
-    const [activeTab, setActiveTab] = useState('notoriousClients')
+    const [activeTab, setActiveTab] = useState('concepts')
 
     return (
         <section id="portfolio" className="space-y-8 rounded-md">
@@ -29,17 +29,6 @@ export default function HomePortfolio({
                     Works
                 </h2>
                 <div className="flex flex-wrap items-center justify-center gap-3 md:justify-start">
-                    <button
-                        onClick={() => setActiveTab('notoriousClients')}
-                        className={cn(
-                            'flex w-fit items-center gap-2 rounded-full border border-border-main px-4 py-2 text-sm transition-all duration-300 hover:border-text-two hover:text-text-two',
-                            activeTab === 'notoriousClients' &&
-                                'border-text-two text-text-two'
-                        )}
-                    >
-                        <BriefcaseBusiness className="size-4" />
-                        Notorious Clients
-                    </button>
                     <button
                         onClick={() => setActiveTab('concepts')}
                         className={cn(
@@ -61,6 +50,17 @@ export default function HomePortfolio({
                     >
                         <Code className="size-4" />
                         Code
+                    </button>
+                    <button
+                        onClick={() => setActiveTab('notoriousClients')}
+                        className={cn(
+                            'flex w-fit items-center gap-2 rounded-full border border-border-main px-4 py-2 text-sm transition-all duration-300 hover:border-text-two hover:text-text-two',
+                            activeTab === 'notoriousClients' &&
+                                'border-text-two text-text-two'
+                        )}
+                    >
+                        <BriefcaseBusiness className="size-4" />
+                        Notorious Clients
                     </button>
                 </div>
             </div>
