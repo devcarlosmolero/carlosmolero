@@ -1,6 +1,14 @@
-import { Book, BriefcaseBusiness, Code, Layers, Link } from 'lucide-react'
+import {
+    Book,
+    BriefcaseBusiness,
+    Code,
+    Layers,
+    Link,
+    MoveUpRight,
+} from 'lucide-react'
 import { Fragment, useState } from 'react'
 import Button from '~/components/atoms/Button'
+import Card from '~/components/templates/Card'
 import { cn } from '~/lib/utils'
 
 export default function HomePortfolio() {
@@ -112,10 +120,35 @@ export default function HomePortfolio() {
                 )}
                 {activeTab === 'concepts' && (
                     <Fragment>
-                        <p>
-                            There are no concepts yet! Give me some time to
-                            upload some ;).
-                        </p>
+                        <Card className="aspect-square group">
+                            <div className="overflow-hidden rounded-md">
+                                <video
+                                    loop
+                                    autoPlay
+                                    muted
+                                    playsInline
+                                    src="./loading-screen.mp4"
+                                    className="h-full w-full rounded-md transition-all duration-200 group-hover:scale-105"
+                                />
+                            </div>
+                            <div className="mt-8 space-y-3">
+                                <div className="group flex cursor-pointer">
+                                    <div className="w-full">
+                                        <h4 className="text-3xl text-text-two">
+                                            An Unusual Loading Screen
+                                        </h4>
+                                    </div>
+                                    <div>
+                                        <MoveUpRight className="size-6 text-text-three transition-all duration-200 group-hover:rotate-45 group-hover:text-text-two" />
+                                    </div>
+                                </div>
+                                <p className="text-lg text-text-one">
+                                    The typical loading screen is already very
+                                    worn out, let&apos;s make it bigger and
+                                    different!
+                                </p>
+                            </div>
+                        </Card>
                     </Fragment>
                 )}
                 {activeTab === 'code' && (
