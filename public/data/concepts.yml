@@ -1,3 +1,6 @@
 - title: "Dynamic Gradient Loader"
-  description: This component creates an engaging textual progression. It takes a pending phrase and visually solidifies it into its confirmed status.
+  description: This component orchestrates a smooth and intuitive textual progression. It takes an initial, pending phrase or concept and, through a subtle yet effective visual transformation, solidifies its status into a clear, confirmed affirmation.
   videoSrc: "./dynamic-gradient-loader.mp4"
+- title: "Interactive Service Scroll"
+  description: This component proves that limited space is no excuse for compromise. It transforms your service offerings, allowing each to unfold beautifully and intuitively.
+  videoSrc: "./interactive-service-scroll.mp4"
