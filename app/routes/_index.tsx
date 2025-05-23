@@ -13,15 +13,31 @@ import Posts from '~/actions/posts'
 import { useLoaderData } from '@remix-run/react'
 import { Post } from '~/types/contentful'
 
-export async function loader({ context }: LoaderFunctionArgs) {
+export async function loader({ context, request }: LoaderFunctionArgs) {
     const last6Posts = await Posts.latest(6, context)
         .appendHeaderImgUrls()
         .formatDates()
         .get()
 
+    const notoriusClientsData = await ServerUtils.loadYaml(
+        '/data/notorious-clients.yml',
+        request
+    )
+    const conceptsData = await ServerUtils.loadYaml(
+        '/data/concepts.yml',
+        request
+    )
+    const repositoriesData = await ServerUtils.loadYaml(
+        '/data/repositories.yml',
+        request
+    )
+
     return json(
         {
             posts: last6Posts,
+            notoriusClientsData,
+            conceptsData,
+            repositoriesData,
         },
         {
             headers: {
@@ -42,13 +58,18 @@ export const meta: MetaFunction = () => {
 }
 
 export default function Home() {
-    const { posts } = useLoaderData<typeof loader>()
+    const { posts, notoriusClientsData, conceptsData, repositoriesData } =
+        useLoaderData<typeof loader>()
 
     return (
         <Page>
             <HomePage.Hero />
             <HomePage.Services />
-            <HomePage.Portfolio />
+            <HomePage.Portfolio
+                notoriousClientsData={notoriusClientsData}
+                conceptsData={conceptsData}
+                repositoriesData={repositoriesData}
+            />
             <HomePage.Testimonials />
             <HomePage.Posts posts={posts as Post[]} />
         </Page>

@@ -1,0 +1,19 @@
+- name: "text-adventure-commander"
+  description: "A simple but powerful gem that uses a Lexer in combination with a Parser to detect and execute commands in text-based video games."
+  repoHref: "https://github.com/devcarlosmolero/text-adventure-commander"
+  language: "Ruby"
+
+- name: "text-adventure-level-manager"
+  description: "Gem that allows you to manage the maze of levels and scenes of a text-based video game with a simple .yml file."
+  repoHref: "https://github.com/devcarlosmolero/text-adventure-level-manager"
+  language: "Ruby"
+
+- name: "tabular-db"
+  description: "Tabular DB allows you to use CSV files as a database and leverage existing CSV viewers to enhance the prototyping experience."
+  repoHref: "https://github.com/devcarlosmolero/tabular-db"
+  language: "Ruby"
+
+- name: "carlosmolero"
+  description: "My personal website."
+  repoHref: "https://github.com/devcarlosmolero/carlosmolero"
+  language: "TypeScript"

@@ -1,4 +1,9 @@
-import { redirect } from '@remix-run/cloudflare'
+import {
+    AppLoadContext,
+    LoaderFunctionArgs,
+    redirect,
+} from '@remix-run/cloudflare'
+import yaml from 'js-yaml'
 
 function redirectWithToast(
     pathname: string,
@@ -43,10 +48,26 @@ function getCacheControlHeader(
     return `public, max-age=${maxAge}, s-maxage=${maxAge}`
 }
 
+export async function loadYaml(
+    filePath: string,
+    request: LoaderFunctionArgs['request']
+) {
+    try {
+        const url = new URL(filePath, request.url)
+        const response = await fetch(url.toString())
+        const yamlText = await response.text()
+        return yaml.load(yamlText) as any[]
+    } catch (error) {
+        console.error(`Error loading YAML data from ${filePath}:`, error)
+        return []
+    }
+}
+
 const ServerUtils = {
     redirectWithToast,
     getCookie,
     getCacheControlHeader,
+    loadYaml,
 }
 
 export default ServerUtils

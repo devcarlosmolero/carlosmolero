@@ -11,7 +11,15 @@ import Button from '~/components/atoms/Button'
 import Card from '~/components/templates/Card'
 import { cn } from '~/lib/utils'
 
-export default function HomePortfolio() {
+export default function HomePortfolio({
+    notoriousClientsData,
+    conceptsData,
+    repositoriesData,
+}: {
+    notoriousClientsData: any[]
+    conceptsData: any[]
+    repositoriesData: any[]
+}) {
     const [activeTab, setActiveTab] = useState('notoriousClients')
 
     return (
@@ -59,121 +67,68 @@ export default function HomePortfolio() {
             <div className="grid gap-5 md:grid-cols-2">
                 {activeTab === 'notoriousClients' && (
                     <Fragment>
-                        <NotoriousClientCard
-                            name="WizHelp"
-                            description="Wizhelp offers IT support services to businesses,
-                    aiming to boost productivity by managing systems,
-                    applications, and devices. They provide support
-                    across various environments, handle projects and
-                    implementations, and automate repetitive tasks."
-                            logoSrc="./wizhelp-logo.png"
-                            overlayBackgroundColor="hsla(264, 100%, 52%, 0.08)"
-                            landingHref="https://wizhelp.net"
-                        />
-                        <NotoriousClientCard
-                            name="Beagly"
-                            description="Beag.ly is a platform that offers online surveys and rewards 
-                            participants with gift cards of $5 or more upon completion. Users can choose from various popular retailers 
-                            like Amazon, Dunkin', CVS Pharmacy, Target, Whole Foods, and Walmart."
-                            logoSrc="./beagly-logo.png"
-                            landingHref="https://beag.ly"
-                        />
-                        <NotoriousClientCard
-                            name="LathosClub"
-                            description="Lathos Club is an exclusive ecosystem dedicated to developing, 
-                    connecting, and empowering bright minds. It offers members access to 
-                    expert knowledge, personalized mentorship, and a supportive community 
-                    to foster their entrepreneurial and personal growth."
-                            logoSrc="./lathosclub-logo.png"
-                            backgroundColor="bg-black/80"
-                            landingHref="https://lathosclub.com"
-                        />
-                        <NotoriousClientCard
-                            name="Peakz"
-                            description="On Peakz athletes get rewarded for what they do: you
-                    video yourself training, preparing and competing and
-                    post that content exclusively on your Peakz channel.
-                    Your fans become scouts and pay to see your content."
-                            logoSrc="./peakz-logo.png"
-                            overlayBackgroundColor="hsla(34, 87%, 60%, 0.08)"
-                            landingHref="https://app.peakz.com"
-                        />
-                        <NotoriousClientCard
-                            name="Voicit"
-                            description="Voicit is an AI-powered tool that provides online ChatGPT summaries for meeting notes. 
-                    It enables users to summarize and create customizable meeting minutes, 
-                    interacting with transcriptions, recordings, and intelligent chats to extract 
-                    key information from both online and in-person meetings. "
-                            logoSrc="./voicit-logo.png"
-                            landingHref="https://voicit.es"
-                        />
-                        <NotoriousClientCard
-                            name="Bravo Group"
-                            description="Bravo Group's advocacy focuses on helping clients succeed by building powerful audiences through strategic communication. 
-                            They specialize in influential issues such as healthcare, education, and infrastructure. They identify key individuals and create 
-                            engaging strategies to persuade audiences."
-                            logoSrc="./ignite-logo.png"
-                            landingHref="https://bravogroup.us/advocacy"
-                            backgroundColor="bg-red-600"
-                        />
+                        {notoriousClientsData.map((client, index) => (
+                            <NotoriousClientCard
+                                key={`client-${index}`}
+                                name={client.name}
+                                description={client.description}
+                                logoSrc={client.logoSrc}
+                                overlayBackgroundColor={
+                                    client.overlayBackgroundColor
+                                }
+                                landingHref={client.landingHref}
+                                backgroundColor={client.backgroundColor}
+                            />
+                        ))}
                     </Fragment>
                 )}
                 {activeTab === 'concepts' && (
                     <Fragment>
-                        <Card className="aspect-square group">
-                            <div className="overflow-hidden rounded-md">
-                                <video
-                                    loop
-                                    autoPlay
-                                    muted
-                                    playsInline
-                                    src="./loading-screen.mp4"
-                                    className="h-full w-full rounded-md transition-all duration-200 group-hover:scale-105"
-                                />
-                            </div>
-                            <div className="mt-8 space-y-3">
-                                <div className="group flex cursor-pointer">
-                                    <div className="w-full">
-                                        <h4 className="text-3xl text-text-two">
-                                            An Unusual Loading Screen
-                                        </h4>
-                                    </div>
-                                    <div>
-                                        <MoveUpRight className="size-6 text-text-three transition-all duration-200 group-hover:rotate-45 group-hover:text-text-two" />
-                                    </div>
+                        {conceptsData.map((concept, index) => (
+                            <Card
+                                key={`concept-${index}`}
+                                className="aspect-square group"
+                            >
+                                <div className="overflow-hidden rounded-md">
+                                    <video
+                                        loop
+                                        autoPlay
+                                        muted
+                                        playsInline
+                                        src={concept.videoSrc}
+                                        className="h-full w-full rounded-md transition-all duration-200 group-hover:scale-105"
+                                    />
                                 </div>
-                                <p className="text-lg text-text-one">
-                                    The typical loading screen is already very
-                                    worn out, let&apos;s make it bigger and
-                                    different!
-                                </p>
-                            </div>
-                        </Card>
+                                <div className="mt-8 space-y-3">
+                                    <div className="group flex cursor-pointer">
+                                        <div className="w-full">
+                                            <h4 className="text-3xl text-text-two">
+                                                {concept.title}
+                                            </h4>
+                                        </div>
+                                        <div>
+                                            <MoveUpRight className="size-6 text-text-three transition-all duration-200 group-hover:rotate-45 group-hover:text-text-two" />
+                                        </div>
+                                    </div>
+                                    <p className="text-lg text-text-one">
+                                        {concept.description}
+                                    </p>
+                                </div>
+                            </Card>
+                        ))}
                     </Fragment>
                 )}
                 {activeTab === 'code' && (
                     <Fragment>
-                        <RepositoryCard
-                            name="text-adventure-commander"
-                            description="A simple but powerful gem that uses a Lexer in combination with a Parser to detect and execute commands in text-based video games."
-                            repoHref="https://github.com/devcarlosmolero/text-adventure-commander"
-                        />
-                        <RepositoryCard
-                            name="text-adventure-level-manager"
-                            description="Gem that allows you to manage the maze of levels and scenes of a text-based video game with a simple .yml file."
-                            repoHref="https://github.com/devcarlosmolero/text-adventure-level-manager"
-                        />
-                        <RepositoryCard
-                            name="tabular-db"
-                            description="Tabular DB allows you to use CSV files as a database and leverage existing CSV viewers to enhance the prototyping experience."
-                            repoHref="https://github.com/devcarlosmolero/tabular-db"
-                        />
-                        <RepositoryCard
-                            name="carlosmolero"
-                            description="My personal website."
-                            repoHref="https://github.com/devcarlosmolero/carlosmolero"
-                            language="TypeScript"
-                        />
+                        {repositoriesData.map((repo, index) => (
+                            <RepositoryCard
+                                key={`repo-${index}`}
+                                name={repo.name}
+                                description={repo.description}
+                                repoHref={repo.repoHref}
+                                language={repo.language}
+                            />
+                        ))}
                     </Fragment>
                 )}
             </div>
