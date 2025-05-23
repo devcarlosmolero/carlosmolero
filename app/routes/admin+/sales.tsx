@@ -5,7 +5,7 @@ import Page from '~/components/templates/Page'
 import { Buffer } from 'node:buffer'
 import AdminSalesPage from '~/components/pages/Admin/sales'
 import Mappers from '~/utils/mappers'
-import { IChartData } from '~/types/sales'
+import { ChartData } from '~/types/sales'
 
 const isAuthorized = (
     request: LoaderFunctionArgs['request'],
@@ -72,11 +72,11 @@ export default function AdminDataPage() {
 
     const total2024 = Mappers.fromSalesChartDataToAnnualAmount(
         'amount2024',
-        chartData as IChartData[]
+        chartData as ChartData[]
     )
     const total2025 = Mappers.fromSalesChartDataToAnnualAmount(
         'amount2025',
-        chartData as IChartData[]
+        chartData as ChartData[]
     )
     const quarterlyComparison =
         Mappers.fromSalesChartDataToQuaterlyComparison(chartData)

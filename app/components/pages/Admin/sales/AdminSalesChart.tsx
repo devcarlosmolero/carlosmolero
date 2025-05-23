@@ -8,13 +8,13 @@ import {
     XAxis,
     YAxis,
 } from 'recharts'
-import { IChartData } from '~/types/sales'
+import { ChartData } from '~/types/sales'
 import Formatters from '~/utils/formatters'
 
 export default function AdminSalesChart({
     chartData,
 }: {
-    chartData: IChartData[]
+    chartData: ChartData[]
 }) {
     return (
         <ResponsiveContainer width="100%" height="100%">

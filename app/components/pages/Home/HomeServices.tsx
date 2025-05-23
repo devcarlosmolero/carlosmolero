@@ -2,7 +2,11 @@ import { MoveUpRight } from 'lucide-react'
 import { Fragment } from 'react/jsx-runtime'
 import Card from '~/components/templates/Card'
 
-export default function HomeServices() {
+export default function HomeServices({
+    servicesData,
+}: {
+    servicesData: any[]
+}) {
     return (
         <section
             id="services"
@@ -12,48 +16,90 @@ export default function HomeServices() {
                 Services
             </h2>
             <div className="flex flex-col space-y-5">
-                <div className="flex flex-col gap-5 md:flex-row">
-                    <Card className="md:w-[65%]">
-                        <ServiceItem
-                            index={1}
-                            title="UX/UI Design"
-                            description="Gain a vivid understanding of your product through intuitive, interactive prototypes and design sketches that prioritize a seamless user experience."
-                        />
-                    </Card>
-                    <Card className="md:w-[35%]">
-                        <ServiceItem
-                            index={2}
-                            title="Branding"
-                            description="We’ll collaborate to define a distinctive color palette, visual assets, and tone that set your brand apart and make it unforgettable."
-                        />
-                    </Card>
-                </div>
-                <div className="flex flex-col gap-5 md:flex-row">
-                    <Card className="md:w-[35%]">
-                        <ServiceItem
-                            index={3}
-                            title="Product Development"
-                            description="I’ll bring your product to life using a versatile toolkit—NoCode, LowCode, AI, and, leveraging my technical expertise, traditional programming languages."
-                        />
-                    </Card>
-                    <Card className="md:w-[65%]">
-                        <ServiceItem
-                            index={4}
-                            title="UX Engineering"
-                            description="As a front-end development expert and UX/UI designer, I’ll audit your app to enhance its user experience, driving better engagement and higher conversions."
-                        />
-                    </Card>
-                </div>
+                {
+                    <Fragment>
+                        {servicesData.length >= 2 && (
+                            <div className="flex flex-col gap-5 md:flex-row">
+                                <Card
+                                    className={
+                                        servicesData[0].width || 'md:w-[50%]'
+                                    }
+                                >
+                                    <ServiceItem
+                                        index={servicesData[0].index}
+                                        title={servicesData[0].title}
+                                        description={
+                                            servicesData[0].description
+                                        }
+                                    />
+                                </Card>
+                                <Card
+                                    className={
+                                        servicesData[1].width || 'md:w-[50%]'
+                                    }
+                                >
+                                    <ServiceItem
+                                        index={servicesData[1].index}
+                                        title={servicesData[1].title}
+                                        description={
+                                            servicesData[1].description
+                                        }
+                                    />
+                                </Card>
+                            </div>
+                        )}
 
-                <div className="flex flex-col gap-5 md:flex-row">
-                    <Card>
-                        <ServiceItem
-                            index={5}
-                            title="Business Strategy"
-                            description="I’ll craft a detailed plan with clear steps and milestones to drive your business success, aligning your goals with actionable strategies for growth and sustainability."
-                        />
-                    </Card>
-                </div>
+                        {servicesData.length >= 4 && (
+                            <div className="flex flex-col gap-5 md:flex-row">
+                                <Card
+                                    className={
+                                        servicesData[2].width || 'md:w-[50%]'
+                                    }
+                                >
+                                    <ServiceItem
+                                        index={servicesData[2].index}
+                                        title={servicesData[2].title}
+                                        description={
+                                            servicesData[2].description
+                                        }
+                                    />
+                                </Card>
+                                <Card
+                                    className={
+                                        servicesData[3].width || 'md:w-[50%]'
+                                    }
+                                >
+                                    <ServiceItem
+                                        index={servicesData[3].index}
+                                        title={servicesData[3].title}
+                                        description={
+                                            servicesData[3].description
+                                        }
+                                    />
+                                </Card>
+                            </div>
+                        )}
+
+                        {servicesData.length >= 5 && (
+                            <div className="flex flex-col gap-5 md:flex-row">
+                                {servicesData.slice(4).map((service, idx) => (
+                                    <Card
+                                        key={`service-${idx + 5}`}
+                                        className={
+                                            service.width || 'md:w-[100%]'
+                                        }
+                                    >
+                                        <ServiceItem
+                                            index={service.index}
+                                            title={service.title}
+                                            description={service.description}
+                                        />
+                                    </Card>
+                                ))}
+                            </div>
+                        )}
+                    </Fragment>
+                }
             </div>
         </section>
     )

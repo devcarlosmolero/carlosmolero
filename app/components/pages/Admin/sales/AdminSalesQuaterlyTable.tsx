@@ -1,11 +1,11 @@
 import { Fragment } from 'react/jsx-runtime'
-import { IQuaterlyComparisonItem } from '~/types/sales'
+import { QuaterlyComparisonItem } from '~/types/sales'
 import Formatters from '~/utils/formatters'
 
 export default function AdminSalesQuaterlyTable({
     quarterlyComparison,
 }: {
-    quarterlyComparison: IQuaterlyComparisonItem[]
+    quarterlyComparison: QuaterlyComparisonItem[]
 }) {
     return (
         <div className="overflow-x-auto rounded-md border border-border-main">

@@ -1,5 +1,5 @@
 import { INotionRowsResponse } from '~/types/notion'
-import { IChartData, IQuaterlyComparisonItem } from '~/types/sales'
+import { ChartData, QuaterlyComparisonItem } from '~/types/sales'
 
 function fromNotionSalesToChartData(response: INotionRowsResponse) {
     const data2024: { [key: string]: number } = {}
@@ -63,18 +63,12 @@ function fromNotionSalesToChartData(response: INotionRowsResponse) {
     return orderedData
 }
 
-function fromSalesChartDataToAnnualAmount(
-    key: string,
-    chartData: IChartData[]
-) {
-    return chartData.reduce(
-        // @ts-expect-error idk
-        (sum, item) => sum + (item[key] || 0),
-        0
-    )
+function fromSalesChartDataToAnnualAmount(key: string, chartData: ChartData[]) {
+    // @ts-expect-error idk
+    return chartData.reduce((sum, item) => sum + (item[key] || 0), 0)
 }
 
-function fromSalesChartDataToQuaterlyComparison(chartData: IChartData[]) {
+function fromSalesChartDataToQuaterlyComparison(chartData: ChartData[]) {
     return chartData.map(
         (item) =>
             ({
@@ -87,7 +81,7 @@ function fromSalesChartDataToQuaterlyComparison(chartData: IChartData[]) {
                           item.amount2024) *
                       100
                     : 0,
-            }) as IQuaterlyComparisonItem
+            }) as QuaterlyComparisonItem
     )
 }
 

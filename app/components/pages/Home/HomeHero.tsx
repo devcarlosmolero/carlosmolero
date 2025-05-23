@@ -1,8 +1,25 @@
 import Button from '~/components/atoms/Button'
-import { Mail, MoveRight } from 'lucide-react'
+import { Mail, MoveRight, MousePointer2 } from 'lucide-react'
 import ImageKitImage from '~/components/atoms/ImageKitImage'
+import { useEffect, useRef } from 'react'
+
+import './HomeHero.css'
 
 export default function HomeHero() {
+    const arrowsContainerRef = useRef<HTMLDivElement>(null)
+
+    useEffect(() => {
+        const arrows =
+            arrowsContainerRef.current?.querySelectorAll('.floating-arrow')
+        if (!arrows) return
+
+        arrows.forEach((arrow, index) => {
+            const delay = index * 2
+            const element = arrow as HTMLElement
+            element.style.animationDelay = `${delay}s`
+        })
+    }, [])
+
     return (
         <section id="hero">
             <div className="grid gap-x-20 gap-y-10 lg:grid-cols-2">
@@ -41,14 +58,39 @@ export default function HomeHero() {
                         </Button>
                     </div>
                 </div>
-                <div className="flex w-full items-center justify-center">
+                <div className="relative flex w-full items-center justify-center">
+                    <div
+                        ref={arrowsContainerRef}
+                        className="pointer-events-none absolute inset-0 h-full w-full"
+                    >
+                        <div className="floating-arrow absolute left-[15%] top-[5%] flex items-center">
+                            <span className="whitespace-nowrap rounded-md bg-[#FEFCE1] px-3 py-1 text-sm text-black">
+                                Software Development
+                            </span>
+                            <MousePointer2 className="ml-1 size-5 rotate-90 fill-amber-400 text-amber-400" />
+                        </div>
+
+                        <div className="floating-arrow absolute bottom-[20%] right-[10%] flex items-center">
+                            <MousePointer2 className="mr-1 size-5 fill-amber-400 text-amber-400" />
+                            <span className="whitespace-nowrap rounded-md bg-[#FEFCE1] px-3 py-1 text-sm text-black">
+                                UI Design
+                            </span>
+                        </div>
+
+                        <div className="floating-arrow absolute left-[10%] top-[55%] flex items-center">
+                            <span className="whitespace-nowrap rounded-md bg-[#FEFCE1] px-3 py-1 text-sm text-black">
+                                Digital Strategy
+                            </span>
+                            <MousePointer2 className="ml-1 size-5 rotate-90 fill-amber-400 text-amber-400" />
+                        </div>
+                    </div>
                     <ImageKitImage
                         alt="Carlos Molero"
-                        className="w-[80%] rounded-full grayscale"
+                        className="relative z-10 w-[80%] rounded-full grayscale"
                         src="/carlos-molero.jpeg"
                     />
                 </div>
-            </div>{' '}
+            </div>
         </section>
     )
 }

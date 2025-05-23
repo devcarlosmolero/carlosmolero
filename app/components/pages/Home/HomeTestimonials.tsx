@@ -3,7 +3,11 @@ import { ChevronLeft, ChevronRight, Quote } from 'lucide-react'
 import Card from '~/components/templates/Card'
 import { useEmblaPrevNextButtons } from '~/hooks/useEmblaPrevNextButtons'
 
-export default function HomeTestimonials() {
+export default function HomeTestimonials({
+    testimonialsData,
+}: {
+    testimonialsData: any[]
+}) {
     const [emblaRef, emblaApi] = useEmblaCarousel({
         loop: true,
         watchDrag: false,
@@ -14,7 +18,7 @@ export default function HomeTestimonials() {
         nextBtnDisabled,
         onPrevButtonClick,
         onNextButtonClick,
-    } = useEmblaPrevNextButtons(emblaApi)
+    } = useEmblaPrevNextButtons(emblaApi as any)
 
     return (
         <section id="testimonials" className="space-y-8">
@@ -23,42 +27,20 @@ export default function HomeTestimonials() {
             </h2>
             <div className="embla gradient-border" ref={emblaRef}>
                 <div className="embla__container gradient-content">
-                    <div className="embla__slide">
-                        <TestimonialItem
-                            name="Yanko Antonio"
-                            company="WizHelp"
-                            jobTitle="Founder"
-                            src="https://media.licdn.com/dms/image/v2/D4D03AQEbUk4qrq2YmQ/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1690973043938?e=1749081600&v=beta&t=Y69BlcMdohKn__mCsyyog004_jsBLoNCsCikj5OHcvQ"
-                            testimonial="Carlos executed as requested our web design migration to Framer, well organized one-pager, and helped us craft the specific sections we needed. Will repeat in the future once we expand our offering. Thanks Carlos!"
-                        />
-                    </div>
-                    <div className="embla__slide">
-                        <TestimonialItem
-                            name="Jacinto"
-                            company="TripleJSoftware"
-                            jobTitle="CEO"
-                            src="https://dam.malt.com/a51e9289-5433-43e5-a1d0-72913147f39f?gravity=face&func=crop&w=80&h=80&force_format=png?gravity=face&func=crop&w=80&h=80&force_format=png"
-                            testimonial="Carlos has done a great job, with very good communication and meeting deadlines. We will definitely work with him again."
-                        />
-                    </div>
-                    <div className="embla__slide">
-                        <TestimonialItem
-                            name="Adrian Ward"
-                            company="FenwayDataGroup"
-                            jobTitle="CTO"
-                            src="https://dam.malt.com/cc6810db-7f78-477f-9bb1-2de2bd1290d5?gravity=face&func=crop&w=80&h=80&force_format=png?gravity=face&func=crop&w=80&h=80&force_format=png"
-                            testimonial="Carlos was patient, kind and behaved like an expert. He was more involved with my project than I expected, I am sure I will work with him again in the future."
-                        />
-                    </div>
-                    <div className="embla__slide">
-                        <TestimonialItem
-                            name="Jordi"
-                            company="Nyxidiom"
-                            jobTitle="CEO"
-                            src="https://dam.malt.com/cc484a33-f6ff-46d7-9e17-78f437f4ce9c?gravity=face&func=crop&w=80&h=80&force_format=png?gravity=face&func=crop&w=80&h=80&force_format=png"
-                            testimonial="Carlos is an excellent developer. He was able to accomplish a wide variety of complex tasks, with very good communication throughout the course of the project."
-                        />
-                    </div>
+                    {testimonialsData.map((testimonial, index) => (
+                        <div
+                            className="embla__slide"
+                            key={`testimonial-${index}`}
+                        >
+                            <TestimonialItem
+                                name={testimonial.name}
+                                company={testimonial.company}
+                                jobTitle={testimonial.jobTitle}
+                                src={testimonial.src}
+                                testimonial={testimonial.testimonial}
+                            />
+                        </div>
+                    ))}
                 </div>
             </div>
             <div className="embla__controls flex justify-center">

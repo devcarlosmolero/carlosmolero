@@ -16,6 +16,10 @@ import Container from '~/components/templates/Container'
 import MetaUtils from '~/utils/metas'
 import { useContactModalContext } from '~/contexts/contactModalContext'
 import { useEffect } from 'react'
+import hljs from 'highlight.js'
+
+import 'highlight.js/styles/github-dark.css'
+import './HighlightJsOverride.css'
 
 export async function loader({ request, context }: LoaderFunctionArgs) {
     const url = new URL(request.url)
@@ -70,6 +74,8 @@ export default function BlogSlugPage() {
             e.preventDefault()
             openContactModal()
         })
+
+        hljs.highlightAll()
     }, [])
 
     return (

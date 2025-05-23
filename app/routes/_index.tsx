@@ -8,7 +8,7 @@ import Page from '~/components/templates/Page'
 import { SITE_DESCRIPTION, SITE_NAME, SITE_TITLE } from '~/consts'
 import MetaUtils from '~/utils/metas'
 import HomePage from '~/components/pages/Home'
-import ServerUtils from '~/utils/server'
+import ServerUtils, { loadYaml } from '~/utils/server'
 import Posts from '~/actions/posts'
 import { useLoaderData } from '@remix-run/react'
 import { Post } from '~/types/contentful'
@@ -19,18 +19,14 @@ export async function loader({ context, request }: LoaderFunctionArgs) {
         .formatDates()
         .get()
 
-    const notoriusClientsData = await ServerUtils.loadYaml(
+    const notoriusClientsData = await loadYaml(
         '/data/notorious-clients.yml',
         request
     )
-    const conceptsData = await ServerUtils.loadYaml(
-        '/data/concepts.yml',
-        request
-    )
-    const repositoriesData = await ServerUtils.loadYaml(
-        '/data/repositories.yml',
-        request
-    )
+    const conceptsData = await loadYaml('/data/concepts.yml', request)
+    const repositoriesData = await loadYaml('/data/repositories.yml', request)
+    const testimonialsData = await loadYaml('/data/testimonials.yml', request)
+    const servicesData = await loadYaml('/data/services.yml', request)
 
     return json(
         {
@@ -38,6 +34,8 @@ export async function loader({ context, request }: LoaderFunctionArgs) {
             notoriusClientsData,
             conceptsData,
             repositoriesData,
+            testimonialsData,
+            servicesData,
         },
         {
             headers: {
@@ -58,19 +56,25 @@ export const meta: MetaFunction = () => {
 }
 
 export default function Home() {
-    const { posts, notoriusClientsData, conceptsData, repositoriesData } =
-        useLoaderData<typeof loader>()
+    const {
+        posts,
+        notoriusClientsData,
+        conceptsData,
+        repositoriesData,
+        testimonialsData,
+        servicesData,
+    } = useLoaderData<typeof loader>()
 
     return (
         <Page>
             <HomePage.Hero />
-            <HomePage.Services />
+            <HomePage.Services servicesData={servicesData} />
             <HomePage.Portfolio
                 notoriousClientsData={notoriusClientsData}
                 conceptsData={conceptsData}
                 repositoriesData={repositoriesData}
             />
-            <HomePage.Testimonials />
+            <HomePage.Testimonials testimonialsData={testimonialsData} />
             <HomePage.Posts posts={posts as Post[]} />
         </Page>
     )

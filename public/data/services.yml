@@ -1,0 +1,24 @@
+- index: 1
+  title: "UX/UI Design"
+  description: "Gain a vivid understanding of your product through intuitive, interactive prototypes and design sketches that prioritize a seamless user experience."
+  width: "md:w-[65%]"
+
+- index: 2
+  title: "Branding"
+  description: "We'll collaborate to define a distinctive color palette, visual assets, and tone that set your brand apart and make it unforgettable."
+  width: "md:w-[35%]"
+
+- index: 3
+  title: "Product Development"
+  description: "I'll bring your product to life using a versatile toolkit—NoCode, LowCode, AI, and, leveraging my technical expertise, traditional programming languages."
+  width: "md:w-[35%]"
+
+- index: 4
+  title: "UX Engineering"
+  description: "As a front-end development expert and UX/UI designer, I'll audit your app to enhance its user experience, driving better engagement and higher conversions."
+  width: "md:w-[65%]"
+
+- index: 5
+  title: "Business Strategy"
+  description: "I'll craft a detailed plan with clear steps and milestones to drive your business success, aligning your goals with actionable strategies for growth and sustainability."
+  width: "md:w-[100%]"
