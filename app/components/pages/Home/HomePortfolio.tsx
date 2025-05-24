@@ -106,6 +106,17 @@ export default function HomePortfolio({
                                     autoPlay
                                     muted
                                     playsInline
+                                    preload="auto"
+                                    ref={(el) => {
+                                        if (el) {
+                                            el.play().catch((e) =>
+                                                console.log(
+                                                    'Autoplay prevented:',
+                                                    e
+                                                )
+                                            )
+                                        }
+                                    }}
                                     src={concept.videoSrc}
                                     className="h-full w-full rounded-md transition-all duration-200 group-hover:scale-105"
                                 />
