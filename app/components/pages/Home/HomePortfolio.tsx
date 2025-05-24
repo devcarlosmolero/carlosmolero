@@ -9,6 +9,7 @@ import {
 import { Fragment, useState } from 'react'
 import Button from '~/components/atoms/Button'
 import Card from '~/components/templates/Card'
+import { useHydrated } from '~/hooks/useHydrated'
 import { cn } from '~/lib/utils'
 
 export default function HomePortfolio({
@@ -20,6 +21,7 @@ export default function HomePortfolio({
     conceptsData: any[]
     repositoriesData: any[]
 }) {
+    const isHydrated = useHydrated()
     const [activeTab, setActiveTab] = useState('concepts')
 
     return (
@@ -101,25 +103,27 @@ export default function HomePortfolio({
                             className="aspect-square group"
                         >
                             <div className="overflow-hidden rounded-md">
-                                <video
-                                    loop
-                                    autoPlay
-                                    muted
-                                    playsInline
-                                    preload="auto"
-                                    ref={(el) => {
-                                        if (el) {
-                                            el.play().catch((e) =>
-                                                console.log(
-                                                    'Autoplay prevented:',
-                                                    e
+                                {isHydrated && (
+                                    <video
+                                        loop
+                                        autoPlay
+                                        muted
+                                        playsInline
+                                        preload="auto"
+                                        ref={(el) => {
+                                            if (el) {
+                                                el.play().catch((e) =>
+                                                    console.log(
+                                                        'Autoplay prevented:',
+                                                        e
+                                                    )
                                                 )
-                                            )
-                                        }
-                                    }}
-                                    src={concept.videoSrc}
-                                    className="h-full w-full rounded-md transition-all duration-200 group-hover:scale-105"
-                                />
+                                            }
+                                        }}
+                                        src={concept.videoSrc}
+                                        className="h-full w-full rounded-md transition-all duration-200 group-hover:scale-105"
+                                    />
+                                )}
                             </div>
                             <div className="mt-8 space-y-3">
                                 <div className="group flex cursor-pointer">

@@ -25,6 +25,7 @@ import {
     ContactModalProvider,
     useContactModalContext,
 } from './contexts/contactModalContext'
+import { useHydrated } from './hooks/useHydrated'
 
 export async function loader({ request }: LoaderFunctionArgs) {
     const url = new URL(request.url)
@@ -58,6 +59,7 @@ function AppContent() {
     const navigate = useNavigate()
     const { isOpen: isContactModalOpen, closeModal: closeContactModal } =
         useContactModalContext()
+    const hydrated = useHydrated()
 
     useEffect(() => {
         console.log(
@@ -124,24 +126,28 @@ function AppContent() {
                     <Scripts />
                     {!pathname.includes('admin') && <Footer />}
                 </main>
-                <ToastContainer
-                    position="bottom-right"
-                    limit={3}
-                    stacked
-                    theme="colored"
-                />
-                <Modal.Root
-                    open={isContactModalOpen}
-                    onClose={closeContactModal}
-                >
-                    <Modal.Heading
-                        title="Let's get in touch!"
-                        description="I'll reply back in less than 24 hours, that's a promise."
+                {hydrated && (
+                    <ToastContainer
+                        position="bottom-right"
+                        limit={3}
+                        stacked
+                        theme="colored"
                     />
-                    <Modal.Content>
-                        <ContactForm />
-                    </Modal.Content>
-                </Modal.Root>
+                )}
+                {hydrated && (
+                    <Modal.Root
+                        open={isContactModalOpen}
+                        onClose={closeContactModal}
+                    >
+                        <Modal.Heading
+                            title="Let's get in touch!"
+                            description="I'll reply back in less than 24 hours, that's a promise."
+                        />
+                        <Modal.Content>
+                            <ContactForm />
+                        </Modal.Content>
+                    </Modal.Root>
+                )}
             </body>
         </html>
     )

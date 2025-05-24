@@ -18,7 +18,7 @@ export default function HomeTestimonials({
         nextBtnDisabled,
         onPrevButtonClick,
         onNextButtonClick,
-    } = useEmblaPrevNextButtons(emblaApi as any)
+    } = useEmblaPrevNextButtons(emblaApi)
 
     return (
         <section id="testimonials" className="space-y-8">
