@@ -20,11 +20,7 @@ export default function HomeServices({
                     <Fragment>
                         {servicesData.length >= 2 && (
                             <div className="flex flex-col gap-5 md:flex-row">
-                                <Card
-                                    className={
-                                        servicesData[0].width || 'md:w-[50%]'
-                                    }
-                                >
+                                <Card className={'md:w-[65%]'}>
                                     <ServiceItem
                                         index={servicesData[0].index}
                                         title={servicesData[0].title}
@@ -33,11 +29,7 @@ export default function HomeServices({
                                         }
                                     />
                                 </Card>
-                                <Card
-                                    className={
-                                        servicesData[1].width || 'md:w-[50%]'
-                                    }
-                                >
+                                <Card className={'md:w-[35%]'}>
                                     <ServiceItem
                                         index={servicesData[1].index}
                                         title={servicesData[1].title}
@@ -51,11 +43,7 @@ export default function HomeServices({
 
                         {servicesData.length >= 4 && (
                             <div className="flex flex-col gap-5 md:flex-row">
-                                <Card
-                                    className={
-                                        servicesData[2].width || 'md:w-[50%]'
-                                    }
-                                >
+                                <Card className={'md:w-[35%]'}>
                                     <ServiceItem
                                         index={servicesData[2].index}
                                         title={servicesData[2].title}
@@ -64,11 +52,7 @@ export default function HomeServices({
                                         }
                                     />
                                 </Card>
-                                <Card
-                                    className={
-                                        servicesData[3].width || 'md:w-[50%]'
-                                    }
-                                >
+                                <Card className={'md:w-[65%]'}>
                                     <ServiceItem
                                         index={servicesData[3].index}
                                         title={servicesData[3].title}
@@ -85,9 +69,7 @@ export default function HomeServices({
                                 {servicesData.slice(4).map((service, idx) => (
                                     <Card
                                         key={`service-${idx + 5}`}
-                                        className={
-                                            service.width || 'md:w-[100%]'
-                                        }
+                                        className={'md:w-[100%]'}
                                     >
                                         <ServiceItem
                                             index={service.index}
