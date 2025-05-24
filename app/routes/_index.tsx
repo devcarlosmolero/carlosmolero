@@ -1,4 +1,3 @@
-import 'animate.css/animate.compat.css'
 import {
     json,
     LoaderFunctionArgs,
@@ -13,20 +12,24 @@ import Posts from '~/actions/posts'
 import { useLoaderData } from '@remix-run/react'
 import { Post } from '~/types/contentful'
 
-export async function loader({ context, request }: LoaderFunctionArgs) {
-    const last6Posts = await Posts.latest(6, context)
-        .appendHeaderImgUrls()
-        .formatDates()
-        .get()
+import 'animate.css/animate.compat.css'
 
-    const notoriusClientsData = await loadYaml(
-        '/data/notorious-clients.yml',
-        request
-    )
-    const conceptsData = await loadYaml('/data/concepts.yml', request)
-    const repositoriesData = await loadYaml('/data/repositories.yml', request)
-    const testimonialsData = await loadYaml('/data/testimonials.yml', request)
-    const servicesData = await loadYaml('/data/services.yml', request)
+export async function loader({ context, request }: LoaderFunctionArgs) {
+    const [
+        last6Posts,
+        notoriusClientsData,
+        conceptsData,
+        repositoriesData,
+        testimonialsData,
+        servicesData,
+    ] = await Promise.all([
+        Posts.latest(6, context).appendHeaderImgUrls().formatDates().get(),
+        loadYaml('/data/notorious-clients.yml', request),
+        loadYaml('/data/concepts.yml', request),
+        loadYaml('/data/repositories.yml', request),
+        loadYaml('/data/testimonials.yml', request),
+        loadYaml('/data/services.yml', request),
+    ])
 
     return json(
         {
