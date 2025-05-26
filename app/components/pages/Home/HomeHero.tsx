@@ -43,7 +43,12 @@ export default function HomeHero() {
                         digital project to success.
                     </p>
                     <div className="mt-3 flex w-full flex-col items-center gap-x-0 gap-y-3 md:flex-row md:gap-0">
-                        <Button asLink to="#contacto" variant="primary" hasIcon>
+                        <Button
+                            asLink
+                            to="#portfolio"
+                            variant="primary"
+                            hasIcon
+                        >
                             View Portfolio
                             <MoveRight className="size-6" />
                         </Button>
