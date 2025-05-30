@@ -3,7 +3,7 @@ import cn from 'classnames'
 import { Link } from '@remix-run/react'
 import Button from '~/components/atoms/Button'
 import ImageKitImage from '~/components/atoms/ImageKitImage'
-import { useContactModalContext } from '~/contexts/contactModalContext'
+import { useContactModal } from '~/contexts/contactModalContext'
 
 export default function NavbarDrawer({
     isOpen,
@@ -12,7 +12,7 @@ export default function NavbarDrawer({
     isOpen: boolean
     onClose: () => void
 }) {
-    const { openModal: openContactModal } = useContactModalContext()
+    const { open: openContactModal } = useContactModal()
     return (
         <Fragment>
             <div

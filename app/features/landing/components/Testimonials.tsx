@@ -3,7 +3,7 @@ import { ChevronLeft, ChevronRight, Quote } from 'lucide-react'
 import Card from '~/components/templates/Card'
 import { useEmblaPrevNextButtons } from '~/hooks/useEmblaPrevNextButtons'
 
-export default function HomeTestimonials({
+export default function Testimonials({
     testimonialsData,
 }: {
     testimonialsData: any[]

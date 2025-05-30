@@ -1,6 +1,6 @@
-import Formatters from '~/utils/formatters'
+import { formatCurrency } from '../../utils'
 
-export default function AdminSalesAnnualSummaryCards({
+export default function AnnualSummaryCards({
     total2024,
     total2025,
 }: {
@@ -14,7 +14,7 @@ export default function AdminSalesAnnualSummaryCards({
                     2024 Total
                 </h3>
                 <p className="mt-1 text-xl font-bold text-blue-200 md:text-2xl">
-                    {Formatters.formatCurrency(total2024)}
+                    {formatCurrency(total2024)}
                 </p>
             </div>
             <div className="rounded-md border border-border-main bg-base-primary p-5">
@@ -22,7 +22,7 @@ export default function AdminSalesAnnualSummaryCards({
                     2025 Total
                 </h3>
                 <p className="mt-1 flex flex-col text-xl font-bold text-orange-200 md:flex-row md:items-end md:text-2xl">
-                    {Formatters.formatCurrency(total2025)}
+                    {formatCurrency(total2025)}
                     <span
                         className={`text-sm md:ml-2 ${total2025 >= total2024 ? 'text-green-300' : 'text-red-300'}`}
                     >

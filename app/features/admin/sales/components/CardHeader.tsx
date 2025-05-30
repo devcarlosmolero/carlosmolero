@@ -1,4 +1,4 @@
-export default function AdminSalesCardHeader({
+export default function CardHeader({
     title,
     description,
 }: {

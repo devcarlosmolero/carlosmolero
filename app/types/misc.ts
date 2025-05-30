@@ -1,4 +1,4 @@
-export interface RssEntry {
+export interface IRssEntry {
     title: string
     link: string
     description: string

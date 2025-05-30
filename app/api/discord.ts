@@ -15,8 +15,8 @@ async function sendMessage(message: string, context: AppLoadContext) {
     })
 }
 
-const Discord = {
+const DiscordApi = {
     sendMessage,
 }
 
-export default Discord
+export default DiscordApi

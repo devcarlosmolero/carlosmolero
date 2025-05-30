@@ -3,14 +3,13 @@ import {
     LoaderFunctionArgs,
     type MetaFunction,
 } from '@remix-run/cloudflare'
-import Page from '~/components/templates/Page'
 import { SITE_DESCRIPTION, SITE_NAME, SITE_TITLE } from '~/consts'
 import MetaUtils from '~/utils/metas'
-import HomePage from '~/components/pages/Home'
 import ServerUtils, { loadYaml } from '~/utils/server'
-import Posts from '~/actions/posts'
+import PostsApi from '~/api/posts'
 import { useLoaderData } from '@remix-run/react'
-import { Post } from '~/types/contentful'
+import { IPost } from '~/types/contentful'
+import LandingPage from '~/features/landing/components'
 
 import 'animate.css/animate.compat.css'
 
@@ -23,7 +22,7 @@ export async function loader({ context, request }: LoaderFunctionArgs) {
         testimonialsData,
         servicesData,
     ] = await Promise.all([
-        Posts.latest(6, context).appendHeaderImgUrls().formatDates().get(),
+        PostsApi.latest(6, context).appendHeaderImgUrls().formatDates().get(),
         loadYaml('/data/notorious-clients.yml', request),
         loadYaml('/data/concepts.yml', request),
         loadYaml('/data/repositories.yml', request),
@@ -58,7 +57,7 @@ export const meta: MetaFunction = () => {
     ]
 }
 
-export default function Home() {
+export default function Page() {
     const {
         posts,
         notoriusClientsData,
@@ -69,16 +68,13 @@ export default function Home() {
     } = useLoaderData<typeof loader>()
 
     return (
-        <Page>
-            <HomePage.Hero />
-            <HomePage.Services servicesData={servicesData} />
-            <HomePage.Portfolio
-                notoriousClientsData={notoriusClientsData}
-                conceptsData={conceptsData}
-                repositoriesData={repositoriesData}
-            />
-            <HomePage.Testimonials testimonialsData={testimonialsData} />
-            <HomePage.Posts posts={posts as Post[]} />
-        </Page>
+        <LandingPage
+            posts={posts as IPost[]}
+            notoriusClientsData={notoriusClientsData}
+            conceptsData={conceptsData}
+            repositoriesData={repositoriesData}
+            testimonialsData={testimonialsData}
+            servicesData={servicesData}
+        />
     )
 }

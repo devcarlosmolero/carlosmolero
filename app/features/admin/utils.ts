@@ -1,7 +1,16 @@
-import { INotionRowsResponse } from '~/types/notion'
-import { ChartData, QuaterlyComparisonItem } from '~/types/sales'
+import {
+    IChartData,
+    IQuaterlyComparisonItem,
+    INotionRowsResponse,
+} from './types'
 
-function fromNotionSalesToChartData(response: INotionRowsResponse) {
+export function formatCurrency(amount: number | undefined): string {
+    return amount !== undefined
+        ? `€${amount.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`
+        : '-'
+}
+
+export function fromNotionSalesToChartData(response: INotionRowsResponse) {
     const data2024: { [key: string]: number } = {}
     const data2025: { [key: string]: number } = {}
 
@@ -63,12 +72,17 @@ function fromNotionSalesToChartData(response: INotionRowsResponse) {
     return orderedData
 }
 
-function fromSalesChartDataToAnnualAmount(key: string, chartData: ChartData[]) {
+export function fromSalesChartDataToAnnualAmount(
+    key: string,
+    chartData: IChartData[]
+) {
     // @ts-expect-error idk
     return chartData.reduce((sum, item) => sum + (item[key] || 0), 0)
 }
 
-function fromSalesChartDataToQuaterlyComparison(chartData: ChartData[]) {
+export function fromSalesChartDataToQuaterlyComparison(
+    chartData: IChartData[]
+) {
     return chartData.map(
         (item) =>
             ({
@@ -81,14 +95,6 @@ function fromSalesChartDataToQuaterlyComparison(chartData: ChartData[]) {
                           item.amount2024) *
                       100
                     : 0,
-            }) as QuaterlyComparisonItem
+            }) as IQuaterlyComparisonItem
     )
 }
-
-const Mappers = {
-    fromNotionSalesToChartData,
-    fromSalesChartDataToAnnualAmount,
-    fromSalesChartDataToQuaterlyComparison,
-}
-
-export default Mappers

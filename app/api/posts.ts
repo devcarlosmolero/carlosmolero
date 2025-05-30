@@ -1,9 +1,9 @@
-import { ContentfulFilters, Post } from '~/types/contentful'
+import { IContentfulFilters, IPost } from '~/types/contentful'
 import { format } from 'date-fns'
 import { AppLoadContext } from '@remix-run/cloudflare'
 import Contentful from './contentful'
 
-async function appendHeaderImgUrls(posts: Post[], context: AppLoadContext) {
+async function appendHeaderImgUrls(posts: IPost[], context: AppLoadContext) {
     const result = await Promise.all(
         posts.map(async (post) => {
             const headerImgUrl = await Contentful.getAssetUrl(
@@ -20,7 +20,7 @@ async function appendHeaderImgUrls(posts: Post[], context: AppLoadContext) {
     return result || []
 }
 
-function createApi(filters: ContentfulFilters, context: AppLoadContext) {
+function createApi(filters: IContentfulFilters, context: AppLoadContext) {
     const state = {
         filters,
         appendHeaderImgUrls: false,
@@ -53,7 +53,7 @@ function createApi(filters: ContentfulFilters, context: AppLoadContext) {
                 ...item.fields,
                 createdAt: item.sys.createdAt,
                 updatedAt: item.sys.updatedAt,
-            })) as Post[]
+            })) as IPost[]
 
             if (state.appendHeaderImgUrls) {
                 posts = await appendHeaderImgUrls(posts, context)
@@ -80,7 +80,7 @@ function createApi(filters: ContentfulFilters, context: AppLoadContext) {
     return api
 }
 
-const Posts = {
+const PostsApi = {
     getBySlug(slug: string, context: AppLoadContext) {
         const filters = {
             contentType: 'post',
@@ -157,4 +157,4 @@ const Posts = {
         return createApi(filters, context)
     },
 }
-export default Posts
+export default PostsApi

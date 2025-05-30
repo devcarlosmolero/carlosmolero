@@ -11,6 +11,7 @@ export default function Button({
     asLink = false,
     isLoading = false,
     hasIcon = false,
+    isDisabled = false,
     className,
     props,
 }: {
@@ -48,7 +49,8 @@ export default function Button({
                         getVariantClassname(),
                         className,
                         hasIcon && 'flex items-center gap-x-3',
-                        'w-fit rounded-full px-5 py-3'
+                        'w-fit rounded-full px-5 py-3',
+                        isDisabled && 'cursor-not-allowed opacity-50'
                     )}
                     {...(props as React.ButtonHTMLAttributes<HTMLButtonElement>)}
                 >

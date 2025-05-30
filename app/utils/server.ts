@@ -63,10 +63,43 @@ export async function loadYaml(
     }
 }
 
+const isHTTPAuthorized = (
+    request: LoaderFunctionArgs['request'],
+    context: AppLoadContext
+) => {
+    const header = request.headers.get('Authorization')
+    if (!header || !header.startsWith('Basic ')) {
+        console.error("'Authorization' header missing or invalid", header)
+        return null
+    }
+
+    const base64 = header.replace('Basic ', '')
+    let credentials
+    try {
+        credentials = Buffer.from(base64, 'base64').toString()
+    } catch (e) {
+        console.error(e)
+        return null
+    }
+
+    const [username, password] = credentials.split(':')
+    if (!username || !password) {
+        console.error('Username or password missing', credentials)
+        return null
+    }
+
+    const adminUsername = context.cloudflare.env.ADMIN_USERNAME ?? 'admin'
+    const adminPassword = context.cloudflare.env.ADMIN_PASSWORD ?? 'admin'
+
+    const isValid = username === adminUsername && password === adminPassword
+    return isValid
+}
+
 const ServerUtils = {
     redirectWithToast,
     getCookie,
     getCacheControlHeader,
+    isHTTPAuthorized,
     loadYaml,
 }
 

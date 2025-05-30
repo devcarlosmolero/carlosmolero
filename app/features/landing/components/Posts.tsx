@@ -3,9 +3,9 @@ import { Calendar } from 'lucide-react'
 import { FakeBackgroundImagePrimitive } from '~/components/atoms/FakeBackgroundImagePrimitive'
 import ImageKitImage from '~/components/atoms/ImageKitImage'
 import Card from '~/components/templates/Card'
-import { Post } from '~/types/contentful'
+import { IPost } from '~/types/contentful'
 
-export default function HomePosts({ posts }: { posts: Post[] }) {
+export default function Posts({ posts }: { posts: IPost[] }) {
     return (
         <section id="articles" className="space-y-8 rounded-md">
             <h2 className="heading-gradient py-1 text-center text-4xl md:text-start md:text-5xl">

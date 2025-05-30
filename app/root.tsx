@@ -15,7 +15,6 @@ import { toast, ToastContainer } from 'react-toastify'
 import cn from 'classnames'
 import { IMAGE_KIT_BASE_URL } from './consts'
 import Navbar from './components/organisms/Navbar'
-
 //@ts-expect-error idk
 import stylesheet from '~/tailwind.css?url'
 import 'react-toastify/dist/ReactToastify.css'
@@ -23,7 +22,7 @@ import Modal from './components/atoms/Modal'
 import ContactForm from './components/organisms/ContactForm'
 import {
     ContactModalProvider,
-    useContactModalContext,
+    useContactModal,
 } from './contexts/contactModalContext'
 import { useHydrated } from './hooks/useHydrated'
 
@@ -57,8 +56,8 @@ function AppContent() {
     const { url, tt, tm, pathname } = useLoaderData<typeof loader>()
     const [isNavbarOpen, setIsNavbarOpen] = useState(false)
     const navigate = useNavigate()
-    const { isOpen: isContactModalOpen, closeModal: closeContactModal } =
-        useContactModalContext()
+    const { isOpen: isContactModalOpen, close: closeContactModal } =
+        useContactModal()
     const hydrated = useHydrated()
 
     useEffect(() => {

@@ -1,4 +1,4 @@
-export interface FAQJsonLdItem {
+export interface IFAQJsonLdItem {
     question: string
     answer: string
 }

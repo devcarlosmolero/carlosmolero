@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 import Button from '~/components/atoms/Button'
 import NavbarDrawer from './NavbarDrawer'
 import ImageKitImage from '~/components/atoms/ImageKitImage'
-import { useContactModalContext } from '~/contexts/contactModalContext'
+import { useContactModal } from '~/contexts/contactModalContext'
 
 export default function Navbar({
     onOpen,
@@ -15,7 +15,7 @@ export default function Navbar({
     onClose: () => void
 }) {
     const [isOpen, setIsOpen] = useState(false)
-    const { openModal: openContactModal } = useContactModalContext()
+    const { open: openContactModal } = useContactModal()
 
     useEffect(() => {
         if (isOpen) {

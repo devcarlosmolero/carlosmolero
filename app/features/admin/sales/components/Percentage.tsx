@@ -1,6 +1,6 @@
-import Formatters from '~/utils/formatters'
+import { formatCurrency } from '../../utils'
 
-export default function AdminSalesPercentage({
+export default function Percentage({
     total2024,
     total2025,
     isAhead,
@@ -28,8 +28,7 @@ export default function AdminSalesPercentage({
                 <span
                     className={`text-end text-sm font-medium ${isAhead ? 'text-green-500' : 'text-text-two'}`}
                 >
-                    {Formatters.formatCurrency(total2025)} /{' '}
-                    {Formatters.formatCurrency(total2024)}
+                    {formatCurrency(total2025)} / {formatCurrency(total2024)}
                 </span>
             </div>
             <div className="h-4 w-full rounded-full border border-border-main bg-base-primary">
@@ -48,7 +47,7 @@ export default function AdminSalesPercentage({
                 <div className="mt-2 text-sm">
                     <span className="font-medium text-text-one">Missing: </span>
                     <span className="font-bold text-white">
-                        {Formatters.formatCurrency(remainingAmount)}
+                        {formatCurrency(remainingAmount)}
                     </span>
 
                     <span className="ml-2 text-red-300">
@@ -62,7 +61,7 @@ export default function AdminSalesPercentage({
                         Exceeded by:{' '}
                     </span>
                     <span className="text-green-500">
-                        {Formatters.formatCurrency(Math.abs(remainingAmount))}
+                        {formatCurrency(Math.abs(remainingAmount))}
                     </span>
                     <span className="ml-2 text-green-300">
                         (+{(percentage - 100).toFixed(1)}%)

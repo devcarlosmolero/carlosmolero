@@ -23,8 +23,8 @@ async function isTokenValid(token: string, context: AppLoadContext) {
     }
 }
 
-const Turnstile = {
+const TurnstileApi = {
     isTokenValid,
 }
 
-export default Turnstile
+export default TurnstileApi

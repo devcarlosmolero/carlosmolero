@@ -1,4 +1,4 @@
-export interface ContentfulFilters {
+export interface IContentfulFilters {
     contentType: string
     where?: string
     select?: string[]
@@ -6,7 +6,7 @@ export interface ContentfulFilters {
     limit?: number
 }
 
-export interface Post {
+export interface IPost {
     seoTitle: string
     seoDescription: string
     content: string
@@ -22,13 +22,4 @@ export interface Post {
     hookDescription?: string
     slug?: string
     sections?: { id: string; text: string; level: number }[]
-}
-
-export interface Project {
-    seoTitle: string
-    categories: string[]
-    url: string
-    successCaseSlug?: string
-    img: any
-    imgUrl: string
 }

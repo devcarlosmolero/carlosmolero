@@ -8,42 +8,39 @@ import Page from '~/components/templates/Page'
 import { Calendar } from 'lucide-react'
 import ImageKitImage from '~/components/atoms/ImageKitImage'
 import { LoaderFunctionArgs } from '@remix-run/cloudflare'
-import { Post } from '~/types/contentful'
-import Posts from '~/actions/posts'
+import { IPost } from '~/types/contentful'
+import PostsApi from '~/api/posts'
 import { useLoaderData } from '@remix-run/react'
-import PostUtils from '~/utils/posts'
 import Container from '~/components/templates/Container'
 import MetaUtils from '~/utils/metas'
-import { useContactModalContext } from '~/contexts/contactModalContext'
+import { useContactModal } from '~/contexts/contactModalContext'
 import { useEffect } from 'react'
 import hljs from 'highlight.js'
 
 import 'highlight.js/styles/github-dark.css'
 import './HighlightJsOverride.css'
+import { getPostImageUrls } from '~/features/blog/utils'
 
 export async function loader({ request, context }: LoaderFunctionArgs) {
     const url = new URL(request.url)
     const slug = url.pathname.split('/')[2]
 
-    const post = (await Posts.getBySlug(slug, context)
+    const post = (await PostsApi.getBySlug(slug, context)
         .appendHeaderImgUrls()
         .formatDates()
-        .get())![0] as Post
+        .get())![0] as IPost
 
     return {
         post,
         postImageUrls: post
-            ? [
-                  `https:${post.headerImgUrl}`,
-                  ...PostUtils.getPostImageUrls(post.content),
-              ]
+            ? [`https:${post.headerImgUrl}`, ...getPostImageUrls(post.content)]
             : [],
     }
 }
 
 // @ts-expect-error idk
 export const meta: MetaFunction = (payload: {
-    data: { post: Post; postImageUrls: string[] }
+    data: { post: IPost; postImageUrls: string[] }
 }) => {
     const { post, postImageUrls } = payload.data
 
@@ -65,7 +62,7 @@ export const meta: MetaFunction = (payload: {
 
 export default function BlogSlugPage() {
     const { post } = useLoaderData<typeof loader>()
-    const { openModal: openContactModal } = useContactModalContext()
+    const { open: openContactModal } = useContactModal()
 
     useEffect(() => {
         const openContactModalLinkElement =

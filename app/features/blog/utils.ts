@@ -1,4 +1,4 @@
-function getPostImageUrls(markdown: string) {
+export function getPostImageUrls(markdown: string) {
     const imgMarkdownRegex = /!\[.*?\]\(([^)]+)\)/g
     const urls = []
     let match
@@ -9,9 +9,3 @@ function getPostImageUrls(markdown: string) {
 
     return urls
 }
-
-const PostUtils = {
-    getPostImageUrls,
-}
-
-export default PostUtils

@@ -1,18 +1,18 @@
 import { LoaderFunction, LoaderFunctionArgs } from '@remix-run/cloudflare'
-import Posts from '~/actions/posts'
+import Posts from '~/api/posts'
 import {
     SITE_BASE_URL,
     SITE_DESCRIPTION,
     SITE_NAME,
     SITE_TITLE,
 } from '~/consts'
-import { Post } from '~/types/contentful'
+import { IPost } from '~/types/contentful'
 import ServerUtils from '~/utils/server'
 
 export const loader: LoaderFunction = async ({
     context,
 }: LoaderFunctionArgs) => {
-    const posts = ((await Posts.latest(6, context).get()) || []) as Post[]
+    const posts = ((await Posts.latest(6, context).get()) || []) as IPost[]
 
     return new Response(renderXML(posts), {
         headers: {
@@ -23,7 +23,7 @@ export const loader: LoaderFunction = async ({
     })
 }
 
-const renderXML = (entries: Post[]): string => {
+const renderXML = (entries: IPost[]): string => {
     return `<?xml version="1.0" encoding="UTF-8"?>
   <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>

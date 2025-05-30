@@ -8,14 +8,10 @@ import {
     XAxis,
     YAxis,
 } from 'recharts'
-import { ChartData } from '~/types/sales'
-import Formatters from '~/utils/formatters'
+import { IChartData } from '../../types'
+import { formatCurrency } from '../../utils'
 
-export default function AdminSalesChart({
-    chartData,
-}: {
-    chartData: ChartData[]
-}) {
+export default function Chart({ chartData }: { chartData: IChartData[] }) {
     return (
         <ResponsiveContainer width="100%" height="100%">
             <LineChart
@@ -55,9 +51,7 @@ export default function AdminSalesChart({
                         borderRadius: '0.5rem',
                         boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
                     }}
-                    formatter={(value: number) =>
-                        Formatters.formatCurrency(value)
-                    }
+                    formatter={(value: number) => formatCurrency(value)}
                     labelFormatter={(label) => `Trimestre: ${label}`}
                 />
                 <Legend

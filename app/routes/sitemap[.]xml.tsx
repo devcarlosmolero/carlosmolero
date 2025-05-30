@@ -1,5 +1,5 @@
 import { LoaderFunction, LoaderFunctionArgs } from '@remix-run/cloudflare'
-import Posts from '~/actions/posts'
+import Posts from '~/api/posts'
 import { SITE_BASE_URL, SITE_STATIC_PATHS } from '~/consts'
 import { Post } from '~/types/contentful'
 import ServerUtils from '~/utils/server'

@@ -1,11 +1,11 @@
 import { Fragment } from 'react/jsx-runtime'
-import { QuaterlyComparisonItem } from '~/types/sales'
-import Formatters from '~/utils/formatters'
+import { IQuaterlyComparisonItem } from '../../types'
+import { formatCurrency } from '../../utils'
 
-export default function AdminSalesQuaterlyTable({
+export default function QuaterlyTable({
     quarterlyComparison,
 }: {
-    quarterlyComparison: QuaterlyComparisonItem[]
+    quarterlyComparison: IQuaterlyComparisonItem[]
 }) {
     return (
         <div className="overflow-x-auto rounded-md border border-border-main">
@@ -33,17 +33,17 @@ export default function AdminSalesQuaterlyTable({
                                 {item.quarter}
                             </td>
                             <td className="whitespace-nowrap px-4 py-3 text-sm text-blue-300">
-                                {Formatters.formatCurrency(item.sales2024)}
+                                {formatCurrency(item.sales2024)}
                             </td>
                             <td className="whitespace-nowrap px-4 py-3 text-sm text-orange-300">
-                                {Formatters.formatCurrency(item.sales2025)}
+                                {formatCurrency(item.sales2025)}
                             </td>
                             <td className="whitespace-nowrap px-4 py-3 text-sm">
                                 <span
                                     className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${item.difference >= 0 ? 'text-green-300' : 'text-red-300'}`}
                                 >
                                     {item.difference >= 0 ? '+' : ''}
-                                    {Formatters.formatCurrency(item.difference)}
+                                    {formatCurrency(item.difference)}
                                     <span className="ml-1">
                                         ({item.difference >= 0 ? '+' : ''}
                                         {item.growthRate.toFixed(1)}

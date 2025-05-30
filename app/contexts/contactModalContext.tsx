@@ -2,8 +2,8 @@ import { createContext, useContext, useState, ReactNode } from 'react'
 
 type ContactModalContextType = {
     isOpen: boolean
-    openModal: () => void
-    closeModal: () => void
+    open: () => void
+    close: () => void
 }
 
 const ContactModalContext = createContext<ContactModalContextType | undefined>(
@@ -13,17 +13,17 @@ const ContactModalContext = createContext<ContactModalContextType | undefined>(
 export function ContactModalProvider({ children }: { children: ReactNode }) {
     const [isOpen, setIsOpen] = useState(false)
 
-    const openModal = () => setIsOpen(true)
-    const closeModal = () => setIsOpen(false)
+    const open = () => setIsOpen(true)
+    const close = () => setIsOpen(false)
 
     return (
-        <ContactModalContext.Provider value={{ isOpen, openModal, closeModal }}>
+        <ContactModalContext.Provider value={{ isOpen, open, close }}>
             {children}
         </ContactModalContext.Provider>
     )
 }
 
-export function useContactModalContext() {
+export function useContactModal() {
     const context = useContext(ContactModalContext)
 
     if (context === undefined) {

@@ -1,18 +1,12 @@
-import {
-    Book,
-    BriefcaseBusiness,
-    Code,
-    Layers,
-    Link,
-    MoveUpRight,
-} from 'lucide-react'
-import { Fragment, useState } from 'react'
-import Button from '~/components/atoms/Button'
+import { BriefcaseBusiness, Code, Layers, MoveUpRight } from 'lucide-react'
+import { useState } from 'react'
 import Card from '~/components/templates/Card'
 import { useHydrated } from '~/hooks/useHydrated'
 import { cn } from '~/lib/utils'
+import RepositoryCard from './RepositoryCard'
+import NotoriousClientCard from './NotoriusClientCard'
 
-export default function HomePortfolio({
+export default function Portfolio({
     notoriousClientsData,
     conceptsData,
     repositoriesData,
@@ -163,104 +157,5 @@ export default function HomePortfolio({
                 </div>
             </div>
         </section>
-    )
-}
-
-function NotoriousClientCard({
-    backgroundColor = 'bg-white/80',
-    overlayBackgroundColor,
-    logoSrc,
-    landingHref,
-    name,
-    description,
-}: {
-    backgroundColor?: string
-    overlayBackgroundColor?: string
-    logoSrc: string
-    landingHref: string
-    name: string
-    description: string
-}) {
-    return (
-        <div className="flex flex-col items-start gap-5 rounded-xl border border-border-main p-5">
-            <div className="flex h-full flex-col gap-3">
-                <div
-                    className={`h-[50px] min-w-[50px] max-w-[50px] rounded-md ${backgroundColor}`}
-                >
-                    <div
-                        style={{ backgroundColor: overlayBackgroundColor }}
-                        className="flex h-full w-full items-center justify-center"
-                    >
-                        <img alt={name} className="w-[25px]" src={logoSrc} />
-                    </div>
-                </div>
-                <div className="space-y-1">
-                    <h3 className="text-2xl text-text-two">{name}</h3>
-                    <p className="text-text-on-primary">{description}</p>
-                </div>
-            </div>
-            <hr className="h-[1px] w-full border-none bg-text-four" />
-            <div className="w-full rounded-md px-0 py-0">
-                <Button
-                    asLink
-                    to={landingHref}
-                    props={
-                        {
-                            target: '_blank',
-                        } as React.LinkHTMLAttributes<HTMLLinkElement>
-                    }
-                    variant="ghost"
-                    className="!gap-2 !rounded-md border border-border-main !bg-[#101111] !px-4 !py-2 text-sm"
-                    hasIcon
-                >
-                    <Link className="size-4 text-text-one" />
-                    Landing
-                </Button>
-            </div>
-        </div>
-    )
-}
-
-function RepositoryCard({
-    repoHref,
-    language = 'Ruby',
-    name,
-    description,
-}: {
-    repoHref: string
-    language?: string
-    name: string
-    description: string
-}) {
-    return (
-        <div className="flex flex-col items-start gap-5 rounded-xl border border-[#3d444d] bg-[#0d1117] p-5">
-            <div className="flex h-full flex-col gap-3">
-                <div className="space-y-1">
-                    <a
-                        href={repoHref}
-                        target="_blank"
-                        className="flex items-center gap-2 text-lg text-[#4493f8] underline-offset-2 hover:underline"
-                        rel="noreferrer"
-                    >
-                        <Book className="size-5" /> {name}
-                    </a>
-                    <p className="text-sm text-[#9198a1]">{description}</p>
-                </div>
-            </div>
-            <div className="flex items-center gap-2 py-0">
-                {language === 'Ruby' && (
-                    <Fragment>
-                        <span className="h-[10px] w-[10px] rounded-full bg-[#701516]"></span>
-                        <p className="text-sm">{language}</p>
-                    </Fragment>
-                )}
-                {language === 'TypeScript' && (
-                    <Fragment>
-                        <span className="h-[10px] w-[10px] rounded-full bg-[#3178c6]"></span>
-                        <p className="text-sm">{language}</p>
-                    </Fragment>
-                )}
-            </div>
-        </div>
     )
 }

@@ -1,5 +1,5 @@
 import { AppLoadContext } from '@remix-run/cloudflare'
-import { ContentfulFilters } from '~/types/contentful'
+import { IContentfulFilters } from '~/types/contentful'
 
 const CONFIG = {
     CDA: {
@@ -16,7 +16,7 @@ function composeFilters({
     select,
     order,
     limit = 1,
-}: ContentfulFilters) {
+}: IContentfulFilters) {
     let filtersQueryString = ''
 
     filtersQueryString += `&content_type=${contentType}`
@@ -72,7 +72,7 @@ async function getEntryById(entryId: string, context: AppLoadContext) {
     return fields
 }
 
-const Contentful = {
+const ContentfulApi = {
     composeFilters,
     composeUrl,
     composeSingleUrl,
@@ -80,4 +80,4 @@ const Contentful = {
     getEntryById,
 }
 
-export default Contentful
+export default ContentfulApi

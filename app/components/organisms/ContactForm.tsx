@@ -21,6 +21,7 @@ export default function ContactForm() {
                 name="email"
                 type="email"
                 placeholder="hello@example.com"
+                disabled={!token}
                 required
             />
             <input type="hidden" name="pathname" value={location.pathname} />
@@ -28,10 +29,10 @@ export default function ContactForm() {
             <TextArea
                 name="message"
                 placeholder="Message in brief..."
+                disabled={!token}
                 required
             />
             <Turnstile
-                className="hidden"
                 onSuccess={(token) => setToken(token)}
                 siteKey="0x4AAAAAABDYC0VHvPuUFXUP"
                 options={{
@@ -39,7 +40,11 @@ export default function ContactForm() {
                 }}
                 lang="en"
             />
-            <Button variant="primary" className="!mt-5 w-full md:w-fit">
+            <Button
+                variant="primary"
+                isDisabled={!token}
+                className="!mt-5 w-full md:w-fit"
+            >
                 {' '}
                 Send Message
             </Button>
