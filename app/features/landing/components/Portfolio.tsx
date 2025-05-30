@@ -1,10 +1,11 @@
-import { BriefcaseBusiness, Code, Layers, MoveUpRight } from 'lucide-react'
+import { MoveUpRight } from 'lucide-react'
 import { useState } from 'react'
 import Card from '~/components/templates/Card'
 import { useHydrated } from '~/hooks/useHydrated'
 import { cn } from '~/lib/utils'
 import RepositoryCard from './RepositoryCard'
 import NotoriousClientCard from './NotoriusClientCard'
+import PortfolioTabs from './PortfolioTabs'
 
 export default function Portfolio({
     notoriousClientsData,
@@ -20,46 +21,7 @@ export default function Portfolio({
 
     return (
         <section id="portfolio" className="space-y-8 rounded-md">
-            <div className="space-y-5">
-                <h2 className="heading-gradient py-1 text-center text-4xl md:text-start md:text-5xl">
-                    Works
-                </h2>
-                <div className="flex flex-wrap items-center justify-center gap-3 md:justify-start">
-                    <button
-                        onClick={() => setActiveTab('concepts')}
-                        className={cn(
-                            'flex w-fit items-center gap-2 rounded-full border border-border-main px-4 py-2 text-sm transition-all duration-300 hover:border-text-two hover:text-text-two',
-                            activeTab === 'concepts' &&
-                                'border-text-two text-text-two'
-                        )}
-                    >
-                        <Layers className="size-4" />
-                        Concepts
-                    </button>
-                    <button
-                        onClick={() => setActiveTab('code')}
-                        className={cn(
-                            'flex w-fit items-center gap-2 rounded-full border border-border-main px-4 py-2 text-sm transition-all duration-300 hover:border-text-two hover:text-text-two',
-                            activeTab === 'code' &&
-                                'border-text-two text-text-two'
-                        )}
-                    >
-                        <Code className="size-4" />
-                        Code
-                    </button>
-                    <button
-                        onClick={() => setActiveTab('notoriousClients')}
-                        className={cn(
-                            'flex w-fit items-center gap-2 rounded-full border border-border-main px-4 py-2 text-sm transition-all duration-300 hover:border-text-two hover:text-text-two',
-                            activeTab === 'notoriousClients' &&
-                                'border-text-two text-text-two'
-                        )}
-                    >
-                        <BriefcaseBusiness className="size-4" />
-                        Notorious Clients
-                    </button>
-                </div>
-            </div>
+            <PortfolioTabs activeTab={activeTab} onChange={setActiveTab} />
             <div className="grid grid-cols-1 grid-rows-1 overflow-hidden">
                 <div
                     className={cn(
