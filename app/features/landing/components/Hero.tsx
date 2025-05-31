@@ -18,15 +18,21 @@ export default function Hero() {
                         <p className="text-text-two">Ready for Work</p>
                     </div>
                     <h1 className="heading-gradient py-1 text-center text-5xl md:text-start md:text-6xl">
-                        Your Digital Product <br className="hidden md:block" />
-                        With The Right Guidance
+                        I'm Not Your Nephew but
+                        <br className="hidden md:block" /> I Build{' '}
+                        <span className="font-playfair font-extralight italic tracking-tighter">
+                            With Care
+                        </span>
                     </h1>
                     <p className="text-center text-lg text-text-on-primary md:text-start">
-                        It has never been easier to create digital products, but
-                        creating them well? That&apos;s a whole different
-                        ballgame. Stay away from the noise and let me provide
-                        you with a clear vision and strategy to lead your
-                        digital project to success.
+                        I've <b>coded</b> and <b>designed</b> like crazy, but
+                        I'm not just a builder. Thanks to my time in the startup
+                        trenches, I bring a street-smart understanding of what
+                        actually makes a business tick.
+                    </p>
+                    <p className="text-center text-lg text-text-on-primary md:text-start">
+                        My sights are set squarely on your digital success, and
+                        I'm ready to shake things up to get you there.
                     </p>
                     <div className="mt-3 flex w-full flex-col items-center gap-x-0 gap-y-3 md:flex-row md:gap-0">
                         <Button
