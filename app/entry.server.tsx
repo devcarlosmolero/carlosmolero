@@ -5,9 +5,10 @@
  */
 
 import type { AppLoadContext, EntryContext } from '@remix-run/cloudflare'
-import { RemixServer } from '@remix-run/react'
+import { redirect, RemixServer } from '@remix-run/react'
 import { isbot } from 'isbot'
 import { renderToReadableStream } from 'react-dom/server'
+import adminMiddleware from './middlewares/admin'
 
 export default async function handleRequest(
     request: Request,
@@ -19,6 +20,9 @@ export default async function handleRequest(
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     loadContext: AppLoadContext
 ) {
+    const adminAuthorized = adminMiddleware(request, loadContext)
+    if (adminAuthorized === false) return redirect('/')
+
     const body = await renderToReadableStream(
         <RemixServer context={remixContext} url={request.url} />,
         {

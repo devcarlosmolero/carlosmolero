@@ -8,6 +8,5 @@ interface Env {
     CONTENTFUL_CDA_TOKEN: string
     CONTENTFUL_SPACE_ID: string
     NOTION_SECRET: string
-    ADMIN_USERNAME?: string
-    ADMIN_PASSWORD?: string
+    ADMIN_TOKEN: string
 }

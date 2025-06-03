@@ -12,15 +12,9 @@ import {
 
 export default function AdminSalesPage({
     chartData,
-    allowed,
 }: {
     chartData: IChartData[]
-    allowed: boolean
 }) {
-    if (!allowed) {
-        return <></>
-    }
-
     const total2024 = fromSalesChartDataToAnnualAmount(
         'amount2024',
         chartData as IChartData[]
