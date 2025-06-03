@@ -13,7 +13,7 @@ export const headers = ({ loaderHeaders }: { loaderHeaders: Headers }) => {
 export async function loader({ request, context }: LoaderFunctionArgs) {
     const authResult = ServerUtils.isHTTPAuthorized(request, context)
 
-    if (!authResult) {
+    if (authResult !== true) {
         return new Response('Required Authentication', {
             status: 401,
             headers: {

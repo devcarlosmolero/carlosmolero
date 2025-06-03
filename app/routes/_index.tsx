@@ -5,7 +5,7 @@ import {
 } from '@remix-run/cloudflare'
 import { SITE_DESCRIPTION, SITE_NAME, SITE_TITLE } from '~/consts'
 import MetaUtils from '~/utils/metas'
-import ServerUtils, { loadYaml } from '~/utils/server'
+import ServerUtils from '~/utils/server'
 import PostsApi from '~/api/posts'
 import { useLoaderData } from '@remix-run/react'
 import { IPost } from '~/types/contentful'
@@ -23,11 +23,11 @@ export async function loader({ context, request }: LoaderFunctionArgs) {
         servicesData,
     ] = await Promise.all([
         PostsApi.latest(6, context).appendHeaderImgUrls().formatDates().get(),
-        loadYaml('/data/notorious-clients.yml', request),
-        loadYaml('/data/concepts.yml', request),
-        loadYaml('/data/repositories.yml', request),
-        loadYaml('/data/testimonials.yml', request),
-        loadYaml('/data/services.yml', request),
+        ServerUtils.loadYaml('/data/notorious-clients.yml', request),
+        ServerUtils.loadYaml('/data/concepts.yml', request),
+        ServerUtils.loadYaml('/data/repositories.yml', request),
+        ServerUtils.loadYaml('/data/testimonials.yml', request),
+        ServerUtils.loadYaml('/data/services.yml', request),
     ])
 
     return json(

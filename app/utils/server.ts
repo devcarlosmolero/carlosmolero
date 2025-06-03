@@ -48,7 +48,7 @@ function getCacheControlHeader(
     return `public, max-age=${maxAge}, s-maxage=${maxAge}`
 }
 
-export async function loadYaml(
+async function loadYaml(
     filePath: string,
     request: LoaderFunctionArgs['request']
 ) {
@@ -63,10 +63,10 @@ export async function loadYaml(
     }
 }
 
-const isHTTPAuthorized = (
+function isHTTPAuthorized(
     request: LoaderFunctionArgs['request'],
     context: AppLoadContext
-) => {
+) {
     const header = request.headers.get('Authorization')
     if (!header || !header.startsWith('Basic ')) {
         console.error("'Authorization' header missing or invalid", header)
