@@ -22,7 +22,7 @@ export async function action({ request, context }: ActionFunctionArgs) {
     }
 
     await DiscordApi.sendMessage(
-        `\n\n🤖 **${submission.email}** has written: \n\n*"${submission.message}"*`,
+        `\n\n[💬 CONTACT] - **${submission.email}** has written: \n\n*"${submission.message}"*`,
         context
     )
 
