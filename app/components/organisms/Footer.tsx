@@ -26,14 +26,6 @@ export default function Footer() {
                     </Link>
                     <Link
                         className="cursor-pointer rounded-full border border-input-focus-border p-2 text-text-three hover:bg-base-tertiary hover:text-text-on-tertiary"
-                        to="https://github.com/devcarlosmolero"
-                        target="_blank"
-                        rel="noreferrer"
-                    >
-                        <Github className="size-4" />
-                    </Link>
-                    <Link
-                        className="cursor-pointer rounded-full border border-input-focus-border p-2 text-text-three hover:bg-base-tertiary hover:text-text-on-tertiary"
                         rel="me"
                         to="https://mastodon.social/@iscarlosmolero"
                     >
