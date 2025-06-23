@@ -92,6 +92,10 @@ function AppContent() {
                     name="viewport"
                     content="width=device-width, initial-scale=1"
                 />
+                <meta
+                    name="fediverse:creator"
+                    content="@iscarlosmolero@mastodon.social"
+                />
                 <link
                     rel="icon"
                     type="image/x-icon"
