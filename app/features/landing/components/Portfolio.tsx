@@ -99,7 +99,7 @@ export default function Portfolio({
                         </Card>
                     ))}
                     {conceptsData.length === 0 && (
-                        <p>There's nothing here... Yet!</p>
+                        <p>There&apos;s nothing here... Yet!</p>
                     )}
                 </div>
                 <div
