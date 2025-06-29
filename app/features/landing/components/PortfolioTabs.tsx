@@ -15,16 +15,17 @@ export default function PortfolioTabs({
             </h2>
             <div className="flex flex-wrap items-center justify-center gap-3 md:justify-start">
                 <button
-                    onClick={() => onChange('concepts')}
+                    onClick={() => onChange('notoriousClients')}
                     className={cn(
                         'flex w-fit items-center gap-2 rounded-full border border-border-main px-4 py-2 text-sm transition-all duration-300 hover:border-text-two hover:text-text-two',
-                        activeTab === 'concepts' &&
+                        activeTab === 'notoriousClients' &&
                             'border-text-two text-text-two'
                     )}
                 >
-                    <Layers className="size-4" />
-                    Concepts
+                    <BriefcaseBusiness className="size-4" />
+                    Notorious Clients
                 </button>
+
                 <button
                     onClick={() => onChange('code')}
                     className={cn(
@@ -36,15 +37,15 @@ export default function PortfolioTabs({
                     Code
                 </button>
                 <button
-                    onClick={() => onChange('notoriousClients')}
+                    onClick={() => onChange('concepts')}
                     className={cn(
                         'flex w-fit items-center gap-2 rounded-full border border-border-main px-4 py-2 text-sm transition-all duration-300 hover:border-text-two hover:text-text-two',
-                        activeTab === 'notoriousClients' &&
+                        activeTab === 'concepts' &&
                             'border-text-two text-text-two'
                     )}
                 >
-                    <BriefcaseBusiness className="size-4" />
-                    Notorious Clients
+                    <Layers className="size-4" />
+                    Concepts
                 </button>
             </div>
         </div>

@@ -17,7 +17,7 @@ export default function Portfolio({
     repositoriesData: any[]
 }) {
     const isHydrated = useHydrated()
-    const [activeTab, setActiveTab] = useState('concepts')
+    const [activeTab, setActiveTab] = useState('notoriousClients')
 
     return (
         <section id="portfolio" className="space-y-8 rounded-md">
@@ -98,6 +98,9 @@ export default function Portfolio({
                             </div>
                         </Card>
                     ))}
+                    {conceptsData.length === 0 && (
+                        <p>There's nothing here... Yet!</p>
+                    )}
                 </div>
                 <div
                     className={cn(

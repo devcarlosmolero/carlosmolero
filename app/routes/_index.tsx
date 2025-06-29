@@ -71,7 +71,7 @@ export default function Page() {
         <LandingPage
             posts={posts as IPost[]}
             notoriusClientsData={notoriusClientsData}
-            conceptsData={conceptsData}
+            conceptsData={conceptsData ?? []}
             repositoriesData={repositoriesData}
             testimonialsData={testimonialsData}
             servicesData={servicesData}
