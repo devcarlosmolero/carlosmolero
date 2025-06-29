@@ -40,6 +40,12 @@ export default function RepositoryCard({
                         <p className="text-sm">{language}</p>
                     </Fragment>
                 )}
+                {language === 'Python' && (
+                    <Fragment>
+                        <span className="h-[10px] w-[10px] rounded-full bg-[#3572A5]"></span>
+                        <p className="text-sm">{language}</p>
+                    </Fragment>
+                )}
             </div>
         </div>
     )
