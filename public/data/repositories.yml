@@ -13,11 +13,6 @@
   repoHref: "https://github.com/devcarlosmolero/tabular-db"
   language: "Ruby"
 
-- name: "trading-advisor"
-  description: "Trading script that generates buy signals and recommends Take Profit and Stop Loss prices based on Bollinger Bands and RSI."
-  repoHref: "https://github.com/devcarlosmolero/trading-advisor"
-  language: "Python"
-
 - name: "carlosmolero"
   description: "My personal website."
   repoHref: "https://github.com/devcarlosmolero/carlosmolero"
