@@ -20,9 +20,9 @@
 - name: "Peakz"
   description: "On Peakz athletes get rewarded for what they do: you video yourself training, preparing and competing and post that content exclusively on your Peakz channel. Your fans become scouts and pay to see your content."
   logoSrc: "./peakz-logo.png"
-  overlayBackgroundColor: "hsla(34, 100%, 52%, 0.3)"
+  overlayBackgroundColor: "hsla(34, 100%, 52%, 0.2)"
   landingHref: "https://app.peakz.com"
-  backgroundColor: "bg-white/30"
+  backgroundColor: "bg-white/40"
 
 - name: "Voicit"
   description: "Voicit is an AI-powered tool that provides online ChatGPT summaries for meeting notes. It enables users to summarize and create customizable meeting minutes, interacting with transcriptions, recordings, and intelligent chats to extract key information from both online and in-person meetings."
