@@ -18,7 +18,7 @@ export default function Portfolio({
     repositoriesData: any[]
 }) {
     const isHydrated = useHydrated()
-    const [activeTab, setActiveTab] = useState('notoriousClients')
+    const [activeTab, setActiveTab] = useState('caseStudies')
 
     return (
         <section id="portfolio" className="space-y-8 rounded-md">
