@@ -41,7 +41,6 @@ export default function CaseStudyImageCarousel({
                         key={`case-study-image-${index}`}
                     >
                         <img
-                            className="rounded-md"
                             alt={caseStudy.seoTitle}
                             src={`https:${imageUrl}`}
                         />

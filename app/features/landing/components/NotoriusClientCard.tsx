@@ -20,11 +20,11 @@ export default function NotoriousClientCard({
         <div className="flex flex-col items-start gap-5 rounded-xl border border-border-main p-5">
             <div className="flex h-full flex-col gap-3">
                 <div
-                    className={`h-[50px] min-w-[50px] max-w-[50px] rounded-md ${backgroundColor}`}
+                    className={`h-[50px] min-w-[50px] max-w-[50px] rounded-full ${backgroundColor}`}
                 >
                     <div
                         style={{ backgroundColor: overlayBackgroundColor }}
-                        className="flex h-full w-full items-center justify-center rounded-md"
+                        className="flex h-full w-full items-center justify-center rounded-full"
                     >
                         <img alt={name} className="w-[25px]" src={logoSrc} />
                     </div>
@@ -45,10 +45,10 @@ export default function NotoriousClientCard({
                         } as React.LinkHTMLAttributes<HTMLLinkElement>
                     }
                     variant="ghost"
-                    className="!gap-2 !rounded-md border border-border-main !bg-[#101111] !px-4 !py-2 text-sm"
+                    className="!gap-2 border border-border-main !bg-[#101111] !px-4 !py-2 text-sm"
                     hasIcon
                 >
-                    <Link className="size-4 text-text-one" />
+                    <Link className="size-4" />
                     Landing
                 </Button>
             </div>

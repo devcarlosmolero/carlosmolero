@@ -19,7 +19,7 @@ export default function RepositoryCard({
                     <a
                         href={repoHref}
                         target="_blank"
-                        className="flex items-center gap-2 text-lg text-[#4493f8] underline-offset-2 hover:underline"
+                        className="flex items-center gap-2 text-lg text-[#4493f8] underline underline-offset-2 hover:no-underline"
                         rel="noreferrer"
                     >
                         <Book className="size-5" /> {name}

@@ -10,7 +10,7 @@ export default function Hero() {
         <section id="hero">
             <div className="grid gap-x-20 gap-y-10 lg:grid-cols-2">
                 <div className="flex flex-col items-center gap-y-5 md:items-start">
-                    <div className="flex w-fit items-center gap-x-3 rounded-full border border-border-main px-4 py-3 text-sm">
+                    <div className="flex w-fit items-center gap-x-3 rounded-full px-0 py-0 text-sm">
                         <div className="relative">
                             <div className="h-[10px] w-[10px] rounded-full bg-green-400"></div>
                             <div className="absolute top-0 h-[10px] w-[10px] animate-ping rounded-full bg-green-400 opacity-75"></div>
