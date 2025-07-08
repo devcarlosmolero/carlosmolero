@@ -16,7 +16,7 @@ export default function CaseStudyImageCarousel({
             loop: true,
             watchDrag: false,
         },
-        [Autoplay({ playOnInit: false, delay: 3000 })]
+        [Autoplay({ playOnInit: true, delay: 3000 })]
     )
     const progressNode = useRef<HTMLDivElement>(null)
 
@@ -32,21 +32,16 @@ export default function CaseStudyImageCarousel({
 
     const { showAutoplayProgress } = useAutoplayProgress(emblaApi, progressNode)
 
-    useEffect(() => {
-        if (emblaApi && !autoplayIsPlaying) {
-            emblaApi?.plugins()?.autoplay.play()
-        }
-    }, [emblaApi])
-
     return (
         <div className="embla" ref={emblaRef}>
             <div className="embla__container">
                 {caseStudy.imageCarouselUrls?.map((imageUrl, index) => (
                     <div
-                        className="embla__single__slide"
+                        className="embla__single__slide !mx-0"
                         key={`case-study-image-${index}`}
                     >
                         <img
+                            className="rounded-md"
                             alt={caseStudy.seoTitle}
                             src={`https:${imageUrl}`}
                         />

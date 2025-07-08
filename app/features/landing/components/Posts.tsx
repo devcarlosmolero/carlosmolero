@@ -17,7 +17,7 @@ export default function Posts({ posts }: { posts: IPost[] }) {
                         <Link to={`/blog/${post.slug}`} key={post.slug}>
                             <Card className="aspect-square group space-y-5">
                                 <div className="overflow-hidden rounded-md">
-                                    <FakeBackgroundImagePrimitive.Container className="aspect-square h-[250px] rounded-md">
+                                    <FakeBackgroundImagePrimitive.Container className="aspect-h-3 aspect-w-4 h-[250px] rounded-md">
                                         <FakeBackgroundImagePrimitive.Image
                                             className="rounded-md transition-all duration-200 group-hover:scale-105"
                                             src={post.headerImgUrl!}

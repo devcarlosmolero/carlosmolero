@@ -90,7 +90,7 @@ export default function BlogSlugPage() {
             <Page>
                 <div className="mt-12 flex flex-col items-center md:flex-row">
                     <div className="w-full space-y-5 md:w-[70%]">
-                        <FakeBackgroundImagePrimitive.Container className="aspect-h-9 aspect-w-16 rounded-md">
+                        <FakeBackgroundImagePrimitive.Container className="aspect-h-3 aspect-w-4 rounded-md">
                             <FakeBackgroundImagePrimitive.Image
                                 className="rounded-md"
                                 alt={post.seoTitle}
