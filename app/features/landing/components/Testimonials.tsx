@@ -25,8 +25,8 @@ export default function Testimonials({
             <h2 className="heading-gradient py-1 text-center text-4xl md:text-start md:text-5xl">
                 Testimonials
             </h2>
-            <div className="embla gradient-border" ref={emblaRef}>
-                <div className="embla__container gradient-content">
+            <div className="embla gradient-content" ref={emblaRef}>
+                <div className="embla__container">
                     {testimonialsData.map((testimonial, index) => (
                         <div
                             className="embla__slide"

@@ -37,15 +37,15 @@ export default function PortfolioTabs({
                     Code
                 </button>
                 <button
-                    onClick={() => onChange('concepts')}
+                    onClick={() => onChange('caseStudies')}
                     className={cn(
                         'flex w-fit items-center gap-2 rounded-full border border-border-main px-4 py-2 text-sm transition-all duration-300 hover:border-text-two hover:text-text-two',
-                        activeTab === 'concepts' &&
+                        activeTab === 'caseStudies' &&
                             'border-text-two text-text-two'
                     )}
                 >
                     <Layers className="size-4" />
-                    Concepts
+                    Case Studies
                 </button>
             </div>
         </div>

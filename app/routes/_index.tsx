@@ -12,29 +12,33 @@ import { IPost } from '~/types/contentful'
 import LandingPage from '~/features/landing/components'
 
 import 'animate.css/animate.compat.css'
+import CaseStudies from '~/api/caseStudies'
 
 export async function loader({ context, request }: LoaderFunctionArgs) {
     const [
         last6Posts,
         notoriusClientsData,
-        conceptsData,
         repositoriesData,
         testimonialsData,
         servicesData,
     ] = await Promise.all([
         PostsApi.latest(6, context).appendHeaderImgUrls().formatDates().get(),
         ServerUtils.loadYaml('/data/notorious-clients.yml', request),
-        ServerUtils.loadYaml('/data/concepts.yml', request),
         ServerUtils.loadYaml('/data/repositories.yml', request),
         ServerUtils.loadYaml('/data/testimonials.yml', request),
         ServerUtils.loadYaml('/data/services.yml', request),
     ])
 
+    const caseStudiesData = await CaseStudies.all(6, 0, context)
+        .appendImageCarouselUrls()
+        .appendVideoUrl()
+        .get()
+
     return json(
         {
             posts: last6Posts,
             notoriusClientsData,
-            conceptsData,
+            caseStudiesData,
             repositoriesData,
             testimonialsData,
             servicesData,
@@ -61,7 +65,7 @@ export default function Page() {
     const {
         posts,
         notoriusClientsData,
-        conceptsData,
+        caseStudiesData,
         repositoriesData,
         testimonialsData,
         servicesData,
@@ -71,7 +75,7 @@ export default function Page() {
         <LandingPage
             posts={posts as IPost[]}
             notoriusClientsData={notoriusClientsData}
-            conceptsData={conceptsData ?? []}
+            caseStudiesData={caseStudiesData ?? []}
             repositoriesData={repositoriesData}
             testimonialsData={testimonialsData}
             servicesData={servicesData}

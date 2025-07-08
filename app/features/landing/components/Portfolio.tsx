@@ -6,14 +6,15 @@ import { cn } from '~/lib/utils'
 import RepositoryCard from './RepositoryCard'
 import NotoriousClientCard from './NotoriusClientCard'
 import PortfolioTabs from './PortfolioTabs'
+import CaseStudyImageCarousel from './CaseStudyImageCarousel'
 
 export default function Portfolio({
     notoriousClientsData,
-    conceptsData,
+    caseStudiesData,
     repositoriesData,
 }: {
     notoriousClientsData: any[]
-    conceptsData: any[]
+    caseStudiesData: any[]
     repositoriesData: any[]
 }) {
     const isHydrated = useHydrated()
@@ -25,7 +26,7 @@ export default function Portfolio({
             <div className="grid grid-cols-1 grid-rows-1 overflow-hidden">
                 <div
                     className={cn(
-                        'col-span-1 col-start-1 row-span-1 row-start-1 grid gap-5 transition-all duration-300 md:grid-cols-3',
+                        'col-span-1 col-start-1 row-span-1 row-start-1 grid gap-5 transition-all duration-300 sm:grid-cols-2 lg:grid-cols-3',
                         activeTab === 'notoriousClients'
                             ? 'translate-x-0 opacity-100'
                             : 'h-0 translate-x-8 overflow-hidden opacity-0'
@@ -48,18 +49,18 @@ export default function Portfolio({
                 <div
                     className={cn(
                         'col-span-1 col-start-1 row-span-1 row-start-1 grid gap-5 transition-all duration-300 md:grid-cols-2',
-                        activeTab === 'concepts'
+                        activeTab === 'caseStudies'
                             ? 'translate-x-0 opacity-100'
                             : 'h-0 translate-x-8 overflow-hidden opacity-0'
                     )}
                 >
-                    {conceptsData.map((concept, index) => (
+                    {caseStudiesData.map((caseStudy, index) => (
                         <Card
-                            key={`concept-${index}`}
+                            key={`case-study-${index}`}
                             className="aspect-square group"
                         >
-                            <div className="overflow-hidden rounded-md">
-                                {isHydrated && (
+                            <div className="aspect-h-3 aspect-w-4 overflow-hidden rounded-md">
+                                {caseStudy.videoUrl && isHydrated && (
                                     <video
                                         loop
                                         autoPlay
@@ -76,8 +77,13 @@ export default function Portfolio({
                                                 )
                                             }
                                         }}
-                                        src={concept.videoSrc}
+                                        src={`https:${caseStudy.videoUrl}`}
                                         className="h-full w-full rounded-md transition-all duration-200 group-hover:scale-105"
+                                    />
+                                )}
+                                {caseStudy.imageCarouselUrls && (
+                                    <CaseStudyImageCarousel
+                                        caseStudy={caseStudy}
                                     />
                                 )}
                             </div>
@@ -85,7 +91,7 @@ export default function Portfolio({
                                 <div className="group flex cursor-pointer">
                                     <div className="w-full">
                                         <h4 className="text-2xl text-text-two">
-                                            {concept.title}
+                                            {caseStudy.seoTitle}
                                         </h4>
                                     </div>
                                     <div>
@@ -93,18 +99,18 @@ export default function Portfolio({
                                     </div>
                                 </div>
                                 <p className="text-text-one">
-                                    {concept.description}
+                                    {caseStudy.seoDescription}
                                 </p>
                             </div>
                         </Card>
                     ))}
-                    {conceptsData.length === 0 && (
+                    {caseStudiesData.length === 0 && (
                         <p>There&apos;s nothing here... Yet!</p>
                     )}
                 </div>
                 <div
                     className={cn(
-                        'col-span-1 col-start-1 row-span-1 row-start-1 grid gap-5 transition-all duration-300 md:grid-cols-3',
+                        'col-span-1 col-start-1 row-span-1 row-start-1 grid gap-5 transition-all duration-300 sm:grid-cols-2 lg:grid-cols-3',
                         activeTab === 'code'
                             ? 'translate-x-0 opacity-100'
                             : 'h-0 translate-x-8 overflow-hidden opacity-0'

@@ -9,14 +9,14 @@ import Testimonials from './Testimonials'
 export default function LandingPage({
     servicesData,
     notoriusClientsData,
-    conceptsData,
+    caseStudiesData,
     repositoriesData,
     testimonialsData,
     posts,
 }: {
     servicesData: any
     notoriusClientsData: any
-    conceptsData: any
+    caseStudiesData: any
     repositoriesData: any
     testimonialsData: any
     posts: IPost[]
@@ -27,7 +27,7 @@ export default function LandingPage({
             <Services servicesData={servicesData} />
             <Portfolio
                 notoriousClientsData={notoriusClientsData}
-                conceptsData={conceptsData}
+                caseStudiesData={caseStudiesData}
                 repositoriesData={repositoriesData}
             />
             <Testimonials testimonialsData={testimonialsData} />
