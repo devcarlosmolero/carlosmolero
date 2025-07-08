@@ -25,7 +25,7 @@ export default function Portfolio({
             <div className="grid grid-cols-1 grid-rows-1 overflow-hidden">
                 <div
                     className={cn(
-                        'col-span-1 col-start-1 row-span-1 row-start-1 grid gap-5 transition-all duration-300 md:grid-cols-2',
+                        'col-span-1 col-start-1 row-span-1 row-start-1 grid gap-5 transition-all duration-300 md:grid-cols-3',
                         activeTab === 'notoriousClients'
                             ? 'translate-x-0 opacity-100'
                             : 'h-0 translate-x-8 overflow-hidden opacity-0'
@@ -104,7 +104,7 @@ export default function Portfolio({
                 </div>
                 <div
                     className={cn(
-                        'col-span-1 col-start-1 row-span-1 row-start-1 grid gap-5 transition-all duration-300 md:grid-cols-2',
+                        'col-span-1 col-start-1 row-span-1 row-start-1 grid gap-5 transition-all duration-300 md:grid-cols-3',
                         activeTab === 'code'
                             ? 'translate-x-0 opacity-100'
                             : 'h-0 translate-x-8 overflow-hidden opacity-0'

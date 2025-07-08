@@ -6,7 +6,7 @@ export default function Services({ servicesData }: { servicesData: any[] }) {
     return (
         <section
             id="services"
-            className="space-y-8 rounded-md md:bg-[#101111] md:p-[50px]"
+            className="space-y-8 rounded-2xl md:bg-[#101111] md:p-[50px]"
         >
             <h2 className="heading-gradient py-1 text-center text-4xl md:text-start md:text-5xl">
                 Services

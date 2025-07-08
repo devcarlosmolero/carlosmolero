@@ -24,7 +24,7 @@ export default function NotoriousClientCard({
                 >
                     <div
                         style={{ backgroundColor: overlayBackgroundColor }}
-                        className="flex h-full w-full items-center justify-center"
+                        className="flex h-full w-full items-center justify-center rounded-md"
                     >
                         <img alt={name} className="w-[25px]" src={logoSrc} />
                     </div>
@@ -35,7 +35,7 @@ export default function NotoriousClientCard({
                 </div>
             </div>
             <hr className="h-[1px] w-full border-none bg-text-four" />
-            <div className="w-full rounded-md px-0 py-0">
+            <div className="w-full px-0 py-0">
                 <Button
                     asLink
                     to={landingHref}
