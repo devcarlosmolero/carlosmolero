@@ -16,10 +16,10 @@ import MetaUtils from '~/utils/metas'
 import { useContactModal } from '~/contexts/contactModalContext'
 import { useEffect } from 'react'
 import hljs from 'highlight.js'
+import { getPostImageUrls } from '~/features/blog/utils'
 
 import 'highlight.js/styles/github-dark.css'
 import './HighlightJsOverride.css'
-import { getPostImageUrls } from '~/features/blog/utils'
 
 export async function loader({ request, context }: LoaderFunctionArgs) {
     const url = new URL(request.url)

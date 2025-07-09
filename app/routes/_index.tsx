@@ -12,7 +12,7 @@ import { IPost } from '~/types/contentful'
 import LandingPage from '~/features/landing/components'
 
 import 'animate.css/animate.compat.css'
-import CaseStudies from '~/api/caseStudies'
+import CaseStudiesApi from '~/api/caseStudies'
 
 export async function loader({ context, request }: LoaderFunctionArgs) {
     const [
@@ -29,7 +29,7 @@ export async function loader({ context, request }: LoaderFunctionArgs) {
         ServerUtils.loadYaml('/data/services.yml', request),
     ])
 
-    const caseStudiesData = await CaseStudies.all(6, 0, context)
+    const caseStudiesData = await CaseStudiesApi.all(6, 0, context)
         .appendImageCarouselUrls()
         .appendVideoUrl()
         .get()

@@ -7,6 +7,7 @@ import RepositoryCard from './RepositoryCard'
 import NotoriousClientCard from './NotoriusClientCard'
 import PortfolioTabs from './PortfolioTabs'
 import CaseStudyImageCarousel from './CaseStudyImageCarousel'
+import { Link } from '@remix-run/react'
 
 export default function Portfolio({
     notoriousClientsData,
@@ -55,58 +56,57 @@ export default function Portfolio({
                     )}
                 >
                     {caseStudiesData.map((caseStudy, index) => (
-                        <Card
+                        <Link
+                            to={`/case-study/${caseStudy.slug}`}
                             key={`case-study-${index}`}
-                            className="aspect-square group"
                         >
-                            <div className="aspect-h-3 aspect-w-4 overflow-hidden rounded-md">
-                                {caseStudy.videoUrl && isHydrated && (
-                                    <video
-                                        loop
-                                        autoPlay
-                                        muted
-                                        playsInline
-                                        preload="auto"
-                                        ref={(el) => {
-                                            if (el) {
-                                                el.play().catch((e) =>
-                                                    console.log(
-                                                        'Autoplay prevented:',
-                                                        e
+                            <Card className="aspect-square group !h-full">
+                                <div className="aspect-h-3 aspect-w-4 overflow-hidden rounded-md">
+                                    {caseStudy.videoPreview && isHydrated && (
+                                        <video
+                                            loop
+                                            autoPlay
+                                            muted
+                                            playsInline
+                                            preload="auto"
+                                            ref={(el) => {
+                                                if (el) {
+                                                    el.play().catch((e) =>
+                                                        console.log(
+                                                            'Autoplay prevented:',
+                                                            e
+                                                        )
                                                     )
-                                                )
-                                            }
-                                        }}
-                                        src={`https:${caseStudy.videoUrl}`}
-                                        className="h-full w-full rounded-md transition-all duration-200 group-hover:scale-105"
-                                    />
-                                )}
-                                {caseStudy.imageCarouselUrls && (
-                                    <CaseStudyImageCarousel
-                                        caseStudy={caseStudy}
-                                    />
-                                )}
-                            </div>
-                            <div className="mt-8 space-y-3">
-                                <div className="group flex cursor-pointer">
-                                    <div className="w-full">
-                                        <h4 className="text-2xl text-text-two">
-                                            {caseStudy.seoTitle}
-                                        </h4>
-                                    </div>
-                                    <div>
-                                        <MoveUpRight className="size-6 text-text-three transition-all duration-200 group-hover:rotate-45 group-hover:text-text-two" />
-                                    </div>
+                                                }
+                                            }}
+                                            src={`https:${caseStudy.videoUrl}`}
+                                            className="h-full w-full rounded-md transition-all duration-200 group-hover:scale-105"
+                                        />
+                                    )}
+                                    {!caseStudy.videoPreview && (
+                                        <CaseStudyImageCarousel
+                                            caseStudy={caseStudy}
+                                        />
+                                    )}
                                 </div>
-                                <p className="text-text-one">
-                                    {caseStudy.seoDescription}
-                                </p>
-                            </div>
-                        </Card>
+                                <div className="mt-8 space-y-3">
+                                    <div className="group flex cursor-pointer">
+                                        <div className="w-full">
+                                            <h4 className="text-2xl text-text-two">
+                                                {caseStudy.seoTitle}
+                                            </h4>
+                                        </div>
+                                        <div>
+                                            <MoveUpRight className="size-6 text-text-three transition-all duration-200 group-hover:rotate-45 group-hover:text-text-two" />
+                                        </div>
+                                    </div>
+                                    <p className="text-text-one">
+                                        {caseStudy.seoDescription}
+                                    </p>
+                                </div>
+                            </Card>
+                        </Link>
                     ))}
-                    {caseStudiesData.length === 0 && (
-                        <p>There&apos;s nothing here... Yet!</p>
-                    )}
                 </div>
                 <div
                     className={cn(

@@ -124,7 +124,15 @@ function createApi(filters: IContentfulFilters, context: AppLoadContext) {
     return api
 }
 
-const CaseStudies = {
+const CaseStudiesApi = {
+    getBySlug(slug: string, context: AppLoadContext) {
+        const filters = {
+            contentType: 'caseStudy',
+            where: `fields.slug=${slug}`,
+        }
+
+        return createApi(filters, context)
+    },
     all(limit = 9, skip = 0, context: AppLoadContext) {
         const filters = {
             contentType: 'caseStudy',
@@ -135,6 +143,7 @@ const CaseStudies = {
                 'fields.seoDescription',
                 'fields.video',
                 'fields.imageCarousel',
+                'fields.slug',
                 'sys',
             ],
             order: '-sys.createdAt',
@@ -144,4 +153,4 @@ const CaseStudies = {
     },
 }
 
-export default CaseStudies
+export default CaseStudiesApi

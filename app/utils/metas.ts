@@ -5,11 +5,8 @@ import {
     SITE_BASE_URL,
     SITE_EMAIL,
     SITE_NAME,
-    SITE_X_HANDLE,
-    SITE_X_URL,
+    SITE_MASTODON_URL,
 } from '~/consts'
-import { Post } from '~/types/contentful'
-import { FAQJsonLdItem } from '~/types/metas'
 
 function getBasic({
     title,
@@ -72,10 +69,6 @@ function getBasic({
             name: 'twitter:title',
             content: title,
         },
-        {
-            name: 'twitter:name',
-            content: SITE_X_HANDLE,
-        },
     ]
 }
 
@@ -86,7 +79,7 @@ function getBusinessJsonLd() {
         name: SITE_NAME,
         url: `${SITE_BASE_URL}/`,
         logo: `${IMAGE_KIT_BASE_URL}/tr:w-28,ar-1-1/favicon.png`,
-        sameAs: [SITE_X_URL, SITE_LINKEDIN_URL],
+        sameAs: [SITE_MASTODON_URL, SITE_LINKEDIN_URL],
         contactPoint: [
             {
                 '@type': 'ContactPoint',
@@ -124,13 +117,13 @@ function getHowToJsonLd({
     }
 }
 
-function getArticleJsonLd(post: Post, postImageUrls: string[]) {
+function getArticleJsonLd(item: any, itemImageUrls: string[]) {
     return {
         '@context': 'https://schema.org/',
         '@type': 'article',
-        headline: post.seoTitle,
-        description: post.seoDescription,
-        image: postImageUrls.map((url) => ({
+        headline: item.seoTitle,
+        description: item.seoDescription,
+        image: itemImageUrls.map((url) => ({
             '@type': 'ImageObject',
             url: url,
             width: '1366',
@@ -150,22 +143,7 @@ function getArticleJsonLd(post: Post, postImageUrls: string[]) {
                 height: '28',
             },
         },
-        datePublished: post.createdAt,
-    }
-}
-
-function getFaqsJsonLd(items: FAQJsonLdItem[]) {
-    return {
-        '@context': 'https://schema.org',
-        '@type': 'FAQPage',
-        mainEntity: items.map((faq) => ({
-            '@type': 'Question',
-            name: faq.question,
-            acceptedAnswer: {
-                '@type': 'Answer',
-                text: faq.answer,
-            },
-        })),
+        datePublished: item.createdAt,
     }
 }
 
@@ -174,7 +152,6 @@ const MetaUtils = {
     getBusinessJsonLd,
     getHowToJsonLd,
     getArticleJsonLd,
-    getFaqsJsonLd,
 }
 
 export default MetaUtils

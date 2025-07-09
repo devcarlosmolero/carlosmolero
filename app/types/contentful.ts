@@ -20,7 +20,7 @@ export interface IPost {
     readingTime?: string
     hookTitle?: string
     hookDescription?: string
-    slug?: string
+    slug: string
     sections?: { id: string; text: string; level: number }[]
 }
 
@@ -32,14 +32,21 @@ export interface ICaseStudy {
     detailsRoles: string
     detailsInvolvement: string
     context: string
-    overview: string
+    interview: string
     challenge: string
     createdAt?: string
     updatedAt?: string
+    goal: string
     video: any
     videoUrl?: string
     imageCarousel: any
-    imageCarouselUrls?: string[]
+    imageCarouselUrls: string[]
+    beforeChallengeImageIndex: number
+    afterChallengeImageIndex: number
+    headerImgUrlIndex: number
+    videoPreview: boolean
     formattedCreatedAt?: string
     formattedUpdatedAt?: string
+    introduction?: string
+    slug: string
 }
