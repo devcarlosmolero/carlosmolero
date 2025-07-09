@@ -18,6 +18,7 @@ export async function loader({ request, context }: LoaderFunctionArgs) {
 
     const caseStudy = (await CaseStudiesApi.getBySlug(slug, context)
         .appendImageCarouselUrls()
+        .appendHeaderImgUrls()
         .appendVideoUrl()
         .formatDates()
         .get())![0] as ICaseStudy
@@ -35,9 +36,9 @@ export const meta: MetaFunction = (payload: {
 
     return [
         ...MetaUtils.getBasic({
-            title: caseStudy?.seoTitle,
+            title: `Case Study: ${caseStudy?.seoTitle}`,
             description: caseStudy?.seoDescription,
-            image: `https:${caseStudy?.imageCarouselUrls[caseStudy.headerImgUrlIndex]}`,
+            image: caseStudy.headerImgUrl,
         }),
         [
             {

@@ -39,11 +39,12 @@ export interface ICaseStudy {
     goal: string
     video: any
     videoUrl?: string
+    headerImg: any
+    headerImgUrl?: string
     imageCarousel: any
     imageCarouselUrls: string[]
     beforeChallengeImageIndex: number
     afterChallengeImageIndex: number
-    headerImgUrlIndex: number
     videoPreview: boolean
     formattedCreatedAt?: string
     formattedUpdatedAt?: string

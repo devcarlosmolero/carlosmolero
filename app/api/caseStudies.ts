@@ -52,10 +52,31 @@ async function appendVideoUrl(
     return result || []
 }
 
+async function appendHeaderImgUrls(
+    caseStudies: ICaseStudy[],
+    context: AppLoadContext
+) {
+    const result = await Promise.all(
+        caseStudies.map(async (caseStudy) => {
+            const headerImgUrl = await Contentful.getAssetUrl(
+                caseStudy.headerImg.sys.id,
+                context
+            )
+            return {
+                ...caseStudy,
+                headerImgUrl,
+            }
+        })
+    )
+
+    return result || []
+}
+
 function createApi(filters: IContentfulFilters, context: AppLoadContext) {
     const state = {
         filters,
         appendImageCarouselUrls: false,
+        appendHeaderImgUrls: false,
         appendVideoUrl: false,
         formatDates: false,
     }
@@ -67,6 +88,10 @@ function createApi(filters: IContentfulFilters, context: AppLoadContext) {
         },
         appendImageCarouselUrls() {
             state.appendImageCarouselUrls = true
+            return api
+        },
+        appendHeaderImgUrls() {
+            state.appendHeaderImgUrls = true
             return api
         },
         appendVideoUrl() {
@@ -101,6 +126,10 @@ function createApi(filters: IContentfulFilters, context: AppLoadContext) {
                     caseStudies,
                     context
                 )
+            }
+
+            if (state.appendHeaderImgUrls) {
+                caseStudies = await appendHeaderImgUrls(caseStudies, context)
             }
 
             if (state.formatDates) {
