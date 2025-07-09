@@ -57,6 +57,9 @@ export default function Portfolio({
                 >
                     {caseStudiesData.map((caseStudy, index) => (
                         <Link
+                            className={
+                                caseStudy.ready ? '' : 'pointer-events-none'
+                            }
                             to={`/case-study/${caseStudy.slug}`}
                             key={`case-study-${index}`}
                         >
@@ -96,9 +99,11 @@ export default function Portfolio({
                                                 {caseStudy.seoTitle}
                                             </h4>
                                         </div>
-                                        <div>
-                                            <MoveUpRight className="size-6 text-text-three transition-all duration-200 group-hover:rotate-45 group-hover:text-text-two" />
-                                        </div>
+                                        {caseStudy.ready && (
+                                            <div>
+                                                <MoveUpRight className="size-6 text-text-three transition-all duration-200 group-hover:rotate-45 group-hover:text-text-two" />
+                                            </div>
+                                        )}
                                     </div>
                                     <p className="text-text-one">
                                         {caseStudy.seoDescription}

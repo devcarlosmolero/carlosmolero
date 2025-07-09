@@ -49,4 +49,5 @@ export interface ICaseStudy {
     formattedUpdatedAt?: string
     introduction?: string
     slug: string
+    ready: boolean
 }

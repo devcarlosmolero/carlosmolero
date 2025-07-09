@@ -144,6 +144,7 @@ const CaseStudiesApi = {
                 'fields.video',
                 'fields.imageCarousel',
                 'fields.slug',
+                'fields.ready',
                 'sys',
             ],
             order: '-sys.createdAt',
