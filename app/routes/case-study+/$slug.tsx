@@ -1,6 +1,5 @@
 import { LoaderFunctionArgs } from '@remix-run/cloudflare'
 import { useLoaderData } from '@remix-run/react'
-import { ArrowRight, Target } from 'lucide-react'
 import Markdown from 'react-markdown'
 import { Fragment } from 'react/jsx-runtime'
 import rehypeSlug from 'rehype-slug'
