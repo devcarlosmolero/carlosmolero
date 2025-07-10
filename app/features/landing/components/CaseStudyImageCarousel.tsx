@@ -1,8 +1,8 @@
 import useEmblaCarousel from 'embla-carousel-react'
-import { useRef } from 'react'
-import { useAutoplay } from '~/hooks/useEmblaAutoPlay'
-import { useAutoplayProgress } from '~/hooks/useEmblaAutoPlayProgress'
-import { useEmblaPrevNextButtons } from '~/hooks/useEmblaPrevNextButtons'
+// import { useRef } from 'react'
+// import { useAutoplay } from '~/hooks/useEmblaAutoPlay'
+// import { useAutoplayProgress } from '~/hooks/useEmblaAutoPlayProgress'
+// import { useEmblaPrevNextButtons } from '~/hooks/useEmblaPrevNextButtons'
 import Autoplay from 'embla-carousel-autoplay'
 import { ICaseStudy } from '~/types/contentful'
 
@@ -11,26 +11,26 @@ export default function CaseStudyImageCarousel({
 }: {
     caseStudy: ICaseStudy
 }) {
-    const [emblaRef, emblaApi] = useEmblaCarousel(
+    const [emblaRef] = useEmblaCarousel(
         {
             loop: true,
             watchDrag: false,
         },
         [Autoplay({ playOnInit: true, delay: 3000 })]
     )
-    const progressNode = useRef<HTMLDivElement>(null)
+    // const progressNode = useRef<HTMLDivElement>(null)
 
-    const {
-        prevBtnDisabled,
-        nextBtnDisabled,
-        onPrevButtonClick,
-        onNextButtonClick,
-    } = useEmblaPrevNextButtons(emblaApi)
+    // const {
+    //     prevBtnDisabled,
+    //     nextBtnDisabled,
+    //     onPrevButtonClick,
+    //     onNextButtonClick,
+    // } = useEmblaPrevNextButtons(emblaApi)
 
-    const { autoplayIsPlaying, toggleAutoplay, onAutoplayButtonClick } =
-        useAutoplay(emblaApi)
+    // const { autoplayIsPlaying, toggleAutoplay, onAutoplayButtonClick } =
+    //     useAutoplay(emblaApi)
 
-    const { showAutoplayProgress } = useAutoplayProgress(emblaApi, progressNode)
+    // const { showAutoplayProgress } = useAutoplayProgress(emblaApi, progressNode)
 
     return (
         <div className="embla" ref={emblaRef}>
