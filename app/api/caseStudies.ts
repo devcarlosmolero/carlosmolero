@@ -3,15 +3,15 @@ import { ICaseStudy, IContentfulFilters } from '~/types/contentful'
 import Contentful from './contentful'
 import { format } from 'date-fns'
 
-async function appendImageCarouselUrls(
+async function appendImgCarouselUrls(
     caseStudies: ICaseStudy[],
     context: AppLoadContext
 ) {
     const result = await Promise.all(
         caseStudies.map(async (caseStudy) => {
-            const imageCarouselUrls = []
-            for (const imageCarouselObject of caseStudy?.imageCarousel || []) {
-                imageCarouselUrls.push(
+            const imgCarouselUrls = []
+            for (const imageCarouselObject of caseStudy?.imgCarousel || []) {
+                imgCarouselUrls.push(
                     await Contentful.getAssetUrl(
                         imageCarouselObject.sys.id,
                         context
@@ -20,7 +20,7 @@ async function appendImageCarouselUrls(
             }
             return {
                 ...caseStudy,
-                imageCarouselUrls,
+                imgCarouselUrls,
             }
         })
     )
@@ -86,7 +86,7 @@ function createApi(filters: IContentfulFilters, context: AppLoadContext) {
             state.formatDates = true
             return api
         },
-        appendImageCarouselUrls() {
+        appendImgCarouselUrls() {
             state.appendImageCarouselUrls = true
             return api
         },
@@ -122,10 +122,7 @@ function createApi(filters: IContentfulFilters, context: AppLoadContext) {
             }
 
             if (state.appendImageCarouselUrls) {
-                caseStudies = await appendImageCarouselUrls(
-                    caseStudies,
-                    context
-                )
+                caseStudies = await appendImgCarouselUrls(caseStudies, context)
             }
 
             if (state.appendHeaderImgUrls) {
@@ -171,7 +168,7 @@ const CaseStudiesApi = {
                 'fields.seoTitle',
                 'fields.seoDescription',
                 'fields.video',
-                'fields.imageCarousel',
+                'fields.imgCarousel',
                 'fields.slug',
                 'fields.ready',
                 'sys',

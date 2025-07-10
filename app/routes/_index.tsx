@@ -30,7 +30,7 @@ export async function loader({ context, request }: LoaderFunctionArgs) {
     ])
 
     const caseStudiesData = await CaseStudiesApi.all(6, 0, context)
-        .appendImageCarouselUrls()
+        .appendImgCarouselUrls()
         .appendVideoUrl()
         .get()
 

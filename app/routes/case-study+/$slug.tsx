@@ -10,13 +10,14 @@ import Container from '~/components/templates/Container'
 import Page from '~/components/templates/Page'
 import { ICaseStudy } from '~/types/contentful'
 import MetaUtils from '~/utils/metas'
+import TextBlock from '~/features/caseStudy/components/TextBlock'
 
 export async function loader({ request, context }: LoaderFunctionArgs) {
     const url = new URL(request.url)
     const slug = url.pathname.split('/')[2]
 
     const caseStudy = (await CaseStudiesApi.getBySlug(slug, context)
-        .appendImageCarouselUrls()
+        .appendImgCarouselUrls()
         .appendHeaderImgUrls()
         .appendVideoUrl()
         .formatDates()
@@ -44,7 +45,7 @@ export const meta: MetaFunction = (payload: {
                 'script:ld+json': [
                     MetaUtils.getArticleJsonLd(
                         caseStudy,
-                        caseStudy.imageCarouselUrls || []
+                        caseStudy.imgCarouselUrls || []
                     ),
                 ],
             },
@@ -76,20 +77,10 @@ export default function CaseStudySlugPage() {
                             {caseStudy.introduction}
                         </h2>
                         <div className="flex flex-col items-start justify-center gap-x-20 gap-y-12 md:flex-row">
-                            <div className="space-y-5 md:w-[50%]">
-                                <h3 className="text-3xl text-text-three md:text-4xl">
-                                    Interview
-                                </h3>
-                                <p
-                                    dangerouslySetInnerHTML={{
-                                        __html: caseStudy.interview.replaceAll(
-                                            '~',
-                                            '<br/><br/>'
-                                        ),
-                                    }}
-                                    className="text-lg"
-                                />
-                            </div>
+                            <TextBlock
+                                title="Interview"
+                                content={caseStudy.interview}
+                            />
                             <div className="space-y-5 md:w-[50%]">
                                 <h4 className="text-2xl text-text-three md:text-3xl">
                                     Details
@@ -112,42 +103,19 @@ export default function CaseStudySlugPage() {
                         <img
                             className="rounded-md"
                             alt={caseStudy.seoTitle}
-                            src={`https:${caseStudy.imageCarouselUrls[caseStudy.beforeChallengeImageIndex]}`}
+                            src={`https:${caseStudy.imgCarouselUrls[caseStudy.beforeChallengeImgIndex]}`}
                         />
                         <div className="flex flex-col items-start justify-center gap-x-20 gap-y-12 md:flex-row">
-                            <div className="space-y-5 md:w-[50%]">
-                                <h3 className="text-3xl text-text-three md:text-4xl">
-                                    Goal
-                                </h3>
-                                <p
-                                    dangerouslySetInnerHTML={{
-                                        __html: caseStudy.goal.replaceAll(
-                                            '~',
-                                            '<br/><br/>'
-                                        ),
-                                    }}
-                                    className="text-lg"
-                                />
-                            </div>
-                            <div className="space-y-5 md:w-[50%]">
-                                <h3 className="text-3xl text-text-three md:text-4xl">
-                                    Challenges
-                                </h3>
-                                <p
-                                    dangerouslySetInnerHTML={{
-                                        __html: caseStudy.challenge.replaceAll(
-                                            '~',
-                                            '<br/><br/>'
-                                        ),
-                                    }}
-                                    className="text-lg"
-                                />
-                            </div>
+                            <TextBlock title="Goal" content={caseStudy.goal} />
+                            <TextBlock
+                                title="Challenges"
+                                content={caseStudy.challenge}
+                            />
                         </div>
                         <img
                             className="rounded-md"
                             alt={caseStudy.seoTitle}
-                            src={`https:${caseStudy.imageCarouselUrls[caseStudy.afterChallengeImageIndex]}`}
+                            src={`https:${caseStudy.imgCarouselUrls[caseStudy.afterChallengeImgIndex]}`}
                         />
                         <article className="prose prose-dark w-full !max-w-none prose-h2:mb-5 prose-h2:text-4xl prose-h2:font-normal prose-h2:text-text-three prose-p:text-lg prose-img:w-full prose-img:rounded-md [&_h2:first-of-type]:mt-0">
                             <Markdown
